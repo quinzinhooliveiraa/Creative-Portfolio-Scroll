@@ -207,6 +207,15 @@
   }
 }
 
+/* Scrollbar hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Custom Grain Overlay */
 .grain-overlay {
   position: fixed;

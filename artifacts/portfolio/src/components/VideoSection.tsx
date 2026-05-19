@@ -1,54 +1,81 @@
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import { Play } from "lucide-react";
 
 export function VideoSection() {
   const ref = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  const [hovered, setHovered] = useState(false);
 
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const clipProgress = useTransform(scrollYProgress, [0.1, 0.45], [100, 0]);
+  const clipPath = useTransform(clipProgress, (v) => `inset(${v}% 0 0 0)`);
 
   return (
-    <section ref={ref} className="relative w-full py-32 md:py-48 px-6 md:px-12 bg-card z-10 overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/images/portfolio-2.png')] bg-cover bg-center opacity-5 mix-blend-luminosity"></div>
-      
-      <div className="max-w-6xl mx-auto relative z-10 text-center">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-12"
-        >
-          <h2 className="text-primary uppercase tracking-widest text-xs font-sans mb-4">Filme</h2>
-          <h3 className="text-4xl md:text-6xl font-serif text-foreground">Direção de Fotografia</h3>
-        </motion.div>
+    <section id="film" ref={ref} className="relative w-full bg-card overflow-hidden">
+      <motion.div
+        style={{ clipPath }}
+        className="relative w-full aspect-[16/9] md:aspect-[2.4/1] overflow-hidden"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <motion.img
+          src="/images/portfolio-5.png"
+          alt="Reel"
+          style={{ y: imgY }}
+          className="absolute inset-0 w-full h-full object-cover scale-110"
+        />
+        <div className="absolute inset-0 bg-black/55" />
 
-        <motion.div 
-          style={{ scale, opacity }}
-          className="relative aspect-video w-full rounded-sm overflow-hidden group cursor-pointer"
-        >
-          <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500 z-10"></div>
-          
-          <img 
-            src="/images/portfolio-5.png" 
-            alt="Video Reel Cover" 
-            className="absolute inset-0 w-full h-full object-cover object-center grayscale opacity-80"
-          />
-          
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center">
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border border-primary/50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background group-hover:scale-110 transition-all duration-500 ease-out">
-              <Play className="w-8 h-8 ml-1" fill="currentColor" />
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
+          <motion.div
+            className="relative flex items-center justify-center mb-10"
+            animate={{ scale: hovered ? 1.1 : 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <motion.div
+              className="absolute w-28 h-28 rounded-full border border-primary/30"
+              animate={{ scale: hovered ? 1.5 : 1, opacity: hovered ? 0 : 1 }}
+              transition={{ duration: 0.6 }}
+            />
+            <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/60 flex items-center justify-center backdrop-blur-sm">
+              <Play className="w-7 h-7 text-primary ml-1" fill="currentColor" />
             </div>
-            <span className="mt-6 uppercase tracking-[0.3em] text-xs font-sans text-white/70">Assistir Reel 2024</span>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="font-sans text-[10px] uppercase tracking-[0.4em] text-white/50 mb-5"
+          >
+            Filme
+          </motion.p>
+
+          <div className="overflow-hidden">
+            <motion.h2
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl md:text-6xl lg:text-7xl font-serif text-white text-center"
+            >
+              Direção de Fotografia
+            </motion.h2>
           </div>
-        </motion.div>
-      </div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="font-sans text-[11px] uppercase tracking-[0.3em] text-white/40 mt-6"
+          >
+            Reel 2024 — Assistir
+          </motion.p>
+        </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,51 +1,112 @@
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+const stats = [
+  { number: "12", label: "Anos de experiência" },
+  { number: "340+", label: "Ensaios realizados" },
+  { number: "18", label: "Exposições" },
+  { number: "3", label: "Continentes" },
+];
 
 export function AboutSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
 
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const textX = useTransform(scrollYProgress, [0, 1], [40, -20]);
 
   return (
-    <section ref={ref} className="relative w-full min-h-screen py-32 px-6 md:px-12 flex items-center bg-card z-10">
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
-        
-        <motion.div 
+    <section id="about" ref={ref} className="relative w-full min-h-screen overflow-hidden bg-background">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-32 md:py-48 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-0 items-center">
+
+        <motion.div
           style={{ y: imgY }}
-          className="relative aspect-[3/4] w-full max-w-md mx-auto md:mr-auto overflow-hidden rounded-sm"
+          className="relative w-full max-w-[520px] mx-auto lg:mx-0"
         >
-          <div className="absolute inset-0 bg-primary/20 mix-blend-overlay z-10"></div>
-          <img 
-            src="/images/portrait.png" 
-            alt="Ana Luz Ferreira" 
-            className="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
-          />
+          <motion.div
+            initial={{ clipPath: "inset(100% 0 0 0)" }}
+            whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="relative aspect-[3/4] overflow-hidden"
+          >
+            <img
+              src="/images/portrait.png"
+              alt="Ana Luz Ferreira"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="absolute -bottom-6 -right-4 md:-right-12 bg-card border border-border/30 p-5 backdrop-blur-sm"
+          >
+            <p className="font-serif text-3xl text-foreground">2012</p>
+            <p className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground mt-1">Início da carreira</p>
+          </motion.div>
         </motion.div>
 
-        <motion.div style={{ y: textY }} className="flex flex-col justify-center">
-          <h2 className="text-primary uppercase tracking-widest text-xs font-sans mb-8">Sobre a artista</h2>
-          <h3 className="text-4xl md:text-5xl font-serif text-foreground leading-tight mb-8">
-            Encontrando a beleza no silêncio entre as histórias.
-          </h3>
-          <div className="space-y-6 text-muted-foreground font-sans font-light text-base md:text-lg leading-relaxed">
+        <motion.div style={{ x: textX }} className="lg:pl-20 xl:pl-32 flex flex-col justify-center">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-8"
+          >
+            Sobre a artista
+          </motion.p>
+
+          <div className="overflow-hidden mb-8">
+            <motion.h2
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl md:text-5xl font-serif text-foreground leading-[1.1]"
+            >
+              Encontrando a beleza<br />no silêncio entre<br />as histórias.
+            </motion.h2>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="space-y-5 text-muted-foreground font-sans font-light text-base leading-relaxed max-w-md mb-16"
+          >
             <p>
-              Sou Ana Luz Ferreira, uma fotógrafa brasileira radicada em São Paulo. 
-              Minha jornada com a fotografia começou não como uma busca pela imagem perfeita, 
-              mas como uma tentativa de registrar o que não pode ser dito com palavras.
+              Sou Ana Luz Ferreira, fotógrafa brasileira radicada em São Paulo.
+              Minha jornada começou não como busca pela imagem perfeita, mas como
+              tentativa de registrar o que não pode ser dito com palavras.
             </p>
             <p>
-              Com foco em retratos cinematográficos, editoriais imersivos e documentação visual, 
-              meu trabalho explora as sombras tanto quanto a luz. Acredito que o verdadeiro 
-              personagem de uma fotografia muitas vezes reside no que decidimos deixar no escuro.
+              Com foco em retratos cinematográficos e documentação visual, meu
+              trabalho explora as sombras tanto quanto a luz — o verdadeiro
+              personagem muitas vezes reside no que decidimos deixar no escuro.
             </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-border/30 pt-10">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 * i }}
+              >
+                <p className="font-serif text-3xl md:text-4xl text-foreground mb-1">{s.number}</p>
+                <p className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground leading-tight">{s.label}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
-        
       </div>
     </section>
   );
