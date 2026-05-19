@@ -21,6 +21,9 @@ const formacao = [
   { label: "Cultura e Criação", sub: "Especialização — SENAC" },
 ];
 
+/* duplicamos 4× para garantir loop suave em qualquer tela */
+const formacaoLoop = [...formacao, ...formacao, ...formacao, ...formacao];
+
 export function AboutSection() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -28,7 +31,9 @@ export function AboutSection() {
 
   return (
     <section id="about" ref={ref} className="relative w-full overflow-hidden bg-card">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12 py-20 md:py-48 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-0 items-start">
+
+      {/* ── Two-column bio block ── */}
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12 pt-20 md:pt-48 pb-16 md:pb-24 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-0 items-start">
 
         {/* Left — photo */}
         <motion.div style={{ y: imgY }} className="relative w-full max-w-[380px] md:max-w-[480px] mx-auto lg:mx-0 lg:sticky lg:top-24">
@@ -60,7 +65,7 @@ export function AboutSection() {
           </motion.div>
         </motion.div>
 
-        {/* Right — bio + cartografia + formação */}
+        {/* Right — bio + cartografia */}
         <div className="lg:pl-20 xl:pl-28 flex flex-col gap-14">
 
           {/* Bio */}
@@ -136,43 +141,44 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Formação — horizontal marquee */}
-          <div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5"
-            >
-              Formação
-            </motion.p>
-            <div className="relative overflow-hidden border-t border-b border-border/20 py-0">
-              {/* fade edges */}
-              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-10 z-10 bg-gradient-to-r from-card to-transparent" />
-              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 z-10 bg-gradient-to-l from-card to-transparent" />
-
-              <motion.div
-                className="flex gap-0 whitespace-nowrap"
-                animate={{ x: ["-50%", "0%"] }}
-                transition={{ duration: 28, ease: "linear", repeat: Infinity }}
-              >
-                {[...formacao, ...formacao].map((f, i) => (
-                  <div
-                    key={i}
-                    className="inline-flex flex-col justify-center flex-shrink-0 px-10 py-5 border-r border-border/20 min-w-[280px]"
-                  >
-                    <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(0.95rem, 2vw, 1.05rem)" }}>
-                      {f.label}
-                    </p>
-                    <p className="font-sans text-[10px] text-muted-foreground/50 leading-snug">{f.sub}</p>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-
         </div>
       </div>
+
+      {/* ── Formação — full-width marquee band ── */}
+      <div className="w-full border-t border-b border-border/20 bg-background/30 overflow-hidden relative">
+        {/* label */}
+        <div className="absolute left-0 top-0 bottom-0 z-20 flex items-center px-5 md:px-8 bg-card border-r border-border/20">
+          <span className="font-sans text-[9px] uppercase tracking-[0.4em] text-primary whitespace-nowrap"
+            style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
+            Formação
+          </span>
+        </div>
+
+        {/* fade right edge */}
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-card to-transparent" />
+
+        {/* scrolling track — starts off-screen left, moves right */}
+        <motion.div
+          className="flex whitespace-nowrap pl-20"
+          animate={{ x: ["-50%", "0%"] }}
+          transition={{ duration: 36, ease: "linear", repeat: Infinity }}
+        >
+          {formacaoLoop.map((f, i) => (
+            <div
+              key={i}
+              className="inline-flex flex-col justify-center flex-shrink-0 px-12 py-7 border-r border-border/15"
+              style={{ minWidth: "320px" }}
+            >
+              <p className="font-serif text-foreground/90 mb-1"
+                style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)" }}>
+                {f.label}
+              </p>
+              <p className="font-sans text-[10px] text-muted-foreground/50 leading-snug">{f.sub}</p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
     </section>
   );
 }
