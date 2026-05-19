@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Play } from "lucide-react";
-import { FitText } from "./FitText";
 
 export function VideoSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -37,16 +36,19 @@ export function VideoSection() {
             Filme — Direção de Fotografia
           </motion.p>
 
-          <div className="overflow-hidden w-full">
+          <div className="overflow-hidden w-full px-4">
             <motion.div
               initial={{ y: "100%" }}
               whileInView={{ y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <FitText as="h2" className="font-serif font-normal text-white text-center tracking-tight">
+              <h2
+                className="font-serif font-normal text-white text-center tracking-tight leading-none"
+                style={{ fontSize: "clamp(3.5rem, 13vw, 10rem)" }}
+              >
                 Reel 2024
-              </FitText>
+              </h2>
             </motion.div>
           </div>
 
