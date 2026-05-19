@@ -36,7 +36,7 @@ export function ContactSection() {
                 as="h2"
                 className="font-serif font-normal tracking-tight text-foreground"
               >
-                Vamos criar juntos.
+                Fala com a Hoana.
               </FitText>
             </motion.div>
           </div>
@@ -53,13 +53,13 @@ export function ContactSection() {
               className="text-muted-foreground font-sans font-light leading-relaxed mb-10 max-w-sm"
               style={{ fontSize: "clamp(0.875rem, 2.8vw, 1rem)" }}
             >
-              Disponível para comissões editoriais, retratos e projetos documentais no Brasil e no exterior.
+              Disponível para retratos autorais, direção de vídeo, palestras sobre modos de ver e projetos culturais ultra-personalizados — no Brasil e no exterior.
             </p>
             <div className="space-y-5">
               {[
-                { label: "E-mail", value: "contato@analuzferreira.com" },
-                { label: "Telefone", value: "+55 11 99999-9999" },
-                { label: "Localização", value: "São Paulo, SP — Brasil" },
+                { label: "E-mail", value: "hoana@hoanabonito.com" },
+                { label: "Localização", value: "Brasil · Nômade" },
+                { label: "Projetos", value: "Retrato · Vídeo · Arte · Palestras" },
               ].map((item) => (
                 <div key={item.label}>
                   <p className="font-sans text-[9px] uppercase tracking-[0.35em] text-muted-foreground/40 mb-1">{item.label}</p>
@@ -98,7 +98,7 @@ export function ContactSection() {
                 className="flex flex-col items-start justify-center py-10"
               >
                 <p className="font-serif text-foreground mb-2" style={{ fontSize: "clamp(1.5rem, 5vw, 2rem)" }}>
-                  Mensagem enviada.
+                  Mensagem enviada. ✨
                 </p>
                 <p className="font-sans text-sm text-muted-foreground">Entrarei em contato em breve.</p>
               </motion.div>
@@ -155,6 +155,15 @@ export function ContactSection() {
               </form>
             )}
           </motion.div>
+        </div>
+
+        <div className="mt-14 flex justify-end">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40 hover:text-primary transition-colors"
+          >
+            ↑ Topo
+          </button>
         </div>
       </div>
     </section>

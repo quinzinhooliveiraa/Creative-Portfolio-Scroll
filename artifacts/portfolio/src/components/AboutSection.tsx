@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { FitText } from "./FitText";
 
 const stats = [
-  { number: "12", label: "Anos de\nexperiência" },
-  { number: "340+", label: "Ensaios\nrealizados" },
-  { number: "18", label: "Exposições" },
-  { number: "3", label: "Continentes" },
+  { number: "20+", label: "Anos de\nexperiência" },
+  { number: "Mestre", label: "Práticas Artísticas\nUniv. de Évora" },
+  { number: "UnB", label: "Artes Visuais\n+ Lyon, França" },
+  { number: "4", label: "Perspectivas\ndo olhar" },
 ];
 
 export function AboutSection() {
@@ -28,7 +28,7 @@ export function AboutSection() {
           >
             <img
               src="/images/portrait.png"
-              alt="Ana Luz Ferreira"
+              alt="Hoana Bonito"
               className="w-full h-full object-cover"
               loading="lazy"
             />
@@ -42,8 +42,8 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="absolute -bottom-4 -right-1 md:-bottom-6 md:-right-8 bg-card border border-border/30 p-4 backdrop-blur-sm"
           >
-            <p className="font-serif text-2xl md:text-3xl text-foreground">2012</p>
-            <p className="font-sans text-[9px] uppercase tracking-widest text-muted-foreground mt-1">Início da carreira</p>
+            <p className="font-serif text-2xl md:text-3xl text-foreground">Brasília</p>
+            <p className="font-sans text-[9px] uppercase tracking-widest text-muted-foreground mt-1">→ Lyon → Évora → Mundo</p>
           </motion.div>
         </motion.div>
 
@@ -65,7 +65,7 @@ export function AboutSection() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2 className="font-serif text-foreground leading-[1.08]" style={{ fontSize: "clamp(1.65rem, 5.5vw, 3.2rem)" }}>
-                Encontrando a beleza no silêncio entre as histórias.
+                Poetisa de uma ideia só com múltiplas habilidades.
               </h2>
             </motion.div>
           </div>
@@ -79,14 +79,15 @@ export function AboutSection() {
             style={{ fontSize: "clamp(0.875rem, 2.8vw, 1rem)" }}
           >
             <p>
-              Sou Ana Luz Ferreira, fotógrafa brasileira radicada em São Paulo.
-              Minha jornada começou não como busca pela imagem perfeita, mas como
-              tentativa de registrar o que não pode ser dito com palavras.
+              Sou Hoana Bonito — fotógrafa, artista visual e realizadora audiovisual,
+              com mais de 20 anos de experiência na criação de imagens. Mestra em
+              Práticas Artísticas Multimídia pela Universidade de Évora (Portugal),
+              formada em Artes Visuais pela UnB, com passagem pela Université Lumière Lyon 2.
             </p>
             <p>
-              Com foco em retratos cinematográficos e documentação visual, meu
-              trabalho explora as sombras tanto quanto a luz — o verdadeiro
-              personagem muitas vezes reside no que decidimos deixar no escuro.
+              Pesquiso as diversas maneiras de ver o mundo. Minha maior motivação é
+              fazer pensar olhares — e assim expandi-los poeticamente rumo às belezas
+              cotidianas. Os físicos são mero detalhe aqui.
             </p>
           </motion.div>
 
@@ -99,7 +100,7 @@ export function AboutSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.08 * i }}
               >
-                <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(1.75rem, 5vw, 2.5rem)" }}>
+                <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)" }}>
                   {s.number}
                 </p>
                 <p className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground leading-snug whitespace-pre-line">{s.label}</p>

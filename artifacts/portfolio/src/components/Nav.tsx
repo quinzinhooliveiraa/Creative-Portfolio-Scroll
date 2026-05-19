@@ -3,8 +3,8 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 const links = [
   { label: "Sobre", href: "#about" },
-  { label: "Portfólio", href: "#portfolio" },
-  { label: "Filme", href: "#film" },
+  { label: "Retratos", href: "#portfolio" },
+  { label: "Artes", href: "#film" },
   { label: "Palestras", href: "#talks" },
   { label: "Contato", href: "#contact" },
 ];
@@ -47,7 +47,7 @@ export function Nav() {
             className="font-serif text-base tracking-[0.15em] text-foreground uppercase cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            Ana Luz
+            Hoana Bonito
           </span>
 
           <nav className="hidden md:flex items-center gap-10">

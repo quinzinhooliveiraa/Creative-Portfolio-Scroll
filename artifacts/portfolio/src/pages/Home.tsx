@@ -9,8 +9,8 @@ import { motion } from "framer-motion";
 
 const footerLinks = [
   { label: "Sobre", href: "#about" },
-  { label: "Portfólio", href: "#portfolio" },
-  { label: "Filme", href: "#film" },
+  { label: "Retratos", href: "#portfolio" },
+  { label: "Artes", href: "#film" },
   { label: "Palestras", href: "#talks" },
   { label: "Contato", href: "#contact" },
 ];
@@ -32,27 +32,24 @@ export default function Home() {
       <ContactSection />
 
       <footer className="bg-background border-t border-border/20">
-        {/* Top footer row */}
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-14 pb-8 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
-          {/* Brand */}
           <div className="flex flex-col gap-3">
             <span
               className="font-serif text-lg tracking-[0.15em] text-foreground uppercase cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              Ana Luz Ferreira
+              Hoana Bonito
             </span>
             <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-muted-foreground/60 leading-relaxed">
-              Fotógrafa · São Paulo, Brasil
+              Artista Visual · Fotógrafa · Diretora de Vídeo
             </p>
             <p className="font-sans text-[10px] text-muted-foreground/40 leading-relaxed max-w-[220px]">
-              Retratos, editoriais e documentais que capturam a essência do instante.
+              Imagens para ver além dos olhos. Percepção, presença e tradução sensorial.
             </p>
           </div>
 
-          {/* Nav links */}
           <div className="flex flex-col gap-4">
-            <span className="font-sans text-[9px] uppercase tracking-[0.4em] text-primary mb-1">Navegação</span>
+            <span className="font-sans text-[9px] uppercase tracking-[0.4em] text-primary mb-1">Perspectivas</span>
             <nav className="flex flex-col gap-3">
               {footerLinks.map((l) => (
                 <button
@@ -66,16 +63,18 @@ export default function Home() {
             </nav>
           </div>
 
-          {/* Contact / Social */}
           <div className="flex flex-col gap-4">
             <span className="font-sans text-[9px] uppercase tracking-[0.4em] text-primary mb-1">Contato</span>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:ana@analuzferreira.com"
+                href="mailto:hoana@hoanabonito.com"
                 className="font-sans text-[11px] text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
-                ana@analuzferreira.com
+                hoana@hoanabonito.com
               </a>
+              <p className="font-sans text-[10px] text-muted-foreground/50">
+                Brasil · Nômade
+              </p>
               <div className="flex gap-5 mt-1">
                 {["Instagram", "Behance", "LinkedIn"].map((s) => (
                   <span
@@ -90,7 +89,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-border/10 max-w-[1400px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <motion.p
             initial={{ opacity: 0 }}
@@ -98,10 +96,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40"
           >
-            &copy; {new Date().getFullYear()} Ana Luz Ferreira — Todos os direitos reservados
+            &copy; {new Date().getFullYear()} Hoana Bonito — Todos os direitos reservados
           </motion.p>
           <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/30">
-            Feito com luz e intenção
+            O mundo da arte é onde você faz
           </span>
         </div>
       </footer>

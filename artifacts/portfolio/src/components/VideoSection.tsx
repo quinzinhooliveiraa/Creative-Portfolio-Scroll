@@ -20,7 +20,7 @@ export function VideoSection() {
       >
         <motion.img
           src="/images/portfolio-5.png"
-          alt="Reel"
+          alt="Olho que Escuta"
           style={{ y: imgY }}
           className="absolute inset-0 w-full h-full object-cover scale-110"
         />
@@ -33,7 +33,7 @@ export function VideoSection() {
             viewport={{ once: true }}
             className="font-sans text-[9px] uppercase tracking-[0.4em] text-white/50"
           >
-            Filme — Direção de Fotografia
+            Olho que Escuta · Artes Visuais
           </motion.p>
 
           <div className="overflow-hidden w-full px-4">
@@ -45,12 +45,22 @@ export function VideoSection() {
             >
               <h2
                 className="font-serif font-normal text-white text-center tracking-tight leading-none"
-                style={{ fontSize: "clamp(3.5rem, 13vw, 10rem)" }}
+                style={{ fontSize: "clamp(2.5rem, 10vw, 7rem)" }}
               >
-                Reel 2024
+                Som em Imagem
               </h2>
             </motion.div>
           </div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="font-sans text-[10px] uppercase tracking-[0.3em] text-white/40 text-center max-w-sm"
+          >
+            Videoclipes · Capas de Álbum · Registros Conceituais de Espetáculos
+          </motion.p>
 
           <motion.div
             animate={{ scale: hovered ? 1.1 : 1 }}
@@ -68,6 +78,15 @@ export function VideoSection() {
           </motion.div>
         </div>
       </motion.div>
+
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12 py-6 flex justify-end">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40 hover:text-primary transition-colors"
+        >
+          ↑ Topo
+        </button>
+      </div>
     </section>
   );
 }

@@ -5,12 +5,12 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 
 const photos = [
-  { id: 1, src: "/images/portfolio-1.png", alt: "Retrato Cinematográfico", category: "Retrato", size: "tall" },
-  { id: 2, src: "/images/portfolio-2.png", alt: "Luz Natural", category: "Paisagem", size: "wide" },
-  { id: 3, src: "/images/portfolio-3.png", alt: "Editorial", category: "Editorial", size: "tall" },
-  { id: 4, src: "/images/portfolio-4.png", alt: "São Paulo", category: "Documental", size: "square" },
-  { id: 5, src: "/images/portfolio-5.png", alt: "Silhueta", category: "Retrato", size: "tall" },
-  { id: 6, src: "/images/portfolio-6.png", alt: "Arquitetura", category: "Editorial", size: "wide" },
+  { id: 1, src: "/images/portfolio-1.png", alt: "Retrato Autoral", category: "Retrato", size: "tall" },
+  { id: 2, src: "/images/portfolio-2.png", alt: "Família", category: "Família", size: "wide" },
+  { id: 3, src: "/images/portfolio-3.png", alt: "Mulher", category: "Mulher", size: "tall" },
+  { id: 4, src: "/images/portfolio-4.png", alt: "Casamento", category: "Casamento", size: "square" },
+  { id: 5, src: "/images/portfolio-5.png", alt: "Newborn", category: "Newborn", size: "tall" },
+  { id: 6, src: "/images/portfolio-6.png", alt: "Lifestyle", category: "Lifestyle", size: "wide" },
 ];
 
 const sizeClass = { tall: "aspect-[3/4]", wide: "aspect-[4/3]", square: "aspect-square" };
@@ -33,7 +33,7 @@ export function PhotographySection() {
             viewport={{ once: true }}
             className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-3"
           >
-            Portfólio
+            Olho que Vê · Rito de Retrato
           </motion.p>
           <div className="overflow-hidden">
             <motion.h2
@@ -44,7 +44,7 @@ export function PhotographySection() {
               className="font-serif text-foreground leading-none"
               style={{ fontSize: "clamp(2.5rem, 10vw, 5rem)" }}
             >
-              Obras<br />Selecionadas
+              Retratos<br />& Presença
             </motion.h2>
           </div>
         </motion.div>
@@ -57,7 +57,7 @@ export function PhotographySection() {
           className="text-muted-foreground font-sans max-w-xs leading-relaxed hidden md:block"
           style={{ fontSize: "clamp(0.8rem, 2vw, 0.9rem)" }}
         >
-          Uma seleção de trabalhos que representam a essência da minha visão artística.
+          Visto pelos meus olhos treinados, você deixa de ser um meio e passa a ser um fim em si mesmo — uma expressão única da vida.
         </motion.p>
       </div>
 
@@ -98,10 +98,16 @@ export function PhotographySection() {
         <div className="w-4 md:w-8 flex-shrink-0" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12 mt-5 md:mt-10">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12 mt-5 md:mt-10 flex items-center justify-between">
         <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40">
           Deslize para explorar →
         </p>
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40 hover:text-primary transition-colors"
+        >
+          ↑ Topo
+        </button>
       </div>
 
       <Dialog open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>

@@ -199,7 +199,7 @@ export function CameraOrbit({ scrollYProgress }: CameraOrbitProps) {
             color: "rgba(255,255,255,0.28)",
             marginTop: 2,
           }}>
-            Ana Luz
+            Hoana
           </p>
         </div>
       </motion.div>

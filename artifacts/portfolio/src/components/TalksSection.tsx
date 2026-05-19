@@ -2,10 +2,38 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const talks = [
-  { num: "01", title: "A Magia da Luz Natural", event: "TEDx São Paulo", location: "São Paulo — SP", year: "2024", type: "Palestra" },
-  { num: "02", title: "Fotografia como Narrativa", event: "Festival de Artes Visuais", location: "Rio de Janeiro — RJ", year: "2023", type: "Workshop" },
-  { num: "03", title: "O Olhar Feminino na Fotografia Documental", event: "Museu de Arte Moderna", location: "São Paulo — SP", year: "2023", type: "Palestra" },
-  { num: "04", title: "Luz e Sombra no Retrato Contemporâneo", event: "Bienal de Fotografia", location: "Curitiba — PR", year: "2022", type: "Mesa Redonda" },
+  {
+    num: "01",
+    title: "Fotografia para Pessoas Cegas",
+    event: "Acessibilidade em Artes Visuais",
+    location: "Oficina",
+    year: "2024",
+    type: "Oficina",
+  },
+  {
+    num: "02",
+    title: "Maneiras de Ver o Mundo",
+    event: "Palestra · Arte Educação",
+    location: "Mediação Cultural",
+    year: "2023",
+    type: "Palestra",
+  },
+  {
+    num: "03",
+    title: "Tradução Sensorial e Imagens Táteis",
+    event: "Pedagogia das Artes Visuais",
+    location: "Workshop",
+    year: "2023",
+    type: "Workshop",
+  },
+  {
+    num: "04",
+    title: "Audiodescrição como Arte",
+    event: "Mediação · Acessibilidade",
+    location: "Arte Contemporânea",
+    year: "2022",
+    type: "Mesa Redonda",
+  },
 ];
 
 export function TalksSection() {
@@ -21,7 +49,7 @@ export function TalksSection() {
               viewport={{ once: true }}
               className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-3"
             >
-              Palestras & Workshops
+              Olho que Fala · Palestras & Oficinas
             </motion.p>
             <div className="overflow-hidden">
               <motion.h2
@@ -32,7 +60,7 @@ export function TalksSection() {
                 className="font-serif text-foreground leading-none"
                 style={{ fontSize: "clamp(2.5rem, 10vw, 5rem)" }}
               >
-                Compartilhando<br />o Olhar
+                A Imagem<br />Além da Visão
               </motion.h2>
             </div>
           </div>
@@ -44,7 +72,7 @@ export function TalksSection() {
             className="text-muted-foreground font-sans max-w-xs leading-relaxed hidden md:block"
             style={{ fontSize: "clamp(0.8rem, 2vw, 0.9rem)" }}
           >
-            Ensino, compartilho e inspiro a próxima geração de artistas visuais brasileiros.
+            Oficinas, palestras e mediação sobre modos de ver, acessibilidade visual e arte educação.
           </motion.p>
         </div>
 
@@ -88,6 +116,15 @@ export function TalksSection() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-end">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40 hover:text-primary transition-colors"
+          >
+            ↑ Topo
+          </button>
         </div>
       </div>
     </section>
