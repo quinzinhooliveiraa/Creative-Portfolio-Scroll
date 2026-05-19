@@ -10,7 +10,7 @@ export function HeroSection() {
 
   const imgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.15]);
   const imgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
   return (
@@ -31,54 +31,62 @@ export function HeroSection() {
 
       <ParticlesBackground />
 
-      {/* Camera — centered in upper 55% of hero */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-start pt-[13vh] md:pt-[16vh] pointer-events-none">
-        <div className="pointer-events-auto">
-          <Camera3D scrollYProgress={scrollYProgress} />
-        </div>
-      </div>
+      {/* ── MOBILE layout: camera top-center, text bottom ── */}
+      {/* ── DESKTOP layout: text left (60%), camera right (40%) ── */}
 
-      {/* Text — anchored bottom */}
       <motion.div
         style={{ y: textY, opacity: textOpacity }}
-        className="absolute inset-0 z-10 flex flex-col justify-end pb-[10vh] md:pb-[8vh]"
+        className="absolute inset-0 z-10 flex flex-col md:flex-row"
       >
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="px-4 md:px-12 font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-4 md:mb-6"
-        >
-          Fotógrafa — São Paulo, Brasil
-        </motion.p>
+        {/* LEFT / BOTTOM — name text */}
+        <div className="flex-1 flex flex-col justify-end pb-[10vh] md:pb-[8vh] md:justify-end min-w-0">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="px-3 md:px-10 font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-4 md:mb-6"
+          >
+            Fotógrafa — São Paulo, Brasil
+          </motion.p>
 
-        <div className="px-1 md:px-3 flex flex-col">
-          {["ANA", "LUZ", "FERREIRA"].map((word, i) => (
-            <div key={word} style={{ overflow: "hidden", lineHeight: 0.88 }}>
-              <motion.div
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.1, delay: 0.3 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <FitText
-                  as="h1"
-                  className="font-serif font-normal tracking-[-0.02em] text-foreground uppercase"
+          {/* On desktop, cap each word at 22vh tall so 3 lines fit without dominating */}
+          <div className="px-1 md:px-2">
+            {["ANA", "LUZ", "FERREIRA"].map((word, i) => (
+              <div key={word} style={{ overflow: "hidden", lineHeight: 0.88 }}>
+                <motion.div
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 1.1, delay: 0.3 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {word}
-                </FitText>
-              </motion.div>
-            </div>
-          ))}
+                  <FitText
+                    as="h1"
+                    maxSize={220}
+                    className="font-serif font-normal tracking-[-0.02em] text-foreground uppercase"
+                  >
+                    {word}
+                  </FitText>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 1.3 }}
+            className="px-3 md:px-10 font-sans text-[10px] uppercase tracking-[0.28em] text-muted-foreground mt-4 md:mt-6"
+          >
+            Luz que conta histórias
+          </motion.p>
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1.3 }}
-          className="px-4 md:px-12 font-sans text-[10px] uppercase tracking-[0.28em] text-muted-foreground mt-4 md:mt-6"
-        >
-          Luz que conta histórias
-        </motion.p>
+        {/* RIGHT / TOP — camera */}
+        <div className="
+          absolute top-0 left-0 right-0 h-[46%] flex items-center justify-center
+          md:static md:h-auto md:w-[42%] md:flex-shrink-0 md:flex md:items-center md:justify-center md:pb-10
+        ">
+          <Camera3D scrollYProgress={scrollYProgress} />
+        </div>
       </motion.div>
 
       {/* Scroll indicator */}
@@ -98,7 +106,7 @@ export function HeroSection() {
         <span className="font-sans text-[8px] uppercase tracking-[0.35em] text-muted-foreground">Scroll</span>
       </motion.div>
 
-      {/* Vertical label */}
+      {/* Vertical label desktop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

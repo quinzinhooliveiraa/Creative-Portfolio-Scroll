@@ -4,9 +4,10 @@ interface FitTextProps {
   children: ReactNode;
   className?: string;
   as?: ElementType;
+  maxSize?: number;
 }
 
-export function FitText({ children, className = "", as: Tag = "span" }: FitTextProps) {
+export function FitText({ children, className = "", as: Tag = "span", maxSize }: FitTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const measureRef = useRef<HTMLSpanElement>(null);
   const [fontSize, setFontSize] = useState(80);
@@ -23,7 +24,9 @@ export function FitText({ children, className = "", as: Tag = "span" }: FitTextP
       const containerWidth = container.offsetWidth;
 
       if (baseWidth > 0 && containerWidth > 0) {
-        setFontSize((containerWidth / baseWidth) * 80 * 0.997);
+        let size = (containerWidth / baseWidth) * 80 * 0.997;
+        if (maxSize && size > maxSize) size = maxSize;
+        setFontSize(size);
         setReady(true);
       }
     };
@@ -32,7 +35,7 @@ export function FitText({ children, className = "", as: Tag = "span" }: FitTextP
     const ro = new ResizeObserver(measure);
     if (containerRef.current) ro.observe(containerRef.current);
     return () => { clearTimeout(t); ro.disconnect(); };
-  }, [children]);
+  }, [children, maxSize]);
 
   return (
     <div ref={containerRef} className="w-full overflow-hidden relative">
