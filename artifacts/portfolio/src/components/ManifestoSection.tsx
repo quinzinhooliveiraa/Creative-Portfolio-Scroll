@@ -1,129 +1,154 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const words = [
-  { text: "sensibilidade", style: "normal" },
-  { text: "artística", style: "italic" },
-  { text: "potência", style: "normal" },
-  { text: "visual", style: "italic" },
-  { text: "percepção", style: "normal" },
-  { text: "presença", style: "italic" },
-  { text: "tradução", style: "normal" },
-  { text: "sensorial", style: "italic" },
-  { text: "escuta", style: "normal" },
-  { text: "maneiras de ver", style: "italic" },
-  { text: "imagem para além da visão.", style: "normal" },
+const keywords = [
+  "percepção",
+  "presença",
+  "tradução sensorial",
+  "escuta",
+  "maneiras de ver",
+  "imagem para além da visão",
 ];
 
 export function ManifestoSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
-  const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    const inner = innerRef.current;
-    if (!container || !inner) return;
-
-    // Set all words invisible initially
-    wordRefs.current.forEach((el, i) => {
-      if (el) gsap.set(el, { opacity: i === 0 ? 0 : 0, y: i === 0 ? 30 : 30 });
-    });
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.6,
-        },
-      });
-
-      words.forEach((_, i) => {
-        const el = wordRefs.current[i];
-        if (!el) return;
-
-        const isLast = i === words.length - 1;
-
-        // Fade in
-        tl.to(el, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
-
-        if (!isLast) {
-          // Hold
-          tl.to({}, { duration: 0.3 });
-          // Fade out
-          tl.to(el, { opacity: 0, y: -30, duration: 0.4, ease: "power2.in" });
-        }
-      });
-    }, container);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      id="manifesto"
-      className="relative"
-      style={{ height: `${words.length * 110}vh` }}
-    >
-      <div
-        ref={innerRef}
-        className="sticky top-0 h-screen w-full flex flex-col items-center justify-center bg-background overflow-hidden"
-      >
-        {/* Label */}
-        <span className="absolute top-10 left-1/2 -translate-x-1/2 font-sans text-[9px] uppercase tracking-[0.5em] text-primary/60">
-          Manifesto
-        </span>
+    <section id="manifesto" className="relative w-full bg-background overflow-hidden py-24 md:py-40">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12">
 
-        {/* Words stacked on top of each other */}
-        <div className="relative w-full px-6 md:px-16 flex items-center justify-center" style={{ height: "1.2em" }}>
-          {words.map((word, i) => (
-            <span
-              key={word.text}
-              ref={(el) => { wordRefs.current[i] = el; }}
-              className={`absolute inset-x-0 text-center font-serif text-foreground leading-none select-none ${
-                word.style === "italic" ? "italic" : ""
-              }`}
-              style={{
-                fontSize: "clamp(2.8rem, 11vw, 9rem)",
-                opacity: 0,
-                transform: "translateY(30px)",
-                letterSpacing: "-0.02em",
-              }}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
+
+          {/* Left — manifesto text */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-8"
             >
-              {word.text}
-            </span>
-          ))}
-        </div>
+              Manifesto
+            </motion.p>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <div className="w-[1px] h-10 bg-foreground/10 relative overflow-hidden">
-            <div
-              className="absolute top-0 left-0 w-full bg-primary/50"
-              style={{
-                animation: "slideDown 1.6s ease-in-out infinite",
-              }}
-            />
+            <div className="overflow-hidden mb-8">
+              <motion.h2
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="font-serif text-foreground leading-[1.1]"
+                style={{ fontSize: "clamp(2rem, 6vw, 3.8rem)" }}
+              >
+                sensibilidade artística,<br />
+                <em>potência visual.</em>
+              </motion.h2>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-5 text-muted-foreground font-sans font-light leading-relaxed mb-10"
+              style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)" }}
+            >
+              <p>
+                Esse espaço é para compartilhar minha visão de mundo.
+                Tô aqui pra fazer da liberdade criativa o meu meio de vida.
+              </p>
+              <p>
+                Sinto que o que o mundo mais precisa hoje é de uma pequena mudança
+                de ponto de vista pela maior parte das pessoas. Por isso pesquiso
+                as diversas maneiras de ver o mundo.
+              </p>
+              <p>
+                Minha maior motivação é poder fazer pensar olhares e assim,
+                expandi-los poeticamente rumo às belezas cotidianas.
+              </p>
+            </motion.div>
+
+            <motion.blockquote
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, delay: 0.4 }}
+              className="border-l-2 border-primary/40 pl-6"
+            >
+              <p className="font-serif italic text-foreground/70" style={{ fontSize: "clamp(1rem, 3vw, 1.4rem)" }}>
+                "Poetisa de uma ideia só com múltiplas habilidades:
+                imagens para ver além dos olhos."
+              </p>
+              <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-primary mt-3">
+                Hoana Bonito
+              </p>
+            </motion.blockquote>
           </div>
-          <span className="font-sans text-[8px] uppercase tracking-[0.4em] text-muted-foreground/30">
-            Role
-          </span>
-        </div>
 
-        <style>{`
-          @keyframes slideDown {
-            0% { height: 0%; top: 0%; }
-            50% { height: 100%; top: 0%; }
-            100% { height: 0%; top: 100%; }
-          }
-        `}</style>
+          {/* Right — pesquisa keywords + perspectivas */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-8"
+            >
+              Pesquisa acadêmica & artística
+            </motion.p>
+
+            <div className="flex flex-wrap gap-3 mb-14">
+              {keywords.map((k, i) => (
+                <motion.span
+                  key={k}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="font-serif italic text-foreground/80 border border-border/30 px-4 py-2 text-sm"
+                >
+                  {k}
+                </motion.span>
+              ))}
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-6"
+            >
+              4 Perspectivas
+            </motion.p>
+
+            <div className="space-y-0 border-t border-border/20">
+              {[
+                { label: "01 — Olho que Vê", sub: "Rito de Retrato · Retratos e presença", href: "#portfolio" },
+                { label: "02 — Olho que Fala", sub: "Palestras · Acessibilidade · Arte Educação", href: "#talks" },
+                { label: "03 — Olho que Escuta", sub: "Música · Videoclipes · Direção Visual", href: "#film" },
+                { label: "04 — Olho Artista", sub: "Arte Contemporânea · Galerias · Performance", href: "#arte" },
+              ].map((item, i) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  initial={{ opacity: 0, x: 12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.07 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById(item.href.replace("#", ""));
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="group flex flex-col border-b border-border/20 py-4 hover:bg-card/30 transition-colors cursor-pointer px-3 -mx-3"
+                >
+                  <span className="font-serif text-foreground group-hover:text-primary transition-colors" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
+                    {item.label}
+                  </span>
+                  <span className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/50 mt-1">
+                    {item.sub}
+                  </span>
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
