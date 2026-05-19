@@ -115,7 +115,7 @@ export function HeroSection() {
             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
-        <span className="font-sans text-[8px] uppercase tracking-[0.35em] text-muted-foreground">Scroll</span>
+        <span className="font-sans text-[8px] uppercase tracking-[0.35em] text-muted-foreground">Role</span>
       </motion.div>
 
       {/* Vertical label — desktop only */}
