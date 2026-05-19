@@ -6,24 +6,21 @@ export function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
     <section id="contact" ref={ref} className="relative w-full bg-card overflow-hidden">
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 scale-110"
-      >
+      <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110">
         <img src="/images/portfolio-4.png" alt="" className="w-full h-full object-cover opacity-[0.04]" />
       </motion.div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 py-32 md:py-48">
-        <div className="border-b border-border/20 pb-12 md:pb-20 mb-16 md:mb-24">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-5 md:px-12 py-20 md:py-48">
+        <div className="border-b border-border/20 pb-10 md:pb-20 mb-12 md:mb-24">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-6"
+            className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-4 md:mb-6"
           >
             Contato
           </motion.p>
@@ -33,45 +30,43 @@ export function ContactSection() {
               whileInView={{ y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[12vw] md:text-[9vw] font-serif text-foreground leading-none tracking-tighter"
+              className="text-[13vw] sm:text-[10vw] md:text-[9vw] font-serif text-foreground leading-none tracking-tighter"
             >
               Vamos criar<br />juntos.
             </motion.h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col justify-between"
+            className="flex flex-col"
           >
-            <div>
-              <p className="text-muted-foreground font-sans font-light text-base leading-relaxed mb-12 max-w-sm">
-                Disponível para comissões editoriais, retratos e projetos documentais no Brasil e no exterior.
-              </p>
-              <div className="space-y-6">
-                {[
-                  { label: "E-mail", value: "contato@analuzferreira.com" },
-                  { label: "Telefone", value: "+55 11 99999-9999" },
-                  { label: "Localização", value: "São Paulo, SP — Brasil" },
-                ].map((item) => (
-                  <div key={item.label}>
-                    <p className="font-sans text-[9px] uppercase tracking-[0.35em] text-muted-foreground/50 mb-1">{item.label}</p>
-                    <p className="font-sans text-sm text-foreground/80 tracking-wide">{item.value}</p>
-                  </div>
-                ))}
-              </div>
+            <p className="text-muted-foreground font-sans font-light text-sm md:text-base leading-relaxed mb-10 md:mb-12 max-w-sm">
+              Disponível para comissões editoriais, retratos e projetos documentais no Brasil e no exterior.
+            </p>
+            <div className="space-y-5 md:space-y-6">
+              {[
+                { label: "E-mail", value: "contato@analuzferreira.com" },
+                { label: "Telefone", value: "+55 11 99999-9999" },
+                { label: "Localização", value: "São Paulo, SP — Brasil" },
+              ].map((item) => (
+                <div key={item.label}>
+                  <p className="font-sans text-[9px] uppercase tracking-[0.35em] text-muted-foreground/40 mb-1">{item.label}</p>
+                  <p className="font-sans text-sm text-foreground/80 tracking-wide">{item.value}</p>
+                </div>
+              ))}
             </div>
 
-            <div className="mt-12 flex items-center gap-6">
+            <div className="mt-10 md:mt-12 flex items-center gap-5 md:gap-6">
               {["Instagram", "Behance", "LinkedIn"].map((s) => (
                 <button
                   key={s}
                   data-testid={`social-link-${s.toLowerCase()}`}
-                  className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+                  className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors py-2"
                 >
                   {s}
                 </button>
@@ -80,7 +75,7 @@ export function ContactSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
@@ -89,32 +84,32 @@ export function ContactSection() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="flex flex-col items-start justify-center h-full py-16"
+                className="flex flex-col items-start justify-center py-12"
               >
-                <p className="font-serif text-3xl text-foreground mb-4">Mensagem enviada.</p>
+                <p className="font-serif text-2xl md:text-3xl text-foreground mb-3">Mensagem enviada.</p>
                 <p className="font-sans text-sm text-muted-foreground">Entrarei em contato em breve.</p>
               </motion.div>
             ) : (
               <form
-                className="space-y-10"
+                className="space-y-8 md:space-y-10"
                 onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
               >
                 {[
                   { id: "name", label: "Nome", type: "text" },
                   { id: "email", label: "E-mail", type: "email" },
                 ].map((f) => (
-                  <div key={f.id} className="relative group">
+                  <div key={f.id} className="relative">
                     <input
                       type={f.type}
                       id={f.id}
                       required
                       placeholder=" "
                       data-testid={`input-${f.id}`}
-                      className="w-full bg-transparent border-b border-border/40 py-4 text-foreground font-sans text-sm focus:outline-none focus:border-primary transition-colors peer"
+                      className="w-full bg-transparent border-b border-border/40 pb-3 pt-5 text-foreground font-sans text-base focus:outline-none focus:border-primary transition-colors peer"
                     />
                     <label
                       htmlFor={f.id}
-                      className="absolute left-0 top-4 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60 transition-all peer-focus:-top-3 peer-focus:text-[9px] peer-focus:text-primary peer-not-placeholder-shown:-top-3 peer-not-placeholder-shown:text-[9px]"
+                      className="absolute left-0 top-5 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60 transition-all duration-200 peer-focus:top-0 peer-focus:text-[9px] peer-focus:text-primary peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-[9px]"
                     >
                       {f.label}
                     </label>
@@ -127,11 +122,11 @@ export function ContactSection() {
                     placeholder=" "
                     rows={4}
                     data-testid="input-message"
-                    className="w-full bg-transparent border-b border-border/40 py-4 text-foreground font-sans text-sm focus:outline-none focus:border-primary transition-colors peer resize-none"
+                    className="w-full bg-transparent border-b border-border/40 pb-3 pt-5 text-foreground font-sans text-base focus:outline-none focus:border-primary transition-colors peer resize-none"
                   />
                   <label
                     htmlFor="message"
-                    className="absolute left-0 top-4 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60 transition-all peer-focus:-top-3 peer-focus:text-[9px] peer-focus:text-primary peer-not-placeholder-shown:-top-3 peer-not-placeholder-shown:text-[9px]"
+                    className="absolute left-0 top-5 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60 transition-all duration-200 peer-focus:top-0 peer-focus:text-[9px] peer-focus:text-primary peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-[9px]"
                   >
                     Mensagem
                   </label>
@@ -140,12 +135,11 @@ export function ContactSection() {
                 <motion.button
                   type="submit"
                   data-testid="button-submit"
-                  whileHover={{ x: 6 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                  className="flex items-center gap-4 text-foreground hover:text-primary transition-colors font-sans text-[11px] uppercase tracking-[0.3em] pt-2 group"
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-3 text-foreground hover:text-primary transition-colors font-sans text-[11px] uppercase tracking-[0.3em] pt-1 group min-h-[44px]"
                 >
                   Enviar Mensagem
-                  <span className="w-8 h-8 border border-current flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-background transition-colors">
+                  <span className="w-9 h-9 border border-current flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-background transition-colors">
                     <ArrowRight size={12} />
                   </span>
                 </motion.button>

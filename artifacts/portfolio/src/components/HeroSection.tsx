@@ -2,16 +2,14 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ParticlesBackground } from "./ParticlesBackground";
 
-const TITLE_WORDS = ["ANA", "LUZ", "FERREIRA"];
-
 export function HeroSection() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.18]);
-  const imgOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, 180]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.15]);
+  const imgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
   return (
     <section ref={ref} id="hero" className="relative w-full h-[100dvh] overflow-hidden">
@@ -22,34 +20,35 @@ export function HeroSection() {
         <img
           src="/images/portfolio-3.png"
           alt="Hero"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
+          fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/20 to-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/20 to-background/80" />
       </motion.div>
 
       <ParticlesBackground />
 
       <motion.div
         style={{ y: textY, opacity: textOpacity }}
-        className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center"
+        className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-[15vh] md:justify-center md:pb-0 text-center"
       >
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-10"
+          className="font-sans text-[9px] md:text-[10px] uppercase tracking-[0.35em] md:tracking-[0.4em] text-primary mb-6 md:mb-10 px-4"
         >
           Fotógrafa — São Paulo, Brasil
         </motion.p>
 
-        <div className="overflow-hidden">
-          {TITLE_WORDS.map((word, i) => (
-            <div key={word} className="overflow-hidden block">
+        <div className="w-full overflow-hidden px-3">
+          {["ANA", "LUZ", "FERREIRA"].map((word, i) => (
+            <div key={word} className="overflow-hidden block w-full">
               <motion.h1
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.1, delay: 0.1 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[13vw] md:text-[11vw] leading-[0.88] font-serif tracking-tighter text-foreground uppercase block"
+                className="text-[17vw] sm:text-[15vw] md:text-[13vw] leading-[0.87] font-serif tracking-[-0.01em] text-foreground uppercase block"
               >
                 {word}
               </motion.h1>
@@ -61,7 +60,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1 }}
-          className="font-sans text-[11px] uppercase tracking-[0.3em] text-muted-foreground mt-10 italic"
+          className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em] text-muted-foreground mt-6 md:mt-10 px-4"
         >
           Luz que conta histórias
         </motion.p>
@@ -71,16 +70,16 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
+        className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 md:gap-3"
       >
-        <div className="w-[1px] h-14 bg-foreground/20 relative overflow-hidden">
+        <div className="w-[1px] h-10 md:h-14 bg-foreground/20 relative overflow-hidden">
           <motion.div
             className="absolute top-0 left-0 w-full bg-primary"
             animate={{ height: ["0%", "100%"], top: ["0%", "100%"] }}
             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
-        <span className="font-sans text-[9px] uppercase tracking-[0.35em] text-muted-foreground">Scroll</span>
+        <span className="font-sans text-[8px] md:text-[9px] uppercase tracking-[0.35em] text-muted-foreground">Scroll</span>
       </motion.div>
 
       <motion.div

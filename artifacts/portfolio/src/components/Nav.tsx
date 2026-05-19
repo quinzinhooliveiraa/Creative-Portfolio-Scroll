@@ -62,7 +62,7 @@ export function Nav() {
           <button
             onClick={() => setOpen((v) => !v)}
             data-testid="nav-menu-toggle"
-            className="md:hidden flex flex-col gap-[5px] w-6"
+            className="md:hidden flex flex-col gap-[5px] w-11 h-11 items-center justify-center -mr-2"
           >
             <motion.span
               animate={{ rotate: open ? 45 : 0, y: open ? 7 : 0 }}

@@ -38,15 +38,15 @@ const talks = [
 
 export function TalksSection() {
   return (
-    <section id="talks" className="relative w-full bg-background py-32 md:py-48">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-20 md:mb-28">
+    <section id="talks" className="relative w-full bg-background py-20 md:py-48">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6 mb-14 md:mb-28">
           <div>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-4"
+              className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-3 md:mb-4"
             >
               Palestras & Workshops
             </motion.p>
@@ -56,18 +56,18 @@ export function TalksSection() {
                 whileInView={{ y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-5xl md:text-7xl font-serif text-foreground leading-none"
+                className="text-[10vw] sm:text-5xl md:text-7xl font-serif text-foreground leading-none"
               >
                 Compartilhando<br />o Olhar
               </motion.h2>
             </div>
           </div>
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-muted-foreground font-sans text-sm max-w-xs leading-relaxed"
+            className="text-muted-foreground font-sans text-sm max-w-xs leading-relaxed hidden md:block"
           >
             Ensino, compartilho e inspiro a próxima geração de artistas visuais brasileiros.
           </motion.p>
@@ -79,34 +79,35 @@ export function TalksSection() {
               key={talk.num}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group border-b border-border/30 grid grid-cols-[3rem_1fr_auto] md:grid-cols-[4rem_1fr_8rem_8rem_2rem] items-center gap-4 md:gap-8 py-6 md:py-8 cursor-pointer hover:bg-card/40 transition-colors px-2 -mx-2"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="group border-b border-border/30 py-5 md:py-8 cursor-pointer hover:bg-card/40 transition-colors px-2 -mx-2"
             >
-              <span className="font-sans text-[11px] text-muted-foreground/40 tracking-widest">{talk.num}</span>
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-start gap-4 md:gap-8 flex-1 min-w-0">
+                  <span className="font-sans text-[10px] text-muted-foreground/40 tracking-widest pt-1 flex-shrink-0 hidden sm:block">
+                    {talk.num}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-serif text-lg md:text-2xl text-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
+                      {talk.title}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-1.5">
+                      <span className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/70">{talk.event}</span>
+                      <span className="font-sans text-[10px] text-muted-foreground/30 hidden sm:inline">·</span>
+                      <span className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/50 hidden sm:inline">{talk.location}</span>
+                      <span className="font-sans text-[10px] text-muted-foreground/30 hidden md:inline">·</span>
+                      <span className="font-sans text-[10px] uppercase tracking-wider text-primary/60 hidden md:inline">{talk.type}</span>
+                    </div>
+                  </div>
+                </div>
 
-              <div>
-                <p className="font-serif text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors duration-300 mb-1">
-                  {talk.title}
-                </p>
-                <p className="font-sans text-xs text-muted-foreground uppercase tracking-wider">{talk.event}</p>
-              </div>
-
-              <p className="hidden md:block font-sans text-[11px] uppercase tracking-widest text-muted-foreground/60">
-                {talk.location}
-              </p>
-
-              <p className="hidden md:block font-sans text-[11px] uppercase tracking-widest text-muted-foreground/60">
-                {talk.type}
-              </p>
-
-              <div className="flex justify-end">
-                <motion.div
-                  className="w-7 h-7 border border-border/30 flex items-center justify-center text-muted-foreground group-hover:border-primary group-hover:text-primary transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <ArrowUpRight size={12} />
-                </motion.div>
+                <div className="flex items-center gap-3 flex-shrink-0">
+                  <span className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground/50 hidden sm:block">{talk.year}</span>
+                  <div className="w-8 h-8 md:w-7 md:h-7 border border-border/30 flex items-center justify-center text-muted-foreground group-hover:border-primary group-hover:text-primary transition-colors flex-shrink-0">
+                    <ArrowUpRight size={11} />
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
