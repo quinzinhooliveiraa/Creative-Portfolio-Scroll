@@ -136,7 +136,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Formação */}
+          {/* Formação — horizontal marquee */}
           <div>
             <motion.p
               initial={{ opacity: 0 }}
@@ -146,22 +146,28 @@ export function AboutSection() {
             >
               Formação
             </motion.p>
-            <div className="space-y-0 border-t border-border/20">
-              {formacao.map((f, i) => (
-                <motion.div
-                  key={f.label}
-                  initial={{ opacity: 0, x: 10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.07 }}
-                  className="border-b border-border/20 py-4"
-                >
-                  <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)" }}>
-                    {f.label}
-                  </p>
-                  <p className="font-sans text-[10px] text-muted-foreground/50 leading-snug">{f.sub}</p>
-                </motion.div>
-              ))}
+            <div className="relative overflow-hidden border-t border-b border-border/20 py-0">
+              {/* fade edges */}
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-10 z-10 bg-gradient-to-r from-card to-transparent" />
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 z-10 bg-gradient-to-l from-card to-transparent" />
+
+              <motion.div
+                className="flex gap-0 whitespace-nowrap"
+                animate={{ x: ["-50%", "0%"] }}
+                transition={{ duration: 28, ease: "linear", repeat: Infinity }}
+              >
+                {[...formacao, ...formacao].map((f, i) => (
+                  <div
+                    key={i}
+                    className="inline-flex flex-col justify-center flex-shrink-0 px-10 py-5 border-r border-border/20 min-w-[280px]"
+                  >
+                    <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(0.95rem, 2vw, 1.05rem)" }}>
+                      {f.label}
+                    </p>
+                    <p className="font-sans text-[10px] text-muted-foreground/50 leading-snug">{f.sub}</p>
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </div>
 
