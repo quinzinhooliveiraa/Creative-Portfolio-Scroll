@@ -9,11 +9,11 @@ export function CustomCursor() {
   const rawX = useMotionValue(-100);
   const rawY = useMotionValue(-100);
 
-  const dotX = useSpring(rawX, { stiffness: 800, damping: 40 });
-  const dotY = useSpring(rawY, { stiffness: 800, damping: 40 });
+  const dotX = useSpring(rawX, { stiffness: 2000, damping: 60, mass: 0.2 });
+  const dotY = useSpring(rawY, { stiffness: 2000, damping: 60, mass: 0.2 });
 
-  const ringX = useSpring(rawX, { stiffness: 120, damping: 22 });
-  const ringY = useSpring(rawY, { stiffness: 120, damping: 22 });
+  const ringX = useSpring(rawX, { stiffness: 600, damping: 40, mass: 0.3 });
+  const ringY = useSpring(rawY, { stiffness: 600, damping: 40, mass: 0.3 });
 
   const isTouchRef = useRef(false);
 
