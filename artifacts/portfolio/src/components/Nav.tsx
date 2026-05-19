@@ -5,6 +5,7 @@ const links = [
   { label: "Sobre", href: "#about" },
   { label: "Retratos", href: "#portfolio" },
   { label: "Artes", href: "#film" },
+  { label: "Arte Contemp.", href: "#arte" },
   { label: "Palestras", href: "#talks" },
   { label: "Contato", href: "#contact" },
 ];

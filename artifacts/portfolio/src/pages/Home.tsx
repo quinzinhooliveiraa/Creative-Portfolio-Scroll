@@ -1,8 +1,10 @@
 import { Nav } from "@/components/Nav";
 import { HeroSection } from "@/components/HeroSection";
+import { ManifestoSection } from "@/components/ManifestoSection";
 import { AboutSection } from "@/components/AboutSection";
 import { PhotographySection } from "@/components/PhotographySection";
 import { VideoSection } from "@/components/VideoSection";
+import { OlhoArtistaSection } from "@/components/OlhoArtistaSection";
 import { TalksSection } from "@/components/TalksSection";
 import { ContactSection } from "@/components/ContactSection";
 import { motion } from "framer-motion";
@@ -11,6 +13,7 @@ const footerLinks = [
   { label: "Sobre", href: "#about" },
   { label: "Retratos", href: "#portfolio" },
   { label: "Artes", href: "#film" },
+  { label: "Arte Contemporânea", href: "#arte" },
   { label: "Palestras", href: "#talks" },
   { label: "Contato", href: "#contact" },
 ];
@@ -25,9 +28,11 @@ export default function Home() {
     <main className="bg-background text-foreground">
       <Nav />
       <HeroSection />
+      <ManifestoSection />
       <AboutSection />
       <PhotographySection />
       <VideoSection />
+      <OlhoArtistaSection />
       <TalksSection />
       <ContactSection />
 
