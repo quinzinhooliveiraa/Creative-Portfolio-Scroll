@@ -14,9 +14,17 @@ export function HeroSection() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
   /* Responsive font cap: smaller on mobile so 3 lines fit cleanly */
-  const [maxSize, setMaxSize] = useState(210);
+  const [maxSize, setMaxSize] = useState(175);
   useEffect(() => {
-    const update = () => setMaxSize(window.innerWidth < 768 ? 118 : 210);
+    const update = () => {
+      if (window.innerWidth < 768) {
+        setMaxSize(118);
+      } else {
+        // Cap by height too: 3 lines + labels + padding must fit in viewport
+        const heightCap = Math.floor((window.innerHeight - 180) / 3);
+        setMaxSize(Math.min(175, Math.max(80, heightCap)));
+      }
+    };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
@@ -44,7 +52,7 @@ export function HeroSection() {
         className="absolute inset-0 z-10 flex flex-col md:flex-row"
       >
         {/* TEXT COLUMN — mobile: bottom of column, desktop: left column */}
-        <div className="flex-1 flex flex-col justify-end pb-[8vh] min-w-0 order-2 md:order-1">
+        <div className="flex-1 flex flex-col justify-end pt-[10vh] pb-[8vh] min-w-0 order-2 md:order-1">
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
