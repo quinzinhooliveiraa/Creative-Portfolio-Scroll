@@ -5,7 +5,6 @@ const links = [
   { label: "Sobre", href: "#about" },
   { label: "Retratos", href: "#portfolio" },
   { label: "Artes", href: "#film" },
-  { label: "Arte Contemp.", href: "#arte" },
   { label: "Palestras", href: "#talks" },
   { label: "Contato", href: "#contact" },
 ];
@@ -43,26 +42,34 @@ export function Nav() {
           scrolled ? "bg-background/90 backdrop-blur-md border-b border-border/20" : "bg-transparent"
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between gap-6">
           <span
-            className="font-serif text-base tracking-[0.15em] text-foreground uppercase cursor-pointer"
+            className="font-serif text-base tracking-[0.15em] text-foreground uppercase cursor-pointer flex-shrink-0"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             Hoana Bonito
           </span>
 
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex items-center gap-8 flex-1 justify-center">
             {links.map((l) => (
               <button
                 key={l.href}
                 onClick={() => scrollTo(l.href)}
-                data-testid={`nav-link-${l.label.toLowerCase()}`}
-                className="text-[11px] font-sans uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-300"
+                className="text-[11px] font-sans uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-300 whitespace-nowrap"
               >
                 {l.label}
               </button>
             ))}
           </nav>
+
+          {/* CTA — Agendar Sessão */}
+          <motion.button
+            onClick={() => scrollTo("#booking")}
+            whileTap={{ scale: 0.97 }}
+            className="hidden md:flex items-center gap-2 bg-primary text-background font-sans text-[10px] uppercase tracking-[0.25em] px-5 py-2.5 hover:bg-primary/90 transition-colors flex-shrink-0"
+          >
+            Agendar Sessão
+          </motion.button>
 
           <button
             onClick={() => setOpen((v) => !v)}
@@ -85,11 +92,12 @@ export function Nav() {
         </div>
       </motion.header>
 
+      {/* Mobile menu */}
       <motion.div
         initial={false}
         animate={{ opacity: open ? 1 : 0, pointerEvents: open ? "auto" : "none" }}
         transition={{ duration: 0.4 }}
-        className="fixed inset-0 z-[99] bg-background flex flex-col items-center justify-center gap-8 md:hidden"
+        className="fixed inset-0 z-[99] bg-background flex flex-col items-center justify-center gap-7 md:hidden"
       >
         {links.map((l, i) => (
           <motion.button
@@ -103,6 +111,15 @@ export function Nav() {
             {l.label}
           </motion.button>
         ))}
+        <motion.button
+          onClick={() => scrollTo("#booking")}
+          initial={false}
+          animate={{ opacity: open ? 1 : 0, y: open ? 0 : 20 }}
+          transition={{ delay: links.length * 0.07 }}
+          className="mt-4 bg-primary text-background font-sans text-[11px] uppercase tracking-[0.25em] px-8 py-4"
+        >
+          Agendar Sessão
+        </motion.button>
       </motion.div>
     </>
   );

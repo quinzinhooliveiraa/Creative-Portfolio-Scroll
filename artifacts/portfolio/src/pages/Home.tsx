@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { ManifestoSection } from "@/components/ManifestoSection";
 import { AboutSection } from "@/components/AboutSection";
 import { PhotographySection } from "@/components/PhotographySection";
+import { BookingSection } from "@/components/BookingSection";
 import { VideoSection } from "@/components/VideoSection";
 import { OlhoArtistaSection } from "@/components/OlhoArtistaSection";
 import { TalksSection } from "@/components/TalksSection";
@@ -11,8 +12,9 @@ import { motion } from "framer-motion";
 
 const footerLinks = [
   { label: "Sobre", href: "#about" },
+  { label: "Agendar Sessão", href: "#booking" },
   { label: "Retratos", href: "#portfolio" },
-  { label: "Artes", href: "#film" },
+  { label: "Artes & Vídeo", href: "#film" },
   { label: "Arte Contemporânea", href: "#arte" },
   { label: "Palestras", href: "#talks" },
   { label: "Contato", href: "#contact" },
@@ -31,6 +33,7 @@ export default function Home() {
       <ManifestoSection />
       <AboutSection />
       <PhotographySection />
+      <BookingSection />
       <VideoSection />
       <OlhoArtistaSection />
       <TalksSection />
@@ -54,7 +57,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span className="font-sans text-[9px] uppercase tracking-[0.4em] text-primary mb-1">Perspectivas</span>
+            <span className="font-sans text-[9px] uppercase tracking-[0.4em] text-primary mb-1">Navegação</span>
             <nav className="flex flex-col gap-3">
               {footerLinks.map((l) => (
                 <button
@@ -77,9 +80,7 @@ export default function Home() {
               >
                 hoana@hoanabonito.com
               </a>
-              <p className="font-sans text-[10px] text-muted-foreground/50">
-                Brasil · Nômade
-              </p>
+              <p className="font-sans text-[10px] text-muted-foreground/50">Brasil · Nômade</p>
               <div className="flex gap-5 mt-1">
                 {["Instagram", "Behance", "LinkedIn"].map((s) => (
                   <span

@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ParticlesBackground } from "./ParticlesBackground";
 import { FitText } from "./FitText";
 import { CameraOrbit } from "./CameraOrbit";
+import { ArrowRight } from "lucide-react";
 
 export function HeroSection() {
   const ref = useRef<HTMLElement>(null);
@@ -19,7 +20,7 @@ export function HeroSection() {
       if (window.innerWidth < 768) {
         setMaxSize(118);
       } else {
-        const heightCap = Math.floor((window.innerHeight - 180) / 2);
+        const heightCap = Math.floor((window.innerHeight - 220) / 2);
         setMaxSize(Math.min(175, Math.max(80, heightCap)));
       }
     };
@@ -27,6 +28,14 @@ export function HeroSection() {
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
+  const scrollToBooking = () => {
+    document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToPortfolio = () => {
+    document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section ref={ref} id="hero" className="relative w-full h-[100dvh] overflow-hidden">
@@ -46,6 +55,7 @@ export function HeroSection() {
         style={{ y: textY, opacity: textOpacity }}
         className="absolute inset-0 z-10 flex flex-col md:flex-row"
       >
+        {/* TEXT COLUMN */}
         <div className="flex-1 flex flex-col justify-end pt-[10vh] pb-[8vh] min-w-0 order-2 md:order-1">
           <motion.p
             initial={{ opacity: 0, y: 8 }}
@@ -80,20 +90,44 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 1.3 }}
-            className="px-3 md:px-10 font-sans text-[9px] uppercase tracking-[0.28em] text-muted-foreground mt-3 md:mt-5"
+            className="px-3 md:px-10 font-sans text-[9px] uppercase tracking-[0.28em] text-muted-foreground mt-3 md:mt-5 mb-6 md:mb-8"
           >
             Imagens para ver além dos olhos
           </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.6 }}
+            className="px-3 md:px-10 flex flex-wrap gap-3"
+          >
+            <button
+              onClick={scrollToBooking}
+              className="flex items-center gap-2 bg-primary text-background font-sans text-[10px] uppercase tracking-[0.25em] px-6 py-3 hover:bg-primary/90 transition-colors group"
+            >
+              Agendar Sessão
+              <ArrowRight size={11} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={scrollToPortfolio}
+              className="flex items-center gap-2 border border-foreground/20 text-foreground font-sans text-[10px] uppercase tracking-[0.25em] px-6 py-3 hover:border-primary hover:text-primary transition-colors"
+            >
+              Ver Trabalhos
+            </button>
+          </motion.div>
         </div>
 
+        {/* CAMERA COLUMN */}
         <div className="
-          h-[44dvh] flex-shrink-0 flex items-center justify-center order-1
+          h-[40dvh] flex-shrink-0 flex items-center justify-center order-1
           md:order-2 md:h-auto md:w-[42%] md:flex md:items-center md:justify-center md:pb-8
         ">
           <CameraOrbit scrollYProgress={scrollYProgress} />
         </div>
       </motion.div>
 
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
