@@ -1,146 +1,154 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
-const phrases = [
-  { text: "sensibilidade artística", size: "large", italic: true },
-  { text: "potência visual", size: "large", italic: false },
-  { text: "percepção · presença", size: "medium", italic: false },
-  { text: "tradução sensorial", size: "medium", italic: true },
-  { text: "escuta", size: "xl", italic: false },
-  { text: "maneiras de ver", size: "large", italic: true },
-  { text: "imagem para além da visão.", size: "medium", italic: false },
+const keywords = [
+  "percepção",
+  "presença",
+  "tradução sensorial",
+  "escuta",
+  "maneiras de ver",
+  "imagem para além da visão",
 ];
 
-const closing = "Tô aqui pra fazer da liberdade criativa o meu meio de vida.";
-
-function usePhaseOpacity(
-  scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"],
-  enter: number,
-  peak: number,
-  exit: number
-) {
-  return useTransform(
-    scrollYProgress,
-    [enter, peak, exit > 1 ? 1 : exit],
-    [0, 1, exit > 1 ? 1 : 0]
-  );
-}
-
-const TOTAL = phrases.length + 1;
-const step = 1 / (TOTAL + 1);
-
 export function ManifestoSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const phaseOpacities = phrases.map((_, i) => {
-    const enter = i * step;
-    const peak = enter + step * 0.4;
-    const exit = enter + step * 0.9;
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    return usePhaseOpacity(scrollYProgress, enter, peak, exit);
-  });
-
-  const closingOpacity = usePhaseOpacity(
-    scrollYProgress,
-    phrases.length * step,
-    phrases.length * step + step * 0.4,
-    2
-  );
-
-  const closingY = useTransform(
-    scrollYProgress,
-    [phrases.length * step, phrases.length * step + step * 0.4],
-    [30, 0]
-  );
-
-  const labelOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
-
   return (
-    <div
-      ref={containerRef}
-      className="relative"
-      style={{ height: `${(TOTAL + 1) * 100}vh` }}
-    >
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-background">
+    <section id="manifesto" className="relative w-full bg-background overflow-hidden py-24 md:py-40">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12">
 
-        <motion.p
-          style={{ opacity: labelOpacity }}
-          className="absolute top-12 left-1/2 -translate-x-1/2 font-sans text-[9px] uppercase tracking-[0.5em] text-primary"
-        >
-          Manifesto
-        </motion.p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
 
-        <div className="relative w-full max-w-[1000px] mx-auto px-6 md:px-12 text-center">
-          {phrases.map((phrase, i) => (
-            <motion.div
-              key={phrase.text}
-              style={{ opacity: phaseOpacities[i], position: "absolute", inset: 0 }}
-              className="flex items-center justify-center"
+          {/* Left — manifesto text */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-8"
             >
-              <span
-                className={`font-serif text-foreground leading-tight select-none ${
-                  phrase.italic ? "italic" : ""
-                }`}
-                style={{
-                  fontSize:
-                    phrase.size === "xl"
-                      ? "clamp(4rem, 16vw, 11rem)"
-                      : phrase.size === "large"
-                      ? "clamp(2.4rem, 9vw, 6.5rem)"
-                      : "clamp(1.8rem, 6vw, 4.2rem)",
-                  letterSpacing: phrase.size === "xl" ? "0.08em" : "-0.01em",
-                }}
+              Manifesto
+            </motion.p>
+
+            <div className="overflow-hidden mb-8">
+              <motion.h2
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="font-serif text-foreground leading-[1.1]"
+                style={{ fontSize: "clamp(2rem, 6vw, 3.8rem)" }}
               >
-                {phrase.text}
-              </span>
-            </motion.div>
-          ))}
-
-          <motion.div
-            style={{ opacity: closingOpacity, y: closingY, position: "absolute", inset: 0 }}
-            className="flex flex-col items-center justify-center gap-6"
-          >
-            <p
-              className="font-serif italic text-foreground/80 leading-tight text-center"
-              style={{ fontSize: "clamp(1.3rem, 4.5vw, 3rem)" }}
-            >
-              "{closing}"
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-[1px] bg-primary/50" />
-              <span className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary">
-                Hoana Bonito
-              </span>
-              <div className="w-8 h-[1px] bg-primary/50" />
+                sensibilidade artística,<br />
+                <em>potência visual.</em>
+              </motion.h2>
             </div>
-          </motion.div>
-        </div>
 
-        <motion.div
-          style={{ opacity: labelOpacity }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <div className="w-[1px] h-8 bg-foreground/15 relative overflow-hidden">
             <motion.div
-              className="absolute top-0 left-0 w-full bg-primary/60"
-              animate={{ height: ["0%", "100%"], top: ["0%", "100%"] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </div>
-          <span className="font-sans text-[8px] uppercase tracking-[0.4em] text-muted-foreground/40">
-            Role
-          </span>
-        </motion.div>
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-5 text-muted-foreground font-sans font-light leading-relaxed mb-10"
+              style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)" }}
+            >
+              <p>
+                Esse espaço é para compartilhar minha visão de mundo.
+                Tô aqui pra fazer da liberdade criativa o meu meio de vida.
+              </p>
+              <p>
+                Sinto que o que o mundo mais precisa hoje é de uma pequena mudança
+                de ponto de vista pela maior parte das pessoas. Por isso pesquiso
+                as diversas maneiras de ver o mundo.
+              </p>
+              <p>
+                Minha maior motivação é poder fazer pensar olhares e assim,
+                expandi-los poeticamente rumo às belezas cotidianas.
+              </p>
+            </motion.div>
 
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-[1px] h-full bg-border/10" style={{ left: "8vw" }} />
-          <div className="absolute top-0 right-0 w-[1px] h-full bg-border/10" style={{ right: "8vw" }} />
+            <motion.blockquote
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, delay: 0.4 }}
+              className="border-l-2 border-primary/40 pl-6"
+            >
+              <p className="font-serif italic text-foreground/70" style={{ fontSize: "clamp(1rem, 3vw, 1.4rem)" }}>
+                "Poetisa de uma ideia só com múltiplas habilidades:
+                imagens para ver além dos olhos."
+              </p>
+              <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-primary mt-3">
+                Hoana Bonito
+              </p>
+            </motion.blockquote>
+          </div>
+
+          {/* Right — pesquisa keywords + perspectivas */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-8"
+            >
+              Pesquisa acadêmica & artística
+            </motion.p>
+
+            <div className="flex flex-wrap gap-3 mb-14">
+              {keywords.map((k, i) => (
+                <motion.span
+                  key={k}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="font-serif italic text-foreground/80 border border-border/30 px-4 py-2 text-sm"
+                >
+                  {k}
+                </motion.span>
+              ))}
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-6"
+            >
+              4 Perspectivas
+            </motion.p>
+
+            <div className="space-y-0 border-t border-border/20">
+              {[
+                { label: "01 — Olho que Vê", sub: "Rito de Retrato · Retratos e presença", href: "#portfolio" },
+                { label: "02 — Olho que Fala", sub: "Palestras · Acessibilidade · Arte Educação", href: "#talks" },
+                { label: "03 — Olho que Escuta", sub: "Música · Videoclipes · Direção Visual", href: "#film" },
+                { label: "04 — Olho Artista", sub: "Arte Contemporânea · Galerias · Performance", href: "#arte" },
+              ].map((item, i) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  initial={{ opacity: 0, x: 12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.07 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById(item.href.replace("#", ""));
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="group flex flex-col border-b border-border/20 py-4 hover:bg-card/30 transition-colors cursor-pointer px-3 -mx-3"
+                >
+                  <span className="font-serif text-foreground group-hover:text-primary transition-colors" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
+                    {item.label}
+                  </span>
+                  <span className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/50 mt-1">
+                    {item.sub}
+                  </span>
+                </motion.a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

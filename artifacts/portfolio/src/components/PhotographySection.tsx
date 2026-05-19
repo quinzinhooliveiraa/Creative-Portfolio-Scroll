@@ -2,20 +2,33 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { TiltCard } from "./TiltCard";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X } from "lucide-react";
+import { X, Sparkles } from "lucide-react";
 
 const photos = [
-  { id: 1, src: "/images/portfolio-1.png", alt: "Retrato Autoral", category: "Retrato", size: "tall" },
-  { id: 2, src: "/images/portfolio-2.png", alt: "Família", category: "Família", size: "wide" },
-  { id: 3, src: "/images/portfolio-3.png", alt: "Mulher", category: "Mulher", size: "tall" },
-  { id: 4, src: "/images/portfolio-4.png", alt: "Casamento", category: "Casamento", size: "square" },
-  { id: 5, src: "/images/portfolio-5.png", alt: "Newborn", category: "Newborn", size: "tall" },
-  { id: 6, src: "/images/portfolio-6.png", alt: "Lifestyle", category: "Lifestyle", size: "wide" },
+  { id: 1, src: "/images/portfolio-1.png", alt: "Retrato Autoral", category: "Retrato" as const, size: "tall" as const },
+  { id: 2, src: "/images/portfolio-2.png", alt: "Família", category: "Família" as const, size: "wide" as const },
+  { id: 3, src: "/images/portfolio-3.png", alt: "Mulher", category: "Mulher" as const, size: "tall" as const },
+  { id: 4, src: "/images/portfolio-4.png", alt: "Casamento", category: "Casamento" as const, size: "square" as const },
+  { id: 5, src: "/images/portfolio-5.png", alt: "Newborn", category: "Newborn" as const, size: "tall" as const },
+  { id: 6, src: "/images/portfolio-6.png", alt: "Lifestyle", category: "Lifestyle" as const, size: "wide" as const },
 ];
 
 const sizeClass = { tall: "aspect-[3/4]", wide: "aspect-[4/3]", square: "aspect-square" };
 const mobileW = { tall: "w-[68vw]", wide: "w-[82vw]", square: "w-[68vw]" };
 const desktopW = { tall: "md:w-[28vw]", wide: "md:w-[46vw]", square: "md:w-[32vw]" };
+
+const highlights = [
+  { icon: "✨", label: "encontros humanos" },
+  { icon: "✨", label: "presença" },
+  { icon: "✨", label: "intimidade" },
+];
+
+const categories = [
+  { label: "Famílias", desc: "Histórias que atravessam gerações" },
+  { label: "Mulheres", desc: "Poder, delicadeza e verdade" },
+  { label: "Casamentos", desc: "O amor que merece ser visto" },
+  { label: "Newborn", desc: "Os primeiros olhares do mundo" },
+];
 
 export function PhotographySection() {
   const [selected, setSelected] = useState<(typeof photos)[0] | null>(null);
@@ -24,8 +37,10 @@ export function PhotographySection() {
   const headerY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <section id="portfolio" className="relative w-full bg-background overflow-hidden py-20 md:py-48">
-      <div ref={headerRef} className="max-w-[1400px] mx-auto px-4 md:px-12 mb-10 md:mb-24 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+    <section id="portfolio" className="relative w-full bg-background overflow-hidden py-20 md:py-40">
+
+      {/* ── Section intro ── */}
+      <div ref={headerRef} className="max-w-[1400px] mx-auto px-4 md:px-12 mb-16 md:mb-28">
         <motion.div style={{ y: headerY }}>
           <motion.p
             initial={{ opacity: 0 }}
@@ -33,34 +48,89 @@ export function PhotographySection() {
             viewport={{ once: true }}
             className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-3"
           >
-            Olho que Vê · Rito de Retrato
+            Olho que Vê · Perspectiva 01
           </motion.p>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden mb-4">
             <motion.h2
               initial={{ y: "100%" }}
               whileInView={{ y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="font-serif text-foreground leading-none"
-              style={{ fontSize: "clamp(2.5rem, 10vw, 5rem)" }}
+              style={{ fontSize: "clamp(2.8rem, 10vw, 5.5rem)" }}
             >
-              Retratos<br />& Presença
+              Rito de Retrato
             </motion.h2>
           </div>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-muted-foreground font-sans max-w-xs leading-relaxed hidden md:block"
-          style={{ fontSize: "clamp(0.8rem, 2vw, 0.9rem)" }}
-        >
-          Visto pelos meus olhos treinados, você deixa de ser um meio e passa a ser um fim em si mesmo — uma expressão única da vida.
-        </motion.p>
+        {/* Description + highlights + categories grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 mt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="font-sans font-light text-muted-foreground leading-relaxed mb-8"
+              style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}>
+              Visto pelos meus olhos treinados, você deixa de ser apenas um "meio"
+              (um objeto para a câmera) e passa a ser um "fim em si mesmo" — uma
+              expressão única da vida. Afinal, tratarei da sua imagem com o mesmo
+              requinte e cuidado que a natureza dedica a cada folha ou flor que nasce.
+            </p>
+            <p className="font-serif italic text-foreground/60 mb-8" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.15rem)" }}>
+              O resultado: se sentir (verdadeiramente) visto.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              {highlights.map((h, i) => (
+                <motion.span
+                  key={h.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center gap-2 border border-border/30 px-4 py-2 font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground"
+                >
+                  <Sparkles size={10} className="text-primary" />
+                  {h.label}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+          >
+            <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5">
+              Cartografia do retrato
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {categories.map((cat, i) => (
+                <motion.div
+                  key={cat.label}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.05 * i }}
+                  className="border border-border/20 p-4 hover:border-primary/40 hover:bg-card/50 transition-all group"
+                >
+                  <p className="font-serif text-foreground group-hover:text-primary transition-colors mb-1"
+                    style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)" }}>
+                    {cat.label}
+                  </p>
+                  <p className="font-sans text-[10px] text-muted-foreground/50 leading-snug">{cat.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
 
+      {/* ── Gallery strip ── */}
       <div
         className="flex gap-3 md:gap-5 px-4 md:px-12 overflow-x-auto scrollbar-hide pb-2"
         style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
@@ -73,10 +143,10 @@ export function PhotographySection() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, delay: i * 0.07 }}
             style={{ scrollSnapAlign: "start", flexShrink: 0 }}
-            className={`relative ${mobileW[photo.size as keyof typeof mobileW]} ${desktopW[photo.size as keyof typeof desktopW]}`}
+            className={`relative ${mobileW[photo.size]} ${desktopW[photo.size]}`}
           >
             <TiltCard onClick={() => setSelected(photo)}>
-              <div className={`relative overflow-hidden group ${sizeClass[photo.size as keyof typeof sizeClass]}`}>
+              <div className={`relative overflow-hidden group ${sizeClass[photo.size]}`}>
                 <img
                   src={photo.src}
                   alt={photo.alt}

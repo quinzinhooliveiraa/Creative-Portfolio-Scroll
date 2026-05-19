@@ -1,12 +1,24 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FitText } from "./FitText";
 
-const stats = [
-  { number: "20+", label: "Anos de\nexperiência" },
-  { number: "Mestre", label: "Práticas Artísticas\nUniv. de Évora" },
-  { number: "UnB", label: "Artes Visuais\n+ Lyon, França" },
-  { number: "4", label: "Perspectivas\ndo olhar" },
+const cartografia = [
+  "Fotógrafa",
+  "Artista Visual",
+  "Diretora de Vídeo",
+  "Jornalista",
+  "Trombonista",
+  "Técnica de Som",
+  "Nômade",
+  "Modelo Vivo",
+  "Internacionalista",
+  "Pesquisadora",
+];
+
+const formacao = [
+  { label: "Artes Visuais", sub: "UnB — Universidade de Brasília" },
+  { label: "Intercâmbio em Fotografia", sub: "Université Lumière Lyon 2, França — onde o cinema nasceu" },
+  { label: "Mestre em Práticas Artísticas Multimídia", sub: "Universidade de Évora, Portugal" },
+  { label: "Cultura e Criação", sub: "Especialização — SENAC" },
 ];
 
 export function AboutSection() {
@@ -15,10 +27,11 @@ export function AboutSection() {
   const imgY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (
-    <section id="about" ref={ref} className="relative w-full overflow-hidden bg-background">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12 py-20 md:py-48 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-0 items-center">
+    <section id="about" ref={ref} className="relative w-full overflow-hidden bg-card">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12 py-20 md:py-48 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-0 items-start">
 
-        <motion.div style={{ y: imgY }} className="relative w-full max-w-[380px] md:max-w-[520px] mx-auto lg:mx-0">
+        {/* Left — photo */}
+        <motion.div style={{ y: imgY }} className="relative w-full max-w-[380px] md:max-w-[480px] mx-auto lg:mx-0 lg:sticky lg:top-24">
           <motion.div
             initial={{ clipPath: "inset(100% 0 0 0)" }}
             whileInView={{ clipPath: "inset(0% 0 0 0)" }}
@@ -40,73 +53,118 @@ export function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="absolute -bottom-4 -right-1 md:-bottom-6 md:-right-8 bg-card border border-border/30 p-4 backdrop-blur-sm"
+            className="absolute -bottom-4 -right-1 md:-bottom-6 md:-right-8 bg-background border border-border/30 p-4"
           >
-            <p className="font-serif text-2xl md:text-3xl text-foreground">Brasília</p>
-            <p className="font-sans text-[9px] uppercase tracking-widest text-muted-foreground mt-1">→ Lyon → Évora → Mundo</p>
+            <p className="font-serif text-xl text-foreground">20+</p>
+            <p className="font-sans text-[9px] uppercase tracking-widest text-muted-foreground mt-0.5">Anos criando imagens</p>
           </motion.div>
         </motion.div>
 
-        <div className="lg:pl-20 xl:pl-28 flex flex-col justify-center">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5"
-          >
-            Sobre a artista
-          </motion.p>
+        {/* Right — bio + cartografia + formação */}
+        <div className="lg:pl-20 xl:pl-28 flex flex-col gap-14">
 
-          <div className="overflow-hidden mb-6">
-            <motion.div
-              initial={{ y: "100%" }}
-              whileInView={{ y: 0 }}
+          {/* Bio */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5"
             >
-              <h2 className="font-serif text-foreground leading-[1.08]" style={{ fontSize: "clamp(1.65rem, 5.5vw, 3.2rem)" }}>
-                Poetisa de uma ideia só com múltiplas habilidades.
-              </h2>
+              Oi! Sou a Hoana ✨
+            </motion.p>
+            <div className="overflow-hidden mb-5">
+              <motion.div
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <h2 className="font-serif text-foreground leading-[1.1]"
+                  style={{ fontSize: "clamp(1.6rem, 5vw, 2.8rem)" }}>
+                  Os físicos são mero detalhe aqui.
+                </h2>
+              </motion.div>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-4 text-muted-foreground font-sans font-light leading-relaxed"
+              style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}
+            >
+              <p>
+                Fotógrafa, artista visual e realizadora audiovisual com mais de 20 anos
+                de experiência na criação de imagens. Combino sólida formação técnica
+                com sensibilidade artística.
+              </p>
+              <p>
+                Conecto tudo o que vejo pela perspectiva do olhar — no sentido de reparar
+                o que se percebe. Meus registros contam histórias autênticas e emocionantes,
+                revelando conexões humanas e momentos únicos com extrema atenção aos detalhes.
+              </p>
+              <p className="font-serif italic text-foreground/60" style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)" }}>
+                Quer fazer retratos elegantes que realmente te façam se sentir visto? Fala com a Hoana.
+              </p>
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-4 text-muted-foreground font-sans font-light leading-relaxed mb-10 md:mb-14"
-            style={{ fontSize: "clamp(0.875rem, 2.8vw, 1rem)" }}
-          >
-            <p>
-              Sou Hoana Bonito — fotógrafa, artista visual e realizadora audiovisual,
-              com mais de 20 anos de experiência na criação de imagens. Mestra em
-              Práticas Artísticas Multimídia pela Universidade de Évora (Portugal),
-              formada em Artes Visuais pela UnB, com passagem pela Université Lumière Lyon 2.
-            </p>
-            <p>
-              Pesquiso as diversas maneiras de ver o mundo. Minha maior motivação é
-              fazer pensar olhares — e assim expandi-los poeticamente rumo às belezas
-              cotidianas. Os físicos são mero detalhe aqui.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6 border-t border-border/30 pt-8">
-            {stats.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.08 * i }}
-              >
-                <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)" }}>
-                  {s.number}
-                </p>
-                <p className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground leading-snug whitespace-pre-line">{s.label}</p>
-              </motion.div>
-            ))}
+          {/* Cartografia do olhar */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5"
+            >
+              Cartografia do olhar de Hoana
+            </motion.p>
+            <div className="flex flex-wrap gap-2">
+              {cartografia.map((tag, i) => (
+                <motion.span
+                  key={tag}
+                  initial={{ opacity: 0, y: 6 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.06 }}
+                  className="font-sans text-[11px] uppercase tracking-[0.18em] border border-border/30 px-3 py-1.5 text-muted-foreground hover:border-primary/50 hover:text-foreground transition-colors"
+                >
+                  {tag}
+                </motion.span>
+              ))}
+            </div>
           </div>
+
+          {/* Formação */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5"
+            >
+              Formação
+            </motion.p>
+            <div className="space-y-0 border-t border-border/20">
+              {formacao.map((f, i) => (
+                <motion.div
+                  key={f.label}
+                  initial={{ opacity: 0, x: 10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                  className="border-b border-border/20 py-4"
+                >
+                  <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)" }}>
+                    {f.label}
+                  </p>
+                  <p className="font-sans text-[10px] text-muted-foreground/50 leading-snug">{f.sub}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
