@@ -13,23 +13,9 @@ const photos = [
   { id: 6, src: "/images/portfolio-6.png", alt: "Arquitetura", category: "Editorial", size: "wide" },
 ];
 
-const sizeClass = {
-  tall: "aspect-[3/4]",
-  wide: "aspect-[4/3]",
-  square: "aspect-square",
-};
-
-const mobileW = {
-  tall: "w-[72vw]",
-  wide: "w-[85vw]",
-  square: "w-[72vw]",
-};
-
-const desktopW = {
-  tall: "md:w-[30vw]",
-  wide: "md:w-[48vw]",
-  square: "md:w-[34vw]",
-};
+const sizeClass = { tall: "aspect-[3/4]", wide: "aspect-[4/3]", square: "aspect-square" };
+const mobileW = { tall: "w-[68vw]", wide: "w-[82vw]", square: "w-[68vw]" };
+const desktopW = { tall: "md:w-[28vw]", wide: "md:w-[46vw]", square: "md:w-[32vw]" };
 
 export function PhotographySection() {
   const [selected, setSelected] = useState<(typeof photos)[0] | null>(null);
@@ -39,16 +25,13 @@ export function PhotographySection() {
 
   return (
     <section id="portfolio" className="relative w-full bg-background overflow-hidden py-20 md:py-48">
-      <div
-        ref={headerRef}
-        className="max-w-[1400px] mx-auto px-5 md:px-12 mb-10 md:mb-24 flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6"
-      >
+      <div ref={headerRef} className="max-w-[1400px] mx-auto px-4 md:px-12 mb-10 md:mb-24 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <motion.div style={{ y: headerY }}>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-3 md:mb-4"
+            className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-3"
           >
             Portfólio
           </motion.p>
@@ -58,7 +41,8 @@ export function PhotographySection() {
               whileInView={{ y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[10vw] sm:text-5xl md:text-7xl font-serif text-foreground leading-none"
+              className="font-serif text-foreground leading-none"
+              style={{ fontSize: "clamp(2.5rem, 10vw, 5rem)" }}
             >
               Obras<br />Selecionadas
             </motion.h2>
@@ -66,18 +50,19 @@ export function PhotographySection() {
         </motion.div>
 
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-sans text-muted-foreground text-sm max-w-xs leading-relaxed hidden md:block"
+          className="text-muted-foreground font-sans max-w-xs leading-relaxed hidden md:block"
+          style={{ fontSize: "clamp(0.8rem, 2vw, 0.9rem)" }}
         >
           Uma seleção de trabalhos que representam a essência da minha visão artística.
         </motion.p>
       </div>
 
       <div
-        className="flex gap-3 md:gap-6 px-5 md:px-12 overflow-x-auto scrollbar-hide pb-4"
+        className="flex gap-3 md:gap-5 px-4 md:px-12 overflow-x-auto scrollbar-hide pb-2"
         style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
       >
         {photos.map((photo, i) => (
@@ -92,30 +77,29 @@ export function PhotographySection() {
           >
             <TiltCard onClick={() => setSelected(photo)}>
               <div className={`relative overflow-hidden group ${sizeClass[photo.size as keyof typeof sizeClass]}`}>
-                <motion.img
+                <img
                   src={photo.src}
                   alt={photo.alt}
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex flex-col justify-end p-4 md:p-5">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex flex-col justify-end p-4">
                   <span className="text-[9px] font-sans uppercase tracking-[0.3em] text-primary mb-1">{photo.category}</span>
-                  <span className="font-serif text-base md:text-lg text-white">{photo.alt}</span>
+                  <span className="font-serif text-base text-white">{photo.alt}</span>
                 </div>
               </div>
             </TiltCard>
-
-            <div className="mt-3 md:mt-4 flex items-center justify-between px-1">
+            <div className="mt-3 flex items-center justify-between">
               <span className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground">0{i + 1}</span>
               <span className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground">{photo.category}</span>
             </div>
           </motion.div>
         ))}
-        <div className="w-4 md:w-12 flex-shrink-0" />
+        <div className="w-4 md:w-8 flex-shrink-0" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-5 md:px-12 mt-6 md:mt-12">
-        <p className="font-sans text-[9px] md:text-[10px] uppercase tracking-[0.25em] text-muted-foreground/40">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12 mt-5 md:mt-10">
+        <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40">
           Deslize para explorar →
         </p>
       </div>
