@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ParticlesBackground } from "./ParticlesBackground";
 import { FitText } from "./FitText";
-import { Camera3D } from "./Camera3D";
+import { CameraOrbit } from "./CameraOrbit";
 
 export function HeroSection() {
   const ref = useRef<HTMLElement>(null);
@@ -85,7 +85,7 @@ export function HeroSection() {
           absolute top-0 left-0 right-0 h-[46%] flex items-center justify-center
           md:static md:h-auto md:w-[42%] md:flex-shrink-0 md:flex md:items-center md:justify-center md:pb-10
         ">
-          <Camera3D scrollYProgress={scrollYProgress} />
+          <CameraOrbit scrollYProgress={scrollYProgress} />
         </div>
       </motion.div>
 
