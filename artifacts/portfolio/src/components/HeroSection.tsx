@@ -66,24 +66,25 @@ export function HeroSection() {
             Artista Visual · Fotógrafa · Diretora de Vídeo
           </motion.p>
 
-          {["HOANA", "BONITO"].map((word, i) => (
-            <div key={word} style={{ overflow: "hidden", lineHeight: 0.88 }}>
-              <motion.div
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.1, delay: 0.35 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <FitText
-                  as="h1"
-                  maxSize={maxSize}
-                  padding={12}
-                  className="font-serif font-normal tracking-[-0.02em] text-foreground uppercase"
+          <div className="px-4 md:px-2">
+            {["HOANA", "BONITO"].map((word, i) => (
+              <div key={word} style={{ overflow: "hidden", lineHeight: 0.88 }}>
+                <motion.div
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 1.1, delay: 0.35 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {word}
-                </FitText>
-              </motion.div>
-            </div>
-          ))}
+                  <FitText
+                    as="h1"
+                    maxSize={maxSize}
+                    className="font-serif font-normal tracking-[-0.02em] text-foreground uppercase"
+                  >
+                    {word}
+                  </FitText>
+                </motion.div>
+              </div>
+            ))}
+          </div>
 
           <motion.p
             initial={{ opacity: 0 }}

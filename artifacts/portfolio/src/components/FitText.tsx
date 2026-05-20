@@ -25,7 +25,7 @@ export function FitText({ children, className = "", as: Tag = "span", maxSize, p
       const containerWidth = container.offsetWidth - padding * 2;
 
       if (baseWidth > 0 && containerWidth > 0) {
-        let size = (containerWidth / baseWidth) * 80 * 0.97;
+        let size = (containerWidth / baseWidth) * 80 * 0.93;
         if (maxSize && size > maxSize) size = maxSize;
         setFontSize(size);
         setReady(true);
