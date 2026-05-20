@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useAnimationControls, useMotionValue } from "framer-motion";
 
 const cartografia = [
   "Fotógrafa",
@@ -26,8 +26,31 @@ const formacaoLoop = [...formacao, ...formacao, ...formacao, ...formacao];
 
 export function AboutSection() {
   const ref = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+
+  const controls = useAnimationControls();
+  const x = useMotionValue(0);
+  const [dragging, setDragging] = useState(false);
+
+  const ITEM_WIDTH = 320 + 96; // minWidth + px-12*2
+  const HALF = formacaoLoop.length / 2 * ITEM_WIDTH;
+
+  useEffect(() => {
+    if (dragging) return;
+    const current = x.get();
+    const remaining = Math.abs(current + HALF) / HALF;
+    const dur = 18 * (remaining > 0 ? remaining : 1);
+    controls.start({
+      x: [current, current - HALF],
+      transition: { duration: dur, ease: "linear", repeat: Infinity, repeatType: "loop" },
+    });
+  }, [dragging]);
+
+  const handleDragEnd = () => {
+    setDragging(false);
+  };
 
   return (
     <section id="about" ref={ref} className="relative w-full overflow-hidden bg-card">
@@ -157,11 +180,17 @@ export function AboutSection() {
         {/* fade right edge */}
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-card to-transparent" />
 
-        {/* scrolling track — starts off-screen left, moves right */}
+        {/* scrolling + draggable track */}
         <motion.div
-          className="flex whitespace-nowrap pl-20"
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ duration: 18, ease: "linear", repeat: Infinity }}
+          ref={trackRef}
+          className="flex whitespace-nowrap pl-20 cursor-grab active:cursor-grabbing select-none"
+          style={{ x }}
+          animate={controls}
+          drag="x"
+          dragConstraints={{ left: -HALF * 2, right: 0 }}
+          dragElastic={0.08}
+          onDragStart={() => { setDragging(true); controls.stop(); }}
+          onDragEnd={handleDragEnd}
         >
           {formacaoLoop.map((f, i) => (
             <div
