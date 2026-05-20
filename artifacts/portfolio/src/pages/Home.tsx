@@ -107,6 +107,14 @@ export default function Home() {
           <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/30">
             O mundo da arte é onde você faz
           </span>
+          <a
+            href="https://quinzinhooliveira.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-sans text-[9px] uppercase tracking-[0.2em] text-muted-foreground/25 hover:text-muted-foreground/50 transition-colors duration-300"
+          >
+            Desenvolvido por quinzinhooliveira.com
+          </a>
         </div>
       </footer>
     </main>
