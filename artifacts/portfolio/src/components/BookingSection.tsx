@@ -161,63 +161,90 @@ export function BookingSection() {
           Escolha o seu pacote
         </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-16">
-          {packages.map((pkg, i) => (
-            <motion.div key={pkg.id} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.7, delay: i * 0.1 }}
-              className={`relative flex flex-col border p-8 transition-colors duration-300 ${
-                selectedPkg?.id === pkg.id
-                  ? "border-primary bg-primary/8"
-                  : pkg.highlight
-                  ? "border-primary/40 bg-primary/4"
-                  : "border-border/20 bg-background/40"
-              }`}>
-              {pkg.highlight && (
-                <div className="absolute -top-3 left-8">
-                  <span className="font-sans text-[9px] uppercase tracking-[0.3em] bg-primary text-background px-3 py-1">
-                    Mais escolhida
-                  </span>
+          {packages.map((pkg, i) => {
+            const isSelected = selectedPkg?.id === pkg.id;
+            const isDimmed = selectedPkg && !isSelected;
+            return (
+              <motion.div
+                key={pkg.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.1 }}
+                animate={{
+                  scale: isSelected ? 1.03 : 1,
+                  opacity: isDimmed ? 0.45 : 1,
+                }}
+                style={{
+                  boxShadow: isSelected ? "0 0 40px -8px var(--color-primary, #b89060)" : "none",
+                }}
+                className={`relative flex flex-col border-2 p-8 cursor-pointer transition-colors duration-300 ${
+                  isSelected
+                    ? "border-primary bg-primary/10"
+                    : pkg.highlight
+                    ? "border-primary/30 bg-primary/4 hover:border-primary/50"
+                    : "border-border/20 bg-background/40 hover:border-border/40"
+                }`}
+                onClick={() => selectPackage(pkg)}
+              >
+                {/* top accent bar on selected */}
+                {isSelected && (
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-primary" />
+                )}
+
+                {pkg.highlight && !isSelected && (
+                  <div className="absolute -top-3 left-8">
+                    <span className="font-sans text-[9px] uppercase tracking-[0.3em] bg-primary text-background px-3 py-1">
+                      Mais escolhida
+                    </span>
+                  </div>
+                )}
+                {isSelected && (
+                  <div className="absolute -top-3 right-8">
+                    <span className="font-sans text-[9px] uppercase tracking-[0.3em] bg-primary text-background px-3 py-1 flex items-center gap-1.5">
+                      <Check size={9} /> Selecionado
+                    </span>
+                  </div>
+                )}
+
+                <div className="mb-6">
+                  <p className={`font-sans text-[10px] uppercase tracking-[0.3em] mb-2 ${isSelected ? "text-primary/70" : "text-muted-foreground/50"}`}>
+                    {pkg.duration} · {pkg.photos}
+                  </p>
+                  <p className={`font-serif mb-2 transition-colors ${isSelected ? "text-foreground" : "text-foreground/80"}`}
+                    style={{ fontSize: "clamp(1.2rem, 3vw, 1.6rem)" }}>{pkg.name}</p>
+                  <p className="font-sans text-[11px] text-muted-foreground/60 leading-relaxed">{pkg.description}</p>
                 </div>
-              )}
-              {selectedPkg?.id === pkg.id && (
-                <div className="absolute -top-3 right-8">
-                  <span className="font-sans text-[9px] uppercase tracking-[0.3em] bg-primary/20 border border-primary/40 text-primary px-3 py-1 flex items-center gap-1.5">
-                    <Check size={9} /> Selecionado
-                  </span>
+                <div className="mb-8 flex-1">
+                  <ul className="space-y-2.5">
+                    {pkg.includes.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <Check size={11} className={`mt-[3px] flex-shrink-0 ${isSelected ? "text-primary" : "text-primary/50"}`} />
+                        <span className={`font-sans text-[11px] leading-snug ${isSelected ? "text-muted-foreground/90" : "text-muted-foreground/60"}`}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              )}
-              <div className="mb-6">
-                <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50 mb-2">
-                  {pkg.duration} · {pkg.photos}
-                </p>
-                <p className="font-serif text-foreground mb-2" style={{ fontSize: "clamp(1.2rem, 3vw, 1.6rem)" }}>{pkg.name}</p>
-                <p className="font-sans text-[11px] text-muted-foreground/60 leading-relaxed">{pkg.description}</p>
-              </div>
-              <div className="mb-8 flex-1">
-                <ul className="space-y-2.5">
-                  {pkg.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <Check size={11} className="text-primary mt-[3px] flex-shrink-0" />
-                      <span className="font-sans text-[11px] text-muted-foreground/70 leading-snug">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="border-t border-border/20 pt-6">
-                <p className="font-serif text-foreground mb-4" style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)" }}>{pkg.price}</p>
-                <motion.button whileTap={{ scale: 0.97 }} onClick={() => selectPackage(pkg)}
-                  className={`w-full flex items-center justify-between px-5 py-3 font-sans text-[10px] uppercase tracking-[0.25em] transition-colors group ${
-                    selectedPkg?.id === pkg.id
-                      ? "bg-primary text-background"
-                      : pkg.highlight
-                      ? "bg-primary text-background hover:bg-primary/90"
-                      : "border border-border/30 text-foreground hover:border-primary hover:text-primary"
-                  }`}>
-                  {selectedPkg?.id === pkg.id ? "Pacote selecionado" : "Quero esta sessão"}
-                  <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-              </div>
-            </motion.div>
-          ))}
+                <div className="border-t border-border/20 pt-6">
+                  <p className={`font-serif mb-4 ${isSelected ? "text-primary" : "text-foreground"}`}
+                    style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)" }}>{pkg.price}</p>
+                  <motion.button
+                    whileTap={{ scale: 0.97 }}
+                    onClick={(e) => { e.stopPropagation(); selectPackage(pkg); }}
+                    className={`w-full flex items-center justify-between px-5 py-3 font-sans text-[10px] uppercase tracking-[0.25em] transition-colors group ${
+                      isSelected
+                        ? "bg-primary text-background"
+                        : pkg.highlight
+                        ? "bg-primary/80 text-background hover:bg-primary"
+                        : "border border-border/30 text-foreground/70 hover:border-primary hover:text-primary"
+                    }`}>
+                    {isSelected ? "Pacote selecionado" : "Quero esta sessão"}
+                    <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* ── Checkout form ── */}
