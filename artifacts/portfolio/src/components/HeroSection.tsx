@@ -118,10 +118,10 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* CAMERA COLUMN */}
+        {/* CAMERA COLUMN — desktop only */}
         <div className="
-          h-[40dvh] flex-shrink-0 flex items-center justify-center order-1
-          md:order-2 md:h-auto md:w-[42%] md:flex md:items-center md:justify-center md:pb-8
+          hidden
+          md:flex md:flex-shrink-0 md:order-2 md:h-auto md:w-[42%] md:items-center md:justify-center md:pb-8
         ">
           <CameraOrbit scrollYProgress={scrollYProgress} />
         </div>
