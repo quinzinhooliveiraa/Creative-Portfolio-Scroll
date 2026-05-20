@@ -61,7 +61,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.9 }}
-            className="px-3 md:px-10 font-sans text-[9px] uppercase tracking-[0.35em] text-primary mb-3 md:mb-5"
+            className="px-3 md:px-10 font-sans text-[9px] uppercase tracking-[0.35em] text-primary mb-3 md:mb-5 text-center md:text-left"
           >
             Artista Visual · Fotógrafa · Diretora de Vídeo
           </motion.p>
@@ -90,7 +90,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 1.3 }}
-            className="px-3 md:px-10 font-sans text-[9px] uppercase tracking-[0.28em] text-muted-foreground mt-3 md:mt-5 mb-6 md:mb-8"
+            className="px-3 md:px-10 font-sans text-[9px] uppercase tracking-[0.28em] text-muted-foreground mt-3 md:mt-5 mb-6 md:mb-8 text-center md:text-left"
           >
             Imagens para ver além dos olhos
           </motion.p>
@@ -100,7 +100,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.6 }}
-            className="px-3 md:px-10 flex flex-wrap gap-3"
+            className="px-3 md:px-10 flex flex-wrap gap-3 justify-center md:justify-start"
           >
             <button
               onClick={scrollToBooking}
