@@ -161,7 +161,7 @@ export function AboutSection() {
         <motion.div
           className="flex whitespace-nowrap pl-20"
           animate={{ x: ["-50%", "0%"] }}
-          transition={{ duration: 36, ease: "linear", repeat: Infinity }}
+          transition={{ duration: 18, ease: "linear", repeat: Infinity }}
         >
           {formacaoLoop.map((f, i) => (
             <div
