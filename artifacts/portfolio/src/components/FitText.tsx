@@ -5,9 +5,10 @@ interface FitTextProps {
   className?: string;
   as?: ElementType;
   maxSize?: number;
+  padding?: number;
 }
 
-export function FitText({ children, className = "", as: Tag = "span", maxSize }: FitTextProps) {
+export function FitText({ children, className = "", as: Tag = "span", maxSize, padding = 0 }: FitTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const measureRef = useRef<HTMLSpanElement>(null);
   const [fontSize, setFontSize] = useState(80);
@@ -21,21 +22,25 @@ export function FitText({ children, className = "", as: Tag = "span", maxSize }:
 
       span.style.fontSize = "80px";
       const baseWidth = span.scrollWidth;
-      const containerWidth = container.offsetWidth;
+      const containerWidth = container.offsetWidth - padding * 2;
 
       if (baseWidth > 0 && containerWidth > 0) {
-        let size = (containerWidth / baseWidth) * 80 * 0.997;
+        let size = (containerWidth / baseWidth) * 80 * 0.97;
         if (maxSize && size > maxSize) size = maxSize;
         setFontSize(size);
         setReady(true);
       }
     };
 
-    const t = setTimeout(measure, 0);
     const ro = new ResizeObserver(measure);
     if (containerRef.current) ro.observe(containerRef.current);
-    return () => { clearTimeout(t); ro.disconnect(); };
-  }, [children, maxSize]);
+
+    // Measure once immediately (fallback font), then re-measure after fonts load
+    measure();
+    document.fonts.ready.then(measure);
+
+    return () => { ro.disconnect(); };
+  }, [children, maxSize, padding]);
 
   return (
     <div ref={containerRef} className="w-full overflow-hidden relative">
