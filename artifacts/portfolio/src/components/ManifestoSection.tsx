@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { CyclingTags } from "./CyclingTags";
 
 const keywords = [
   "percepção",
@@ -92,19 +93,8 @@ export function ManifestoSection() {
               Pesquisa acadêmica & artística
             </motion.p>
 
-            <div className="flex flex-wrap gap-3 mb-14">
-              {keywords.map((k, i) => (
-                <motion.span
-                  key={k}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="font-serif italic text-foreground/80 border border-border/30 px-4 py-2 text-sm"
-                >
-                  {k}
-                </motion.span>
-              ))}
+            <div className="mb-14">
+              <CyclingTags tags={keywords} interval={2600} />
             </div>
 
             <motion.p
