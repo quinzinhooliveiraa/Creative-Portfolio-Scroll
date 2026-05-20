@@ -42,7 +42,7 @@ export function AboutSection() {
     if (dragging) return;
     const current = x.get();
     const remaining = Math.abs(current + HALF) / HALF;
-    const dur = 18 * (remaining > 0 ? remaining : 1);
+    const dur = 40 * (remaining > 0 ? remaining : 1);
     controls.start({
       x: [current, current - HALF],
       transition: { duration: dur, ease: "linear", repeat: Infinity, repeatType: "loop" },
