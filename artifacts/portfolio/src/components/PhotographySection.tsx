@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { TiltCard } from "./TiltCard";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X, Sparkles } from "lucide-react";
+import { X } from "lucide-react";
 
 const photos = [
   { id: 1, src: "/images/portfolio-1.png", alt: "Retrato Autoral", category: "Retrato" as const, size: "tall" as const },
@@ -16,12 +16,6 @@ const photos = [
 const sizeClass = { tall: "aspect-[3/4]", wide: "aspect-[4/3]", square: "aspect-square" };
 const mobileW = { tall: "w-[68vw]", wide: "w-[82vw]", square: "w-[68vw]" };
 const desktopW = { tall: "md:w-[28vw]", wide: "md:w-[46vw]", square: "md:w-[32vw]" };
-
-const highlights = [
-  { icon: "✨", label: "encontros humanos" },
-  { icon: "✨", label: "presença" },
-  { icon: "✨", label: "intimidade" },
-];
 
 const categories = [
   { label: "Famílias", desc: "Histórias que atravessam gerações" },
@@ -82,21 +76,6 @@ export function PhotographySection() {
             <p className="font-serif italic text-foreground/60 mb-8" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.15rem)" }}>
               O resultado: se sentir (verdadeiramente) visto.
             </p>
-            <div className="flex flex-wrap gap-4">
-              {highlights.map((h, i) => (
-                <motion.span
-                  key={h.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-2 border border-border/30 px-4 py-2 font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground"
-                >
-                  <Sparkles size={10} className="text-primary" />
-                  {h.label}
-                </motion.span>
-              ))}
-            </div>
           </motion.div>
 
           <motion.div
