@@ -81,35 +81,36 @@
   --background: 30 18% 97%;
   /* Foreground: espelho do cream do modo escuro, mas em escuro */
   --foreground: 20 12% 9%;
-  --border: 30 12% 84%;
+  /* Border escuro o suficiente para border/20 ainda ser visível */
+  --border: 20 8% 38%;
   --card: 30 14% 94%;
   --card-foreground: 20 12% 9%;
-  --card-border: 30 12% 84%;
+  --card-border: 20 8% 38%;
   --sidebar: 30 18% 97%;
   --sidebar-foreground: 20 12% 9%;
-  --sidebar-border: 30 12% 84%;
+  --sidebar-border: 20 8% 38%;
   /* Mesmo âmbar do original */
   --sidebar-primary: 28 45% 58%;
   --sidebar-primary-foreground: 20 12% 9%;
-  --sidebar-accent: 30 12% 90%;
+  --sidebar-accent: 30 12% 88%;
   --sidebar-accent-foreground: 20 12% 9%;
   --sidebar-ring: 28 45% 58%;
   --popover: 30 18% 97%;
   --popover-foreground: 20 12% 9%;
-  --popover-border: 30 12% 84%;
+  --popover-border: 20 8% 38%;
   /* Mesmo âmbar exato do modo escuro */
   --primary: 28 45% 58%;
   --primary-foreground: 20 12% 9%;
-  --secondary: 30 12% 90%;
+  --secondary: 30 12% 88%;
   --secondary-foreground: 20 12% 9%;
-  --muted: 30 12% 90%;
-  /* Muted-foreground: proporcionalmente equivalente ao do modo escuro */
-  --muted-foreground: 25 8% 42%;
+  --muted: 30 12% 88%;
+  /* Muted-foreground bem escuro: com /40 e /60 ainda legível no fundo claro */
+  --muted-foreground: 20 8% 24%;
   --accent: 28 45% 58%;
   --accent-foreground: 20 12% 9%;
   --destructive: 0 62.8% 40%;
   --destructive-foreground: 0 0% 100%;
-  --input: 30 12% 88%;
+  --input: 30 12% 85%;
   --ring: 28 45% 58%;
   --chart-1: 28 45% 58%;
   --chart-2: 20 12% 9%;
