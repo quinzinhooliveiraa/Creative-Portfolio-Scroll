@@ -137,12 +137,32 @@ export function BookingSection() {
           </div>
         </motion.div>
 
+        {/* ── Contact CTA ── */}
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          className="border border-border/20 p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-20 md:mb-32">
+          <div>
+            <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-3">Projeto personalizado</p>
+            <p className="font-serif text-foreground mb-2" style={{ fontSize: "clamp(1.2rem, 3.5vw, 1.8rem)" }}>
+              Quer criar algo do zero?
+            </p>
+            <p className="font-sans text-[11px] text-muted-foreground/60 leading-relaxed max-w-md">
+              Direção de vídeo, editorial, registro de espetáculos, arte conceitual — fala com a Hoana e a gente pensa junto.
+            </p>
+          </div>
+          <motion.button whileTap={{ scale: 0.97 }}
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            className="flex-shrink-0 flex items-center gap-3 border border-border/30 px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] text-foreground hover:border-primary hover:text-primary transition-colors group whitespace-nowrap">
+            Fala com a Hoana
+            <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+          </motion.button>
+        </motion.div>
+
         {/* ── FAQ ── */}
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
           className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-8">
           Perguntas frequentes
         </motion.p>
-        <div className="border-t border-border/20 max-w-3xl mb-16 md:mb-24">
+        <div className="border-t border-border/20 max-w-3xl pb-16 md:pb-24">
           {faqs.map((faq, i) => (
             <motion.div key={i} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
               transition={{ delay: i * 0.06 }} className="border-b border-border/20">
@@ -168,26 +188,6 @@ export function BookingSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* ── Contact CTA ── */}
-        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="border border-border/20 p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div>
-            <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-3">Projeto personalizado</p>
-            <p className="font-serif text-foreground mb-2" style={{ fontSize: "clamp(1.2rem, 3.5vw, 1.8rem)" }}>
-              Quer criar algo do zero?
-            </p>
-            <p className="font-sans text-[11px] text-muted-foreground/60 leading-relaxed max-w-md">
-              Direção de vídeo, editorial, registro de espetáculos, arte conceitual — fala com a Hoana e a gente pensa junto.
-            </p>
-          </div>
-          <motion.button whileTap={{ scale: 0.97 }}
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="flex-shrink-0 flex items-center gap-3 border border-border/30 px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] text-foreground hover:border-primary hover:text-primary transition-colors group whitespace-nowrap">
-            Fala com a Hoana
-            <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-        </motion.div>
 
       </div>
     </section>
