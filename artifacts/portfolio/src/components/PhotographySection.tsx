@@ -95,7 +95,7 @@ export function PhotographySection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.05 * i }}
-                  className="border border-border/20 p-4 hover:border-primary/40 hover:bg-card/50 transition-all group"
+                  className="border border-border/20 p-4 hover:border-primary/40 hover:bg-card/50 transition-all group glass-card-sm"
                 >
                   <p className="font-serif text-foreground group-hover:text-primary transition-colors mb-1"
                     style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)" }}>

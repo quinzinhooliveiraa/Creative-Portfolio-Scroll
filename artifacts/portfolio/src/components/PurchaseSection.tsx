@@ -44,7 +44,7 @@ export function PurchaseSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="border border-primary/25 bg-card mb-0"
+          className="border border-primary/25 bg-card mb-0 glass-card"
         >
           {/* gold top line */}
           <div className="h-[2px] w-full bg-primary/60" />

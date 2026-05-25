@@ -209,6 +209,23 @@
   }
 }
 
+/* Glass card — só ativo no modo claro */
+html:not(.dark) .glass-card {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-color: rgba(0, 0, 0, 0.10) !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+html:not(.dark) .glass-card-sm {
+  background: rgba(255, 255, 255, 0.60) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
 /* Scrollbar hide */
 .scrollbar-hide {
   -ms-overflow-style: none;

@@ -82,7 +82,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="absolute -bottom-4 -right-1 md:-bottom-6 md:-right-8 bg-background border border-border/30 p-4"
+            className="absolute -bottom-4 -right-1 md:-bottom-6 md:-right-8 bg-background border border-border/30 p-4 glass-card-sm"
           >
             <p className="font-serif text-xl text-foreground">20+</p>
             <p className="font-sans text-[9px] uppercase tracking-widest text-muted-foreground mt-0.5">Anos criando imagens</p>
