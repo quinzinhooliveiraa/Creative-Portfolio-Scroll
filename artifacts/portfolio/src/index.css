@@ -77,37 +77,31 @@
   --elevate-1: rgba(0,0,0, .02);
   --elevate-2: rgba(0,0,0, .05);
 
-  /* Fundo: quase branco com calor — papel fotográfico revelado */
   --background: 30 18% 97%;
-  /* Foreground: espelho do cream do modo escuro, mas em escuro */
-  --foreground: 20 12% 9%;
-  /* Border escuro o suficiente para border/20 ainda ser visível */
-  --border: 20 8% 38%;
+  --foreground: 0 0% 4%;
+  --border: 0 0% 20%;
   --card: 30 14% 94%;
-  --card-foreground: 20 12% 9%;
-  --card-border: 20 8% 38%;
+  --card-foreground: 0 0% 4%;
+  --card-border: 0 0% 20%;
   --sidebar: 30 18% 97%;
-  --sidebar-foreground: 20 12% 9%;
-  --sidebar-border: 20 8% 38%;
-  /* Mesmo âmbar do original */
+  --sidebar-foreground: 0 0% 4%;
+  --sidebar-border: 0 0% 20%;
   --sidebar-primary: 28 45% 58%;
-  --sidebar-primary-foreground: 20 12% 9%;
+  --sidebar-primary-foreground: 0 0% 4%;
   --sidebar-accent: 30 12% 88%;
-  --sidebar-accent-foreground: 20 12% 9%;
+  --sidebar-accent-foreground: 0 0% 4%;
   --sidebar-ring: 28 45% 58%;
   --popover: 30 18% 97%;
-  --popover-foreground: 20 12% 9%;
-  --popover-border: 20 8% 38%;
-  /* Mesmo âmbar exato do modo escuro */
+  --popover-foreground: 0 0% 4%;
+  --popover-border: 0 0% 20%;
   --primary: 28 45% 58%;
-  --primary-foreground: 20 12% 9%;
+  --primary-foreground: 0 0% 4%;
   --secondary: 30 12% 88%;
-  --secondary-foreground: 20 12% 9%;
+  --secondary-foreground: 0 0% 4%;
   --muted: 30 12% 88%;
-  /* Muted-foreground bem escuro: com /40 e /60 ainda legível no fundo claro */
-  --muted-foreground: 20 8% 24%;
+  --muted-foreground: 0 0% 8%;
   --accent: 28 45% 58%;
-  --accent-foreground: 20 12% 9%;
+  --accent-foreground: 0 0% 4%;
   --destructive: 0 62.8% 40%;
   --destructive-foreground: 0 0% 100%;
   --input: 30 12% 85%;
