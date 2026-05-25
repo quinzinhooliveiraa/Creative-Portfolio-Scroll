@@ -31,7 +31,7 @@ export function PhotographySection() {
   const headerY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <section id="portfolio" className="relative w-full bg-card overflow-hidden py-14 md:py-24 border-t border-primary/20">
+    <section id="portfolio" className="relative w-full bg-card overflow-hidden py-14 md:py-24 border-t border-primary/20 light-gradient-bg">
 
       {/* ── Section intro ── */}
       <div ref={headerRef} className="max-w-[1400px] mx-auto px-4 md:px-12 mb-16 md:mb-28">

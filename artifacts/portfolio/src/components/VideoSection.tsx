@@ -34,7 +34,7 @@ export function VideoSection() {
   const clipPath = useTransform(clipProgress, (v) => `inset(0 ${v}% 0 0)`);
 
   return (
-    <section id="film" ref={ref} className="relative w-full bg-background overflow-hidden border-t border-primary/20">
+    <section id="film" ref={ref} className="relative w-full bg-background overflow-hidden border-t border-primary/20 light-gradient-bg">
 
       {/* ── Editorial split banner ── */}
       <div className="flex flex-col md:flex-row min-h-[420px] md:min-h-[520px]">
