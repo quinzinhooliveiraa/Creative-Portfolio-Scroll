@@ -4,16 +4,15 @@ import { ManifestoSection } from "@/components/ManifestoSection";
 import { AboutSection } from "@/components/AboutSection";
 import { PhotographySection } from "@/components/PhotographySection";
 import { BookingSection } from "@/components/BookingSection";
-import { PurchaseSection } from "@/components/PurchaseSection";
 import { VideoSection } from "@/components/VideoSection";
 import { OlhoArtistaSection } from "@/components/OlhoArtistaSection";
 import { TalksSection } from "@/components/TalksSection";
 import { ContactSection } from "@/components/ContactSection";
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 
-const footerLinks = [
+const anchorLinks = [
   { label: "Sobre", href: "#about" },
-  { label: "Agendar Sessão", href: "#booking" },
   { label: "01 · Retratos", href: "#portfolio" },
   { label: "02 · Palestras", href: "#talks" },
   { label: "03 · Artes & Vídeo", href: "#film" },
@@ -27,6 +26,8 @@ function scrollTo(href: string) {
 }
 
 export default function Home() {
+  const [, navigate] = useLocation();
+
   return (
     <main className="bg-background text-foreground">
       <Nav />
@@ -35,7 +36,6 @@ export default function Home() {
       <ManifestoSection />
       <PhotographySection />
       <BookingSection />
-      <PurchaseSection />
       <TalksSection />
       <VideoSection />
       <OlhoArtistaSection />
@@ -61,7 +61,7 @@ export default function Home() {
           <div className="flex flex-col gap-4">
             <span className="font-sans text-[9px] uppercase tracking-[0.4em] text-primary mb-1">Navegação</span>
             <nav className="flex flex-col gap-3">
-              {footerLinks.map((l) => (
+              {anchorLinks.map((l) => (
                 <button
                   key={l.href}
                   onClick={() => scrollTo(l.href)}
@@ -70,6 +70,12 @@ export default function Home() {
                   {l.label}
                 </button>
               ))}
+              <button
+                onClick={() => navigate("/sessao")}
+                className="text-left font-sans text-[11px] uppercase tracking-[0.2em] text-primary hover:text-primary/70 transition-colors duration-300"
+              >
+                Agendar Sessão
+              </button>
             </nav>
           </div>
 

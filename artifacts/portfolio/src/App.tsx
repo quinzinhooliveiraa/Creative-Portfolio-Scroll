@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import Sessao from "@/pages/Sessao";
 import { CustomCursor } from "@/components/CustomCursor";
 import Lenis from "lenis";
 
@@ -14,6 +15,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/sessao" component={Sessao} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useLocation } from "wouter";
 
 const links = [
   { label: "Sobre", href: "#about" },
@@ -14,6 +15,7 @@ export function Nav() {
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
+  const [, navigate] = useLocation();
 
   useMotionValueEvent(scrollY, "change", (v) => {
     setScrolled(v > 60);
@@ -30,6 +32,11 @@ export function Nav() {
     const id = href.replace("#", "");
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const goToSessao = () => {
+    setOpen(false);
+    navigate("/sessao");
   };
 
   return (
@@ -62,9 +69,9 @@ export function Nav() {
             ))}
           </nav>
 
-          {/* CTA — Agendar Sessão */}
+          {/* CTA — navigates to /sessao */}
           <motion.button
-            onClick={() => scrollTo("#booking")}
+            onClick={goToSessao}
             whileTap={{ scale: 0.97 }}
             className="hidden md:flex items-center gap-2 bg-primary text-background font-sans text-[10px] uppercase tracking-[0.25em] px-5 py-2.5 hover:bg-primary/90 transition-colors flex-shrink-0"
           >
@@ -112,7 +119,7 @@ export function Nav() {
           </motion.button>
         ))}
         <motion.button
-          onClick={() => scrollTo("#booking")}
+          onClick={goToSessao}
           initial={false}
           animate={{ opacity: open ? 1 : 0, y: open ? 0 : 20 }}
           transition={{ delay: links.length * 0.07 }}

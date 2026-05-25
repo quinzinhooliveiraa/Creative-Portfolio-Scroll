@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useLocation } from "wouter";
 
 const steps = [
   { num: "01", title: "Conversa", desc: "Você me conta quem é, o que sente, o que quer guardar. Eu escuto de verdade — e planejamos juntos." },
@@ -10,6 +10,8 @@ const steps = [
 ];
 
 export function BookingSection() {
+  const [, navigate] = useLocation();
+
   return (
     <section id="booking" className="relative w-full bg-card overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 md:px-12 pt-20 md:pt-40 pb-16 md:pb-24">
@@ -94,14 +96,24 @@ export function BookingSection() {
               Direção de vídeo, editorial, registro de espetáculos, arte conceitual — fala com a Hoana e a gente pensa junto.
             </p>
           </div>
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="flex-shrink-0 flex items-center gap-3 border border-border/30 px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] text-foreground hover:border-primary hover:text-primary transition-colors group whitespace-nowrap"
-          >
-            Fala com a Hoana
-            <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="flex items-center gap-3 border border-border/30 px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] text-foreground hover:border-primary hover:text-primary transition-colors group whitespace-nowrap"
+            >
+              Fala com a Hoana
+              <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              onClick={() => navigate("/sessao")}
+              className="flex items-center gap-3 bg-primary text-background px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] hover:bg-primary/90 transition-colors group whitespace-nowrap"
+            >
+              Ver pacote e agendar
+              <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </div>
         </motion.div>
 
       </div>
