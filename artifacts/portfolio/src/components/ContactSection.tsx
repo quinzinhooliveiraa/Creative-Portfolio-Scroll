@@ -98,7 +98,7 @@ export function ContactSection() {
                 className="flex flex-col items-start justify-center py-10"
               >
                 <p className="font-serif text-foreground mb-2" style={{ fontSize: "clamp(1.5rem, 5vw, 2rem)" }}>
-                  Mensagem enviada. ✨
+                  Mensagem enviada.
                 </p>
                 <p className="font-sans text-sm text-muted-foreground">Entrarei em contato em breve.</p>
               </motion.div>
