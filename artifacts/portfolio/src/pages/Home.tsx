@@ -13,10 +13,10 @@ import { motion } from "framer-motion";
 const footerLinks = [
   { label: "Sobre", href: "#about" },
   { label: "Agendar Sessão", href: "#booking" },
-  { label: "Retratos", href: "#portfolio" },
-  { label: "Artes & Vídeo", href: "#film" },
-  { label: "Arte Contemporânea", href: "#arte" },
-  { label: "Palestras", href: "#talks" },
+  { label: "01 · Retratos", href: "#portfolio" },
+  { label: "02 · Palestras", href: "#talks" },
+  { label: "03 · Artes & Vídeo", href: "#film" },
+  { label: "04 · Arte Contemporânea", href: "#arte" },
   { label: "Contato", href: "#contact" },
 ];
 
@@ -34,9 +34,9 @@ export default function Home() {
       <AboutSection />
       <PhotographySection />
       <BookingSection />
+      <TalksSection />
       <VideoSection />
       <OlhoArtistaSection />
-      <TalksSection />
       <ContactSection />
 
       <footer className="bg-background border-t border-border/20">
