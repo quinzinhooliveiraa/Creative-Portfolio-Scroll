@@ -57,7 +57,7 @@ export function AboutSection() {
     <section id="about" ref={ref} className="relative w-full overflow-hidden bg-card">
 
       {/* ── Two-column bio block ── */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12 pt-20 md:pt-48 pb-16 md:pb-24 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-0 items-start">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12 pt-16 md:pt-28 pb-16 md:pb-24 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-0 items-start">
 
         {/* Left — photo */}
         <motion.div style={{ y: imgY }} className="relative w-full max-w-[380px] md:max-w-[480px] mx-auto lg:mx-0 lg:sticky lg:top-24">

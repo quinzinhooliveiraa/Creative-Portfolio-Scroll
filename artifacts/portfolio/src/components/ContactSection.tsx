@@ -15,8 +15,8 @@ export function ContactSection() {
         <img src="/images/portfolio-4.png" alt="" className="w-full h-full object-cover opacity-[0.04]" />
       </motion.div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-12 py-20 md:py-48">
-        <div className="border-b border-border/20 pb-10 md:pb-20 mb-12 md:mb-24">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-12 py-16 md:py-28">
+        <div className="border-b border-border/20 pb-8 md:pb-14 mb-10 md:mb-16">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

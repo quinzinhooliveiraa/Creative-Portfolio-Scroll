@@ -61,7 +61,7 @@ export function BookingSection() {
         >
           Como funciona
         </motion.p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-border/20 mb-20 md:mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-border/20 mb-10 md:mb-16">
           {steps.map((step, i) => (
             <motion.div
               key={step.num}
