@@ -51,7 +51,7 @@ const themes = [
 
 export function TalksSection() {
   return (
-    <section id="talks" className="relative w-full bg-background py-20 md:py-40">
+    <section id="talks" className="relative w-full bg-card py-20 md:py-32 border-t border-primary/20">
       <div className="max-w-[1400px] mx-auto px-4 md:px-12">
 
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 md:mb-20">

@@ -7,7 +7,7 @@ export function BookingSection() {
   const [, navigate] = useLocation();
 
   return (
-    <section id="booking" className="relative w-full bg-card overflow-hidden">
+    <section id="booking" className="relative w-full bg-background overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 md:px-12 pt-20 md:pt-40 pb-16 md:pb-24">
 
         {/* Header */}

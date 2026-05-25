@@ -43,7 +43,7 @@ export function OlhoArtistaSection() {
   const bgY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (
-    <section id="arte" ref={ref} className="relative w-full bg-background overflow-hidden py-20 md:py-40">
+    <section id="arte" ref={ref} className="relative w-full bg-card overflow-hidden py-20 md:py-32 border-t border-primary/20">
       <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110 pointer-events-none">
         <img src="/images/portfolio-2.png" alt="" className="w-full h-full object-cover opacity-[0.04]" />
       </motion.div>
