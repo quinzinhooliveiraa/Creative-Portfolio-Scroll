@@ -1,0 +1,44 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "FwoLRAyGkjTtzxcw33H-C"
+uri = "file://artifacts/portfolio/public/images/portrait.png"
+type = "image"
+title = "portrait photographer headshot"
+
+[[generated]]
+id = "EaadNFu7GWnzdg7pDmFyz"
+uri = "file://artifacts/portfolio/public/images/portfolio-1.png"
+type = "image"
+title = "cinematic portrait film noir"
+
+[[generated]]
+id = "dgKSmkpar0KtTq_WuAsXT"
+uri = "file://artifacts/portfolio/public/images/portfolio-2.png"
+type = "image"
+title = "landscape golden hour misty"
+
+[[generated]]
+id = "hDsMk6oCte5BZZPv7RR61"
+uri = "file://artifacts/portfolio/public/images/portfolio-3.png"
+type = "image"
+title = "editorial fashion high contrast"
+
+[[generated]]
+id = "retvl8NSjoy86LgXktRig"
+uri = "file://artifacts/portfolio/public/images/portfolio-4.png"
+type = "image"
+title = "documentary street sao paulo"
+
+[[generated]]
+id = "To6W6fiwRDvCfsrS9uRHf"
+uri = "file://artifacts/portfolio/public/images/portfolio-5.png"
+type = "image"
+title = "cinematic silhouette lighting"
+
+[[generated]]
+id = "c8p6zVGipN44T6lMW8XBS"
+uri = "file://artifacts/portfolio/public/images/portfolio-6.png"
+type = "image"
+title = "moody architectural details"
