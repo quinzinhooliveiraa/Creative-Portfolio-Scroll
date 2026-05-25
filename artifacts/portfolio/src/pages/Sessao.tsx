@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ExternalLink, ChevronDown, ArrowLeft, ArrowRight } from "lucide-react";
 import { useLocation } from "wouter";
@@ -33,6 +33,10 @@ const faqs = [
 export default function Sessao() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [, navigate] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
