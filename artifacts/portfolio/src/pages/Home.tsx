@@ -41,7 +41,7 @@ export default function Home() {
       <OlhoArtistaSection />
       <ContactSection />
 
-      <footer className="bg-background border-t border-border/20">
+      <footer className="bg-background border-t border-border/20 section-dark">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
 
           {/* Nav columns */}

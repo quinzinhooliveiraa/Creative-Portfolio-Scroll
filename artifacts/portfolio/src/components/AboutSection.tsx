@@ -82,7 +82,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="absolute -bottom-4 -right-1 md:-bottom-6 md:-right-8 bg-background border border-border/30 p-4 glass-card-sm"
+            className="absolute -bottom-4 -right-1 md:-bottom-6 md:-right-8 bg-background border border-border/30 p-4 section-dark"
           >
             <p className="font-serif text-xl text-foreground">20+</p>
             <p className="font-sans text-[9px] uppercase tracking-widest text-muted-foreground mt-0.5">Anos criando imagens</p>
@@ -156,7 +156,7 @@ export function AboutSection() {
       </div>
 
       {/* ── Formação — full-width marquee band ── */}
-      <div className="w-full border-t border-b border-border/20 bg-background/30 overflow-hidden relative">
+      <div className="w-full border-t border-b border-border/20 bg-background/30 overflow-hidden relative section-dark">
         {/* label */}
         <div className="absolute left-0 top-0 bottom-0 z-20 flex items-center px-5 md:px-8 bg-card border-r border-border/20">
           <span className="font-sans text-[9px] uppercase tracking-[0.4em] text-primary whitespace-nowrap"

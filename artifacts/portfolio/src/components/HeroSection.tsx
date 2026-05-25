@@ -38,7 +38,7 @@ export function HeroSection() {
   };
 
   return (
-    <section ref={ref} id="hero" className="relative w-full h-[100dvh] overflow-hidden">
+    <section ref={ref} id="hero" className="relative w-full h-[100dvh] overflow-hidden section-dark">
       <motion.div style={{ scale: imgScale, opacity: imgOpacity }} className="absolute inset-0 z-0">
         <img
           src="/images/portfolio-3.png"

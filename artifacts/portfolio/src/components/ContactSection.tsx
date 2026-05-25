@@ -10,7 +10,7 @@ export function ContactSection() {
   const bgY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
-    <section id="contact" ref={ref} className="relative w-full bg-card overflow-hidden">
+    <section id="contact" ref={ref} className="relative w-full bg-card overflow-hidden section-dark">
       <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110">
         <img src="/images/portfolio-4.png" alt="" className="w-full h-full object-cover opacity-[0.04]" />
       </motion.div>
