@@ -2,12 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useLocation } from "wouter";
 
-const steps = [
-  { num: "01", title: "Conversa", desc: "Você me conta quem é, o que sente, o que quer guardar. Eu escuto de verdade — e planejamos juntos." },
-  { num: "02", title: "Sessão", desc: "No dia combinado, você é co-diretor(a) da sua história. Sem poses forçadas. Só verdade e presença." },
-  { num: "03", title: "Seleção", desc: "Você recebe uma galeria privada e escolhe suas favoritas. Cada foto é tratada com o mesmo cuidado da natureza." },
-  { num: "04", title: "Entrega", desc: "Suas imagens chegam em alta resolução, prontas para impressão e uso digital. Para sempre." },
-];
 
 export function BookingSection() {
   const [, navigate] = useLocation();
@@ -62,34 +56,6 @@ export function BookingSection() {
               <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
           </motion.div>
-        </div>
-
-        {/* Process steps */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-8"
-        >
-          Como funciona
-        </motion.p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-border/20 mb-10 md:mb-16">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.num}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="border-b sm:border-b-0 sm:border-r border-border/20 last:border-r-0 py-8 px-0 sm:px-6 first:pl-0 last:pr-0"
-            >
-              <p className="font-sans text-[10px] text-primary/50 tracking-widest mb-3">{step.num}</p>
-              <p className="font-serif text-foreground mb-3" style={{ fontSize: "clamp(1.05rem, 2.5vw, 1.3rem)" }}>
-                {step.title}
-              </p>
-              <p className="font-sans text-[11px] text-muted-foreground/60 leading-relaxed">{step.desc}</p>
-            </motion.div>
-          ))}
         </div>
 
         {/* Custom project CTA */}
