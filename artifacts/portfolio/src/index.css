@@ -67,64 +67,69 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* LIGHT MODE — warm photographic paper tones */
+/* LIGHT MODE — mesma identidade, fundo claro como papel fotográfico */
 :root {
   --button-outline: rgba(0,0,0, .08);
   --badge-outline: rgba(0,0,0, .05);
 
   --opaque-button-border-intensity: -8;
 
-  --elevate-1: rgba(0,0,0, .03);
-  --elevate-2: rgba(0,0,0, .06);
+  --elevate-1: rgba(0,0,0, .02);
+  --elevate-2: rgba(0,0,0, .05);
 
-  --background: 36 28% 96%;
-  --foreground: 20 15% 12%;
-  --border: 30 15% 82%;
-  --card: 36 22% 93%;
-  --card-foreground: 20 15% 12%;
-  --card-border: 30 15% 82%;
-  --sidebar: 36 28% 96%;
-  --sidebar-foreground: 20 15% 12%;
-  --sidebar-border: 30 15% 82%;
-  --sidebar-primary: 28 50% 42%;
-  --sidebar-primary-foreground: 36 28% 96%;
-  --sidebar-accent: 30 15% 88%;
-  --sidebar-accent-foreground: 20 15% 12%;
-  --sidebar-ring: 28 50% 42%;
-  --popover: 36 28% 96%;
-  --popover-foreground: 20 15% 12%;
-  --popover-border: 30 15% 82%;
-  --primary: 28 50% 42%;
-  --primary-foreground: 36 28% 96%;
-  --secondary: 30 15% 88%;
-  --secondary-foreground: 20 15% 12%;
-  --muted: 30 15% 88%;
-  --muted-foreground: 25 10% 45%;
-  --accent: 28 50% 42%;
-  --accent-foreground: 36 28% 96%;
+  /* Fundo: quase branco com calor — papel fotográfico revelado */
+  --background: 30 18% 97%;
+  /* Foreground: espelho do cream do modo escuro, mas em escuro */
+  --foreground: 20 12% 9%;
+  --border: 30 12% 84%;
+  --card: 30 14% 94%;
+  --card-foreground: 20 12% 9%;
+  --card-border: 30 12% 84%;
+  --sidebar: 30 18% 97%;
+  --sidebar-foreground: 20 12% 9%;
+  --sidebar-border: 30 12% 84%;
+  /* Mesmo âmbar do original */
+  --sidebar-primary: 28 45% 58%;
+  --sidebar-primary-foreground: 20 12% 9%;
+  --sidebar-accent: 30 12% 90%;
+  --sidebar-accent-foreground: 20 12% 9%;
+  --sidebar-ring: 28 45% 58%;
+  --popover: 30 18% 97%;
+  --popover-foreground: 20 12% 9%;
+  --popover-border: 30 12% 84%;
+  /* Mesmo âmbar exato do modo escuro */
+  --primary: 28 45% 58%;
+  --primary-foreground: 20 12% 9%;
+  --secondary: 30 12% 90%;
+  --secondary-foreground: 20 12% 9%;
+  --muted: 30 12% 90%;
+  /* Muted-foreground: proporcionalmente equivalente ao do modo escuro */
+  --muted-foreground: 25 8% 42%;
+  --accent: 28 45% 58%;
+  --accent-foreground: 20 12% 9%;
   --destructive: 0 62.8% 40%;
   --destructive-foreground: 0 0% 100%;
-  --input: 30 15% 85%;
-  --ring: 28 50% 42%;
-  --chart-1: 28 50% 42%;
-  --chart-2: 20 15% 12%;
-  --chart-3: 25 10% 45%;
-  --chart-4: 30 15% 65%;
-  --chart-5: 0 0% 80%;
+  --input: 30 12% 88%;
+  --ring: 28 45% 58%;
+  --chart-1: 28 45% 58%;
+  --chart-2: 20 12% 9%;
+  --chart-3: 25 8% 42%;
+  --chart-4: 30 12% 65%;
+  --chart-5: 0 0% 82%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Playfair Display', serif;
   --app-font-mono: Menlo, monospace;
   --radius: 0rem;
 
-  --shadow-2xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.06);
-  --shadow-xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.06);
-  --shadow-sm: 0px 2px 0px 0px hsl(0 0% 0% / 0.06), 0px 1px 2px -1px hsl(0 0% 0% / 0.06);
-  --shadow: 0px 2px 0px 0px hsl(0 0% 0% / 0.06), 0px 1px 2px -1px hsl(0 0% 0% / 0.06);
-  --shadow-md: 0px 2px 0px 0px hsl(0 0% 0% / 0.08), 0px 2px 4px -1px hsl(0 0% 0% / 0.08);
-  --shadow-lg: 0px 2px 0px 0px hsl(0 0% 0% / 0.08), 0px 4px 6px -1px hsl(0 0% 0% / 0.08);
-  --shadow-xl: 0px 2px 0px 0px hsl(0 0% 0% / 0.08), 0px 8px 10px -1px hsl(0 0% 0% / 0.08);
-  --shadow-2xl: 0px 2px 0px 0px hsl(0 0% 0% / 0.08);
+  --shadow-2xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0px 2px 0px 0px hsl(0 0% 0% / 0.05), 0px 1px 2px -1px hsl(0 0% 0% / 0.05);
+  --shadow: 0px 2px 0px 0px hsl(0 0% 0% / 0.05), 0px 1px 2px -1px hsl(0 0% 0% / 0.05);
+  --shadow-md: 0px 2px 0px 0px hsl(0 0% 0% / 0.07), 0px 2px 4px -1px hsl(0 0% 0% / 0.07);
+  --shadow-lg: 0px 2px 0px 0px hsl(0 0% 0% / 0.07), 0px 4px 6px -1px hsl(0 0% 0% / 0.07);
+  --shadow-xl: 0px 2px 0px 0px hsl(0 0% 0% / 0.07), 0px 8px 10px -1px hsl(0 0% 0% / 0.07);
+  --shadow-2xl: 0px 2px 0px 0px hsl(0 0% 0% / 0.07);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
