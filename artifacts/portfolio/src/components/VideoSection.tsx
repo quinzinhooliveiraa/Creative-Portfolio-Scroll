@@ -30,76 +30,100 @@ export function VideoSection() {
   const [hovered, setHovered] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const clipProgress = useTransform(scrollYProgress, [0.05, 0.4], [100, 0]);
-  const clipPath = useTransform(clipProgress, (v) => `inset(0 0 ${v}% 0)`);
+  const clipProgress = useTransform(scrollYProgress, [0.05, 0.45], [100, 0]);
+  const clipPath = useTransform(clipProgress, (v) => `inset(0 ${v}% 0 0)`);
 
   return (
     <section id="film" ref={ref} className="relative w-full bg-card overflow-hidden">
 
-      {/* ── Cinematic reveal banner ── */}
-      <motion.div
-        style={{ clipPath }}
-        className="relative w-full aspect-[3/4] sm:aspect-[16/9] md:aspect-[2.2/1] overflow-hidden"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        <motion.img
-          src="/images/portfolio-5.png"
-          alt="Olho que Escuta"
-          style={{ y: imgY }}
-          className="absolute inset-0 w-full h-full object-cover scale-110"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 md:gap-6 px-4">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
+      {/* ── Editorial split banner ── */}
+      <div className="flex flex-col md:flex-row min-h-[420px] md:min-h-[520px]">
+
+        {/* Left — text panel */}
+        <div className="flex flex-col justify-between px-6 md:px-12 py-10 md:py-16 md:w-[42%] flex-shrink-0 border-b md:border-b-0 md:border-r border-border/20">
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[9px] uppercase tracking-[0.4em] text-primary mb-8 md:mb-12"
+            >
+              Olho que Escuta · Perspectiva 03
+            </motion.p>
+            <div className="overflow-hidden mb-6">
+              <motion.div
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <h2
+                  className="font-serif font-normal text-foreground tracking-tight leading-none"
+                  style={{ fontSize: "clamp(2.8rem, 6vw, 5.5rem)" }}
+                >
+                  Som em<br />Imagem
+                </h2>
+              </motion.div>
+            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="font-serif italic text-foreground/40 max-w-xs"
+              style={{ fontSize: "clamp(0.85rem, 2vw, 1rem)" }}
+            >
+              "Transformar música em conceito visual"
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-sans text-[9px] uppercase tracking-[0.4em] text-white/50"
+            transition={{ delay: 0.6 }}
+            className="mt-10 md:mt-0"
           >
-            Olho que Escuta · Perspectiva 03
-          </motion.p>
-          <div className="overflow-hidden w-full px-4">
             <motion.div
-              initial={{ y: "100%" }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              animate={{ scale: hovered ? 1.06 : 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative inline-flex items-center gap-4 cursor-pointer group"
             >
-              <h2
-                className="font-serif font-normal text-white text-center tracking-tight leading-none"
-                style={{ fontSize: "clamp(2.8rem, 10vw, 7rem)" }}
-              >
-                Som em Imagem
-              </h2>
+              <div className="relative flex-shrink-0">
+                <motion.div
+                  className="absolute inset-0 rounded-full border border-primary/30"
+                  animate={{ scale: hovered ? 1.5 : 1, opacity: hovered ? 0 : 1 }}
+                  transition={{ duration: 0.5 }}
+                />
+                <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/50 flex items-center justify-center">
+                  <Play className="w-4 h-4 text-primary ml-0.5" fill="currentColor" />
+                </div>
+              </div>
+              <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground group-hover:text-primary transition-colors">
+                Ver trabalho
+              </span>
             </motion.div>
-          </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-            className="font-serif italic text-white/50 text-center max-w-lg"
-            style={{ fontSize: "clamp(0.85rem, 2.5vw, 1.1rem)" }}
-          >
-            "Transformar música em conceito visual"
-          </motion.p>
-          <motion.div
-            animate={{ scale: hovered ? 1.1 : 1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="relative flex items-center justify-center mt-2"
-          >
-            <motion.div
-              className="absolute w-20 h-20 rounded-full border border-primary/25"
-              animate={{ scale: hovered ? 1.5 : 1, opacity: hovered ? 0 : 1 }}
-              transition={{ duration: 0.5 }}
-            />
-            <div className="w-14 h-14 rounded-full bg-primary/10 border border-primary/50 flex items-center justify-center backdrop-blur-sm active:scale-95 transition-transform">
-              <Play className="w-5 h-5 text-primary ml-1" fill="currentColor" />
-            </div>
           </motion.div>
         </div>
-      </motion.div>
+
+        {/* Right — image with left-to-right reveal */}
+        <motion.div
+          style={{ clipPath }}
+          className="relative flex-1 min-h-[260px] md:min-h-0 overflow-hidden"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          <motion.img
+            src="/images/portfolio-5.png"
+            alt="Olho que Escuta"
+            style={{ y: imgY }}
+            className="absolute inset-0 w-full h-full object-cover scale-110"
+          />
+          <div className="absolute inset-0 bg-black/30" />
+        </motion.div>
+      </div>
 
       {/* ── Service list ── */}
       <div className="max-w-[1400px] mx-auto px-4 md:px-12 py-16 md:py-28">
