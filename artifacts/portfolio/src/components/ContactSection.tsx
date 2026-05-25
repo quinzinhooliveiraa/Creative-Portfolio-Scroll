@@ -23,7 +23,7 @@ export function ContactSection() {
             viewport={{ once: true }}
             className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-4 md:mb-5"
           >
-            Contato
+            Projeto personalizado
           </motion.p>
           <div className="overflow-hidden">
             <motion.div
@@ -36,7 +36,7 @@ export function ContactSection() {
                 as="h2"
                 className="font-serif font-normal tracking-tight text-foreground"
               >
-                Fala com a Hoana.
+                Quer criar algo do zero?
               </FitText>
             </motion.div>
           </div>
@@ -53,7 +53,7 @@ export function ContactSection() {
               className="text-muted-foreground font-sans font-light leading-relaxed mb-10 max-w-sm"
               style={{ fontSize: "clamp(0.875rem, 2.8vw, 1rem)" }}
             >
-              Disponível para retratos autorais, direção de vídeo, palestras sobre modos de ver e projetos culturais ultra-personalizados — no Brasil e no exterior.
+              Direção de vídeo, editorial, registro de espetáculos, arte conceitual — fala com a Hoana e a gente pensa junto.
             </p>
             <div className="space-y-5">
               {[

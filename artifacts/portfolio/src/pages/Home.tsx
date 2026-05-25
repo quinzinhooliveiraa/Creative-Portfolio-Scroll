@@ -44,42 +44,6 @@ export default function Home() {
       <footer className="bg-background border-t border-border/20">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
 
-          {/* CTA row — same container, top of footer */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 py-10 md:py-14 border-b border-border/15"
-          >
-            <div>
-              <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-3">Projeto personalizado</p>
-              <p className="font-serif text-foreground mb-2" style={{ fontSize: "clamp(1.2rem, 3.5vw, 1.8rem)" }}>
-                Quer criar algo do zero?
-              </p>
-              <p className="font-sans text-[11px] text-muted-foreground/50 leading-relaxed max-w-md">
-                Direção de vídeo, editorial, registro de espetáculos, arte conceitual — fala com a Hoana e a gente pensa junto.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <motion.button
-                whileTap={{ scale: 0.97 }}
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="flex items-center gap-3 border border-border/30 px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] text-foreground hover:border-primary hover:text-primary transition-colors group whitespace-nowrap"
-              >
-                Fala com a Hoana
-                <motion.span className="inline-block group-hover:translate-x-1 transition-transform">→</motion.span>
-              </motion.button>
-              <motion.button
-                whileTap={{ scale: 0.97 }}
-                onClick={() => navigate("/sessao")}
-                className="flex items-center gap-3 bg-primary text-background px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] hover:bg-primary/90 transition-colors group whitespace-nowrap"
-              >
-                Ver pacote e agendar
-                <motion.span className="inline-block group-hover:translate-x-1 transition-transform">→</motion.span>
-              </motion.button>
-            </div>
-          </motion.div>
-
           {/* Nav columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 pt-12 pb-10">
             <div className="flex flex-col gap-3">
