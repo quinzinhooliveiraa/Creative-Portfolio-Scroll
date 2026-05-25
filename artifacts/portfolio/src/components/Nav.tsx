@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useLocation } from "wouter";
+import { Sun, Moon } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 const links = [
   { label: "Sobre", href: "#about" },
@@ -16,6 +18,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
   const [, navigate] = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   useMotionValueEvent(scrollY, "change", (v) => {
     setScrolled(v > 60);
@@ -69,33 +72,67 @@ export function Nav() {
             ))}
           </nav>
 
-          {/* CTA — navigates to /sessao */}
-          <motion.button
-            onClick={goToSessao}
-            whileTap={{ scale: 0.97 }}
-            className="hidden md:flex items-center gap-2 bg-primary text-background font-sans text-[10px] uppercase tracking-[0.25em] px-5 py-2.5 hover:bg-primary/90 transition-colors flex-shrink-0"
-          >
-            Agendar Sessão
-          </motion.button>
+          <div className="hidden md:flex items-center gap-3 flex-shrink-0">
+            <motion.button
+              onClick={toggleTheme}
+              whileTap={{ scale: 0.9 }}
+              title={theme === "dark" ? "Modo claro" : "Modo escuro"}
+              className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
+              <motion.div
+                key={theme}
+                initial={{ opacity: 0, rotate: -30, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                transition={{ duration: 0.25 }}
+              >
+                {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+              </motion.div>
+            </motion.button>
 
-          <button
-            onClick={() => setOpen((v) => !v)}
-            data-testid="nav-menu-toggle"
-            className="md:hidden flex flex-col gap-[5px] w-11 h-11 items-center justify-center -mr-2"
-          >
-            <motion.span
-              animate={{ rotate: open ? 45 : 0, y: open ? 7 : 0 }}
-              className="block h-[1px] w-full bg-foreground origin-center"
-            />
-            <motion.span
-              animate={{ opacity: open ? 0 : 1 }}
-              className="block h-[1px] w-full bg-foreground"
-            />
-            <motion.span
-              animate={{ rotate: open ? -45 : 0, y: open ? -7 : 0 }}
-              className="block h-[1px] w-full bg-foreground origin-center"
-            />
-          </button>
+            <motion.button
+              onClick={goToSessao}
+              whileTap={{ scale: 0.97 }}
+              className="flex items-center gap-2 bg-primary text-primary-foreground font-sans text-[10px] uppercase tracking-[0.25em] px-5 py-2.5 hover:bg-primary/90 transition-colors"
+            >
+              Agendar Sessão
+            </motion.button>
+          </div>
+
+          <div className="md:hidden flex items-center gap-3 -mr-2">
+            <motion.button
+              onClick={toggleTheme}
+              whileTap={{ scale: 0.9 }}
+              className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <motion.div
+                key={theme}
+                initial={{ opacity: 0, rotate: -30, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                transition={{ duration: 0.25 }}
+              >
+                {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+              </motion.div>
+            </motion.button>
+
+            <button
+              onClick={() => setOpen((v) => !v)}
+              data-testid="nav-menu-toggle"
+              className="flex flex-col gap-[5px] w-11 h-11 items-center justify-center"
+            >
+              <motion.span
+                animate={{ rotate: open ? 45 : 0, y: open ? 7 : 0 }}
+                className="block h-[1px] w-full bg-foreground origin-center"
+              />
+              <motion.span
+                animate={{ opacity: open ? 0 : 1 }}
+                className="block h-[1px] w-full bg-foreground"
+              />
+              <motion.span
+                animate={{ rotate: open ? -45 : 0, y: open ? -7 : 0 }}
+                className="block h-[1px] w-full bg-foreground origin-center"
+              />
+            </button>
+          </div>
         </div>
       </motion.header>
 
@@ -123,7 +160,7 @@ export function Nav() {
           initial={false}
           animate={{ opacity: open ? 1 : 0, y: open ? 0 : 20 }}
           transition={{ delay: links.length * 0.07 }}
-          className="mt-4 bg-primary text-background font-sans text-[11px] uppercase tracking-[0.25em] px-8 py-4"
+          className="mt-4 bg-primary text-primary-foreground font-sans text-[11px] uppercase tracking-[0.25em] px-8 py-4"
         >
           Agendar Sessão
         </motion.button>
