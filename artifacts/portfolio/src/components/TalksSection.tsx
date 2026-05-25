@@ -106,7 +106,7 @@ export function TalksSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 border border-border/20 px-3 py-1.5"
+              className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 border border-border/20 px-3 py-1.5 glass-card-sm"
             >
               {t.label}
             </motion.span>

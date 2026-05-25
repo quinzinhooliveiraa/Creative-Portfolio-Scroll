@@ -177,7 +177,7 @@ export function VideoSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="border-b sm:border-b-0 sm:border-r border-border/20 last:border-r-0 py-8 px-0 sm:px-6 first:pl-0 last:pr-0 group"
+              className="border-b sm:border-b-0 sm:border-r border-border/20 last:border-r-0 py-8 px-0 sm:px-6 first:pl-0 last:pr-0 group glass-card-sm"
             >
               <p className="font-sans text-[10px] text-primary/60 tracking-widest mb-3">{s.num}</p>
               <p className="font-serif text-foreground mb-3 group-hover:text-primary transition-colors"
