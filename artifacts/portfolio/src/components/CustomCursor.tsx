@@ -75,6 +75,7 @@ export function CustomCursor() {
         animate={{ opacity: hidden ? 0 : 0.85 }}
         transition={{ scaleY: { type: "spring", stiffness: 300, damping: 20 }, scaleX: { type: "spring", stiffness: 300, damping: 20 } }}
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
+        style={{ mixBlendMode: "difference" } as React.CSSProperties}
       >
         <svg
           width="44"
@@ -87,7 +88,7 @@ export function CustomCursor() {
           {/* Eye outline */}
           <path
             d="M2 14 C8 3, 36 3, 42 14 C36 25, 8 25, 2 14 Z"
-            stroke="hsl(var(--foreground))"
+            stroke="white"
             strokeWidth="1.5"
             fill="none"
           />
@@ -96,7 +97,7 @@ export function CustomCursor() {
             cx="22"
             cy="14"
             r="6.5"
-            stroke="hsl(var(--foreground))"
+            stroke="white"
             strokeWidth="1.2"
             fill="none"
           />
@@ -110,7 +111,8 @@ export function CustomCursor() {
           y: pupilY,
           translateX: "-50%",
           translateY: "-50%",
-        }}
+          mixBlendMode: "difference",
+        } as React.CSSProperties}
         animate={{
           scale: clicking ? 0.5 : hovered ? 1.4 : 1,
           opacity: hidden ? 0 : 1,
@@ -123,7 +125,7 @@ export function CustomCursor() {
             width: 7,
             height: 7,
             borderRadius: "50%",
-            background: "hsl(var(--foreground))",
+            background: "white",
             transform: "translate(-50%, -50%)",
           }}
         />
