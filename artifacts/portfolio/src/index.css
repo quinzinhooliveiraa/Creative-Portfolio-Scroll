@@ -281,6 +281,15 @@ html:not(.dark) .glass-card-sm {
     inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
+/* Nav glass — modo claro */
+html:not(.dark) .nav-glass {
+  background: rgba(255, 255, 255, 0.60) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom-color: rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.06);
+}
+
 /* Autofill override — impede fundo branco do browser nos inputs da seção escura */
 .section-dark input:-webkit-autofill,
 .section-dark input:-webkit-autofill:hover,

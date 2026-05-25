@@ -49,7 +49,7 @@ export function Nav() {
         initial={{ y: -80, opacity: 0 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-colors duration-300 ${
-          scrolled ? "bg-background/90 backdrop-blur-md border-b border-border/20" : "bg-transparent"
+          scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/20 nav-glass" : "bg-transparent"
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between gap-6">
