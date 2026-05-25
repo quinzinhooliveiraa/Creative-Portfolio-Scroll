@@ -31,7 +31,7 @@ export function VideoSection() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
   const clipProgress = useTransform(scrollYProgress, [0.05, 0.4], [100, 0]);
-  const clipPath = useTransform(clipProgress, (v) => `inset(${v}% 0 0 0)`);
+  const clipPath = useTransform(clipProgress, (v) => `inset(0 0 ${v}% 0)`);
 
   return (
     <section id="film" ref={ref} className="relative w-full bg-card overflow-hidden">
