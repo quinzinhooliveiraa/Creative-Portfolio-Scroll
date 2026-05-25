@@ -40,16 +40,28 @@ export function BookingSection() {
               </motion.h2>
             </div>
           </div>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-sans font-light text-muted-foreground leading-relaxed md:max-w-xs"
-            style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}
+            className="flex flex-col gap-5 md:max-w-xs"
           >
-            Tratarei da sua imagem com o mesmo requinte e cuidado que a natureza dedica a cada folha ou flor que nasce.
-          </motion.p>
+            <p
+              className="font-sans font-light text-muted-foreground leading-relaxed"
+              style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}
+            >
+              Tratarei da sua imagem com o mesmo requinte e cuidado que a natureza dedica a cada folha ou flor que nasce.
+            </p>
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              onClick={() => navigate("/sessao")}
+              className="self-start flex items-center gap-3 bg-primary text-background px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] hover:bg-primary/90 transition-colors group whitespace-nowrap"
+            >
+              Agendar Sessão
+              <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </motion.div>
         </div>
 
         {/* Process steps */}
