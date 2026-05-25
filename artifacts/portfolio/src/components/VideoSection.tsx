@@ -30,7 +30,7 @@ export function VideoSection() {
   const [hovered, setHovered] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const clipProgress = useTransform(scrollYProgress, [0.05, 0.45], [100, 0]);
+  const clipProgress = useTransform(scrollYProgress, [0, 0.18], [100, 0]);
   const clipPath = useTransform(clipProgress, (v) => `inset(0 ${v}% 0 0)`);
 
   return (
@@ -50,7 +50,7 @@ export function VideoSection() {
             >
               Olho que Escuta · Perspectiva 03
             </motion.p>
-            <div className="overflow-hidden mb-6">
+            <div className="overflow-hidden pb-2 mb-4">
               <motion.div
                 initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}
