@@ -21,7 +21,7 @@ export function BookingSection() {
             >
               Agendar Sessão
             </motion.p>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden pb-2">
               <motion.h2
                 initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}

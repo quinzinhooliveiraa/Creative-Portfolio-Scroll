@@ -44,7 +44,7 @@ export function PhotographySection() {
           >
             Olho que Vê · Perspectiva 01
           </motion.p>
-          <div className="overflow-hidden mb-4">
+          <div className="overflow-hidden pb-2 mb-4">
             <motion.h2
               initial={{ y: "100%" }}
               whileInView={{ y: 0 }}
@@ -69,7 +69,7 @@ export function PhotographySection() {
             <p className="font-sans font-light text-muted-foreground leading-relaxed mb-8"
               style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}>
               Visto pelos meus olhos treinados, você deixa de ser apenas um "meio"
-              (um objeto para a câmera) e passa a ser um "fim em si mesmo" — uma
+              (um objeto para a câmera) e passa a ser um "fim em si mesmo",
               expressão única da vida. Afinal, tratarei da sua imagem com o mesmo
               requinte e cuidado que a natureza dedica a cada folha ou flor que nasce.
             </p>

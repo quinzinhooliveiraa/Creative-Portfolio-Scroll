@@ -8,7 +8,7 @@ const talks = [
     event: "Acessibilidade em Artes Visuais",
     type: "Oficina",
     year: "2024",
-    desc: "Imagens táteis e tradução sensorial — a fotografia como experiência de todos os sentidos.",
+    desc: "Imagens táteis e tradução sensorial. A fotografia como experiência de todos os sentidos.",
   },
   {
     num: "02",
@@ -64,7 +64,7 @@ export function TalksSection() {
             >
               Olho que Fala · Perspectiva 02
             </motion.p>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden pb-2">
               <motion.h2
                 initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}
@@ -87,7 +87,7 @@ export function TalksSection() {
             <p className="font-sans font-light text-muted-foreground leading-relaxed"
               style={{ fontSize: "clamp(0.8rem, 2vw, 0.9rem)" }}>
               Palestras, acessibilidade visual e oficinas sobre modos de ver.
-              A imagem que vai além dos olhos — para todos os corpos e sentidos.
+              A imagem que vai além dos olhos, para todos os corpos e sentidos.
             </p>
           </motion.div>
         </div>

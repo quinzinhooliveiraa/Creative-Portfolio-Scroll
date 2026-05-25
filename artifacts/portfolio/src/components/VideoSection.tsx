@@ -6,7 +6,7 @@ const services = [
   {
     num: "01",
     title: "Videoclipes",
-    desc: "Concepção e direção — transformar som em imagem, traduzindo atmosferas musicais em visualidades únicas.",
+    desc: "Concepção e direção: transformar som em imagem e traduzir atmosferas musicais em visualidades únicas.",
   },
   {
     num: "02",
@@ -145,7 +145,7 @@ export function VideoSection() {
               style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}
             >
               Traduzo atmosferas musicais, sons, corpos e atmosferas em imagem.
-              Crio visualidades a partir da escuta — do zero, com você, até a obra completa.
+              Crio visualidades a partir da escuta, do zero, com você, até a obra completa.
             </motion.p>
           </div>
           <div>
@@ -164,7 +164,7 @@ export function VideoSection() {
               className="font-sans font-light text-muted-foreground leading-relaxed"
               style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}
             >
-              Projetos culturais, artistas independentes, bandas, gravadoras, espetáculos teatrais e de dança — Brasil e exterior.
+              Projetos culturais, artistas independentes, bandas, gravadoras e espetáculos no Brasil e no exterior.
             </motion.p>
           </div>
         </div>

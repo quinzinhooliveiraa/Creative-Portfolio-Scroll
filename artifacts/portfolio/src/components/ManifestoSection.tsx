@@ -28,7 +28,7 @@ export function ManifestoSection() {
               Manifesto
             </motion.p>
 
-            <div className="overflow-hidden mb-8">
+            <div className="overflow-hidden pb-2 mb-8">
               <motion.h2
                 initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}
@@ -108,10 +108,10 @@ export function ManifestoSection() {
 
             <div className="space-y-0 border-t border-border/20">
               {[
-                { label: "01 — Olho que Vê", sub: "Rito de Retrato · Retratos e presença", href: "#portfolio" },
-                { label: "02 — Olho que Fala", sub: "Palestras · Acessibilidade · Arte Educação", href: "#talks" },
-                { label: "03 — Olho que Escuta", sub: "Música · Videoclipes · Direção Visual", href: "#film" },
-                { label: "04 — Olho Artista", sub: "Arte Contemporânea · Galerias · Performance", href: "#arte" },
+                { label: "01 · Olho que Vê", sub: "Rito de Retrato · Retratos e presença", href: "#portfolio" },
+                { label: "02 · Olho que Fala", sub: "Palestras · Acessibilidade · Arte Educação", href: "#talks" },
+                { label: "03 · Olho que Escuta", sub: "Música · Videoclipes · Direção Visual", href: "#film" },
+                { label: "04 · Olho Artista", sub: "Arte Contemporânea · Galerias · Performance", href: "#arte" },
               ].map((item, i) => (
                 <motion.a
                   key={item.label}

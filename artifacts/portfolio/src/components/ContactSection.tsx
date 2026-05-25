@@ -25,7 +25,7 @@ export function ContactSection() {
           >
             Projeto personalizado
           </motion.p>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden pb-2">
             <motion.div
               initial={{ y: "100%" }}
               whileInView={{ y: 0 }}
@@ -53,7 +53,7 @@ export function ContactSection() {
               className="text-muted-foreground font-sans font-light leading-relaxed mb-10 max-w-sm"
               style={{ fontSize: "clamp(0.875rem, 2.8vw, 1rem)" }}
             >
-              Direção de vídeo, editorial, registro de espetáculos, arte conceitual — fala com a Hoana e a gente pensa junto.
+              Direção de vídeo, editorial, registro de espetáculos e arte conceitual. Fala com a Hoana e a gente pensa junto.
             </p>
             <div className="space-y-5">
               {[

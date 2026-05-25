@@ -109,7 +109,7 @@ export default function Home() {
           {/* Copyright bar */}
           <div className="border-t border-border/10 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
             <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40">
-              &copy; {new Date().getFullYear()} Hoana Bonito — Todos os direitos reservados
+              &copy; {new Date().getFullYear()} Hoana Bonito · Todos os direitos reservados
             </p>
             <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/30">
               O mundo da arte é onde você faz

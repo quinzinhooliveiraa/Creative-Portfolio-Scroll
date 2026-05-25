@@ -16,10 +16,10 @@ const cartografia = [
 ];
 
 const formacao = [
-  { label: "Artes Visuais", sub: "UnB — Universidade de Brasília" },
-  { label: "Intercâmbio em Fotografia", sub: "Université Lumière Lyon 2, França — onde o cinema nasceu" },
+  { label: "Artes Visuais", sub: "UnB, Universidade de Brasília" },
+  { label: "Intercâmbio em Fotografia", sub: "Université Lumière Lyon 2, França" },
   { label: "Mestre em Práticas Artísticas Multimídia", sub: "Universidade de Évora, Portugal" },
-  { label: "Cultura e Criação", sub: "Especialização — SENAC" },
+  { label: "Cultura e Criação", sub: "Especialização, SENAC" },
 ];
 
 /* duplicamos 4× para garantir loop suave em qualquer tela */
@@ -102,7 +102,7 @@ export function AboutSection() {
             >
               Oi! Sou a Hoana ✨
             </motion.p>
-            <div className="overflow-hidden mb-5">
+            <div className="overflow-hidden pb-2 mb-5">
               <motion.div
                 initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}
@@ -129,7 +129,7 @@ export function AboutSection() {
                 com sensibilidade artística.
               </p>
               <p>
-                Conecto tudo o que vejo pela perspectiva do olhar — no sentido de reparar
+                Conecto tudo o que vejo pela perspectiva do olhar, no sentido de reparar
                 o que se percebe. Meus registros contam histórias autênticas e emocionantes,
                 revelando conexões humanas e momentos únicos com extrema atenção aos detalhes.
               </p>

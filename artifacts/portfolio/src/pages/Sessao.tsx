@@ -15,7 +15,7 @@ const includes = [
 ];
 
 const steps = [
-  { num: "01", title: "Conversa", desc: "Você me conta quem é, o que sente, o que quer guardar. Eu escuto de verdade — e planejamos juntos." },
+  { num: "01", title: "Conversa", desc: "Você me conta quem é, o que sente, o que quer guardar. Eu escuto de verdade e planejamos juntos." },
   { num: "02", title: "Sessão", desc: "No dia combinado, você é co-diretor(a) da sua história. Sem poses forçadas. Só verdade e presença." },
   { num: "03", title: "Seleção", desc: "Você recebe uma galeria privada e escolhe suas favoritas. Cada foto é tratada com o mesmo cuidado da natureza." },
   { num: "04", title: "Entrega", desc: "Suas imagens chegam em alta resolução, prontas para impressão e uso digital. Para sempre." },
@@ -23,11 +23,11 @@ const steps = [
 
 const faqs = [
   { q: "Onde acontecem as sessões?", a: "Em locações externas (parques, ruas, espaços abertos) ou em estúdio parceiro. Definimos juntos o que faz mais sentido para a sua história." },
-  { q: "E se eu for tímido(a) em frente à câmera?", a: "A maioria das pessoas é! Por isso a conversa prévia existe — para criar confiança antes de qualquer foto ser tirada. Você vai se surpreender." },
+  { q: "E se eu for tímido(a) em frente à câmera?", a: "A maioria das pessoas é! Por isso a conversa prévia existe para criar confiança antes de qualquer foto ser tirada. Você vai se surpreender." },
   { q: "Posso levar família, filhos, pets?", a: "Sim! As sessões de família, casamento e newborn têm a mesma abordagem. Me conta quem faz parte da sua história." },
   { q: "Como funciona o pagamento?", a: "O pagamento é feito antecipadamente pelo link de pagamento, confirmando assim a sua data na agenda." },
   { q: "Em quanto tempo recebo as fotos?", a: "Entre 10 e 15 dias úteis após a sessão. Você recebe uma galeria online privada para selecionar e baixar." },
-  { q: "Posso remarcar a sessão?", a: "Sim, com até 48h de antecedência. Entendemos que imprevistos acontecem — e a gente se ajusta juntos." },
+  { q: "Posso remarcar a sessão?", a: "Sim, com até 48h de antecedência. Entendemos que imprevistos acontecem e a gente se ajusta juntos." },
 ];
 
 export default function Sessao() {
@@ -206,7 +206,7 @@ export default function Sessao() {
                       Rito do Retrato
                     </h2>
                     <p className="font-sans text-[13px] text-muted-foreground/70 leading-relaxed">
-                      Um encontro fotográfico pensado para revelar quem você é — não quem você acha que deveria parecer.
+                      Um encontro fotográfico pensado para revelar quem você é, não quem você acha que deveria parecer.
                       Cada sessão é única, conduzida com presença e cuidado, como um rito de passagem registrado em luz.
                     </p>
                   </div>
@@ -380,7 +380,7 @@ export default function Sessao() {
 
         <div className="border-t border-border/10 max-w-[1400px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between gap-3">
           <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/30">
-            &copy; {new Date().getFullYear()} Hoana Bonito — Todos os direitos reservados
+            &copy; {new Date().getFullYear()} Hoana Bonito · Todos os direitos reservados
           </p>
           <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/20 hidden md:block">
             O mundo da arte é onde você faz

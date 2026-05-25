@@ -9,7 +9,7 @@ const pieces = [
     type: "Instalação",
     year: "2024",
     available: true,
-    desc: "Luz como matéria — instalação que questiona os limites entre o visto e o sentido.",
+    desc: "Luz como matéria. Instalação que questiona os limites entre o visto e o sentido.",
   },
   {
     num: "02",
@@ -21,7 +21,7 @@ const pieces = [
   },
   {
     num: "03",
-    title: "Maneiras de Ver — Série Fotográfica",
+    title: "Maneiras de Ver: Série Fotográfica",
     type: "Fotografia Conceitual",
     year: "2023",
     available: true,
@@ -33,7 +33,7 @@ const pieces = [
     type: "Pintura",
     year: "2023",
     available: true,
-    desc: "Telas que traduzem o invisível — a experiência antes de se tornar imagem.",
+    desc: "Telas que traduzem o invisível. A experiência antes de se tornar imagem.",
   },
 ];
 
@@ -61,7 +61,7 @@ export function OlhoArtistaSection() {
             >
               Olho Artista · Perspectiva 04
             </motion.p>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden pb-2">
               <motion.h2
                 initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}
