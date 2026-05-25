@@ -30,8 +30,8 @@ export default function Home() {
     <main className="bg-background text-foreground">
       <Nav />
       <HeroSection />
-      <ManifestoSection />
       <AboutSection />
+      <ManifestoSection />
       <PhotographySection />
       <BookingSection />
       <TalksSection />
