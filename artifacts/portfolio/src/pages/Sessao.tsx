@@ -39,7 +39,7 @@ export default function Sessao() {
       <div className="grain-overlay" />
 
       {/* ── Header ── */}
-      <header className="fixed top-0 left-0 right-0 z-[100] bg-background/90 backdrop-blur-md border-b border-border/20">
+      <header className="fixed top-0 left-0 right-0 z-[100] bg-background/90 backdrop-blur-md border-b border-border/20 section-dark nav-glass">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between gap-4">
 
           <button
@@ -74,7 +74,7 @@ export default function Sessao() {
       <main className="flex-1 pt-16">
 
         {/* ── Hero ── */}
-        <div className="relative w-full overflow-hidden">
+        <div className="relative w-full overflow-hidden section-dark">
           <div className="absolute inset-0 z-0">
             <img
               src="/images/portrait.png"
@@ -144,7 +144,8 @@ export default function Sessao() {
         <div className="border-t border-border/15" />
 
         {/* ── Como funciona ── */}
-        <div id="como-funciona" className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24">
+        <div id="como-funciona" className="light-gradient-bg">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -161,7 +162,7 @@ export default function Sessao() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="border-b sm:border-b-0 sm:border-r border-border/20 last:border-r-0 py-8 px-0 sm:px-6 first:pl-0 last:pr-0"
+                className="border-b sm:border-b-0 sm:border-r border-border/20 last:border-r-0 py-8 px-6 glass-card-sm"
               >
                 <p className="font-sans text-[10px] text-primary/50 tracking-widest mb-3">{step.num}</p>
                 <p className="font-serif text-foreground mb-3" style={{ fontSize: "clamp(1.05rem, 2.5vw, 1.3rem)" }}>
@@ -172,6 +173,8 @@ export default function Sessao() {
             ))}
           </div>
         </div>
+
+        </div>{/* end como funciona wrapper */}
 
         {/* ── Purchase card ── */}
         <div className="bg-card border-t border-border/15">
@@ -190,7 +193,7 @@ export default function Sessao() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="border border-primary/20"
+              className="border border-primary/20 glass-card"
             >
               <div className="h-[2px] w-full bg-gradient-to-r from-primary/80 via-primary to-primary/30" />
 
@@ -331,7 +334,7 @@ export default function Sessao() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="bg-card border-t border-border/20">
+      <footer className="bg-card border-t border-border/20 section-dark">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-10 md:py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
 
           <div>
