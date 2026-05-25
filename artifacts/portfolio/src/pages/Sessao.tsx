@@ -177,7 +177,7 @@ export default function Sessao() {
         </div>{/* end como funciona wrapper */}
 
         {/* ── Purchase card ── */}
-        <div className="bg-card border-t border-border/15">
+        <div className="bg-card border-t border-border/15 section-dark">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24">
             <motion.p
               initial={{ opacity: 0 }}
@@ -193,7 +193,7 @@ export default function Sessao() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="border border-primary/20 glass-card"
+              className="border border-primary/20"
             >
               <div className="h-[2px] w-full bg-gradient-to-r from-primary/80 via-primary to-primary/30" />
 
