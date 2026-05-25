@@ -72,10 +72,9 @@ export function CustomCursor() {
           scaleX: eyeScaleX,
           scaleY: eyeScaleY,
         }}
-        animate={{ opacity: hidden ? 0 : 0.85 }}
+        animate={{ opacity: hidden ? 0 : 1 }}
         transition={{ scaleY: { type: "spring", stiffness: 300, damping: 20 }, scaleX: { type: "spring", stiffness: 300, damping: 20 } }}
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
-        style={{ mixBlendMode: "difference" } as React.CSSProperties}
       >
         <svg
           width="44"
@@ -83,22 +82,22 @@ export function CustomCursor() {
           viewBox="0 0 44 28"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ overflow: "visible" }}
+          style={{ overflow: "visible", filter: "drop-shadow(0 0 3px rgba(0,0,0,0.5))" }}
         >
           {/* Eye outline */}
           <path
             d="M2 14 C8 3, 36 3, 42 14 C36 25, 8 25, 2 14 Z"
-            stroke="white"
-            strokeWidth="1.5"
-            fill="none"
+            stroke="hsl(28 45% 58%)"
+            strokeWidth="2"
+            fill="rgba(196,153,103,0.08)"
           />
           {/* Iris */}
           <circle
             cx="22"
             cy="14"
             r="6.5"
-            stroke="white"
-            strokeWidth="1.2"
+            stroke="hsl(28 45% 58%)"
+            strokeWidth="2"
             fill="none"
           />
         </svg>
@@ -111,8 +110,7 @@ export function CustomCursor() {
           y: pupilY,
           translateX: "-50%",
           translateY: "-50%",
-          mixBlendMode: "difference",
-        } as React.CSSProperties}
+        }}
         animate={{
           scale: clicking ? 0.5 : hovered ? 1.4 : 1,
           opacity: hidden ? 0 : 1,
@@ -125,7 +123,8 @@ export function CustomCursor() {
             width: 7,
             height: 7,
             borderRadius: "50%",
-            background: "white",
+            background: "hsl(28 45% 58%)",
+            boxShadow: "0 0 4px rgba(0,0,0,0.4)",
             transform: "translate(-50%, -50%)",
           }}
         />
