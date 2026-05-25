@@ -1,0 +1,2 @@
+artifacts/portfolio/src/**/*.tsx merge=ours
+artifacts/portfolio/src/**/*.css merge=ours
