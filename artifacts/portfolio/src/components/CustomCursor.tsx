@@ -9,11 +9,11 @@ export function CustomCursor() {
   const rawX = useMotionValue(-100);
   const rawY = useMotionValue(-100);
 
-  const dotX = useSpring(rawX, { stiffness: 2000, damping: 60, mass: 0.2 });
-  const dotY = useSpring(rawY, { stiffness: 2000, damping: 60, mass: 0.2 });
+  const pupilX = useSpring(rawX, { stiffness: 2000, damping: 60, mass: 0.2 });
+  const pupilY = useSpring(rawY, { stiffness: 2000, damping: 60, mass: 0.2 });
 
-  const ringX = useSpring(rawX, { stiffness: 600, damping: 40, mass: 0.3 });
-  const ringY = useSpring(rawY, { stiffness: 600, damping: 40, mass: 0.3 });
+  const eyeX = useSpring(rawX, { stiffness: 500, damping: 38, mass: 0.3 });
+  const eyeY = useSpring(rawY, { stiffness: 500, damping: 38, mass: 0.3 });
 
   const isTouchRef = useRef(false);
 
@@ -57,24 +57,77 @@ export function CustomCursor() {
     };
   }, [rawX, rawY]);
 
+  const eyeScaleY = clicking ? 0.15 : hovered ? 1.25 : 1;
+  const eyeScaleX = hovered ? 1.35 : 1;
+
   return (
     <>
+      {/* Outer eye shape */}
       <motion.div
-        style={{ x: dotX, y: dotY, translateX: "-50%", translateY: "-50%" }}
-        animate={{ scale: clicking ? 0.6 : hovered ? 0 : 1, opacity: hidden ? 0 : 1 }}
-        transition={{ scale: { type: "spring", stiffness: 600, damping: 30 } }}
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-primary z-[10000] pointer-events-none"
-      />
-      <motion.div
-        style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
-        animate={{
-          scale: clicking ? 0.8 : hovered ? 2 : 1,
-          opacity: hidden ? 0 : 0.7,
-          borderColor: hovered ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+        style={{
+          x: eyeX,
+          y: eyeY,
+          translateX: "-50%",
+          translateY: "-50%",
+          scaleX: eyeScaleX,
+          scaleY: eyeScaleY,
         }}
-        transition={{ scale: { type: "spring", stiffness: 200, damping: 20 } }}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border pointer-events-none z-[9999]"
-      />
+        animate={{ opacity: hidden ? 0 : 0.85 }}
+        transition={{ scaleY: { type: "spring", stiffness: 300, damping: 20 }, scaleX: { type: "spring", stiffness: 300, damping: 20 } }}
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
+      >
+        <svg
+          width="44"
+          height="28"
+          viewBox="0 0 44 28"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ overflow: "visible" }}
+        >
+          {/* Eye outline */}
+          <path
+            d="M2 14 C8 3, 36 3, 42 14 C36 25, 8 25, 2 14 Z"
+            stroke="hsl(var(--foreground))"
+            strokeWidth="1.5"
+            fill="none"
+          />
+          {/* Iris */}
+          <circle
+            cx="22"
+            cy="14"
+            r="6.5"
+            stroke="hsl(var(--foreground))"
+            strokeWidth="1.2"
+            fill="none"
+          />
+        </svg>
+      </motion.div>
+
+      {/* Pupil — follows cursor precisely */}
+      <motion.div
+        style={{
+          x: pupilX,
+          y: pupilY,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        animate={{
+          scale: clicking ? 0.5 : hovered ? 1.4 : 1,
+          opacity: hidden ? 0 : 1,
+        }}
+        transition={{ scale: { type: "spring", stiffness: 600, damping: 25 } }}
+        className="fixed top-0 left-0 pointer-events-none z-[10000]"
+      >
+        <div
+          style={{
+            width: 7,
+            height: 7,
+            borderRadius: "50%",
+            background: "hsl(var(--foreground))",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+      </motion.div>
     </>
   );
 }
