@@ -79,13 +79,13 @@
 
   --background: 30 18% 97%;
   --foreground: 0 0% 4%;
-  --border: 0 0% 20%;
+  --border: 0 0% 0%;
   --card: 30 14% 94%;
   --card-foreground: 0 0% 4%;
-  --card-border: 0 0% 20%;
+  --card-border: 0 0% 0%;
   --sidebar: 30 18% 97%;
   --sidebar-foreground: 0 0% 4%;
-  --sidebar-border: 0 0% 20%;
+  --sidebar-border: 0 0% 0%;
   --sidebar-primary: 28 45% 58%;
   --sidebar-primary-foreground: 0 0% 4%;
   --sidebar-accent: 30 12% 88%;
