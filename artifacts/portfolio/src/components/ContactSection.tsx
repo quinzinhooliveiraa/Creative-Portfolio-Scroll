@@ -16,7 +16,7 @@ export function ContactSection() {
       </motion.div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-12 py-16 md:py-28">
-        <div className="border-b border-border/20 pb-8 md:pb-14 mb-10 md:mb-16">
+        <div className="border-b border-border/20 pb-4 md:pb-8 mb-6 md:mb-10">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
