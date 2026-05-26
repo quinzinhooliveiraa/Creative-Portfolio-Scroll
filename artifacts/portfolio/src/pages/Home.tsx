@@ -46,7 +46,7 @@ export default function Home() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
 
           {/* Mobile footer — minimal */}
-          <div className="md:hidden py-8 flex flex-col gap-6">
+          <div className="md:hidden py-8 flex flex-col items-center gap-6 text-center">
             <div>
               <span
                 className="font-serif text-lg tracking-[0.15em] text-foreground uppercase cursor-pointer hover:text-primary transition-colors block mb-1"
@@ -121,7 +121,7 @@ export default function Home() {
           </div>
 
           {/* Copyright bar */}
-          <div className="border-t border-border/10 py-4 md:py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-3">
+          <div className="border-t border-border/10 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-3">
             <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40">
               &copy; {new Date().getFullYear()} Hoana Bonito · Todos os direitos reservados
             </p>
