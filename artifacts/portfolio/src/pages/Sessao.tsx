@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { SocialIcons } from "@/components/SocialIcons";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ExternalLink, ChevronDown, ArrowLeft, ArrowRight } from "lucide-react";
 import { useLocation } from "wouter";
@@ -353,16 +354,7 @@ export default function Sessao() {
             </p>
           </div>
 
-          <div className="flex gap-6 md:gap-10">
-            {["Instagram", "Behance", "LinkedIn"].map((s) => (
-              <span
-                key={s}
-                className="font-sans text-[9px] uppercase tracking-[0.2em] text-muted-foreground/40 hover:text-muted-foreground transition-colors cursor-pointer"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
+          <SocialIcons />
 
           <div className="flex items-center gap-3 md:gap-4">
             <button

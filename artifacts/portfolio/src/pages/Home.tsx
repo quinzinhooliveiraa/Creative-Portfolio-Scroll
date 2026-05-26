@@ -10,6 +10,7 @@ import { TalksSection } from "@/components/TalksSection";
 import { ContactSection } from "@/components/ContactSection";
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
+import { SocialIcons } from "@/components/SocialIcons";
 
 const anchorLinks = [
   { label: "Sobre", href: "#about" },
@@ -57,16 +58,7 @@ export default function Home() {
                 Artista Visual · Fotógrafa · Diretora de Vídeo
               </p>
             </div>
-            <div className="flex gap-5">
-              {["Instagram", "Behance", "LinkedIn"].map((s) => (
-                <span
-                  key={s}
-                  className="font-sans text-[9px] uppercase tracking-[0.2em] text-muted-foreground/50 hover:text-muted-foreground transition-colors cursor-pointer"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
+            <SocialIcons />
             <button
               onClick={() => navigate("/sessao")}
               className="w-full border border-primary/40 text-primary font-sans text-[10px] uppercase tracking-[0.25em] py-3 hover:bg-primary/10 transition-colors"
@@ -123,16 +115,7 @@ export default function Home() {
                   hoana@hoanabonito.com
                 </a>
                 <p className="font-sans text-[10px] text-muted-foreground/50">Brasil · Nômade</p>
-                <div className="flex gap-4 mt-1">
-                  {["Instagram", "Behance", "LinkedIn"].map((s) => (
-                    <span
-                      key={s}
-                      className="font-sans text-[9px] uppercase tracking-[0.2em] text-muted-foreground/50 hover:text-muted-foreground transition-colors cursor-pointer"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
+                <SocialIcons className="mt-1" />
               </div>
             </div>
           </div>
