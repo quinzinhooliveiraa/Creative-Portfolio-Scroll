@@ -349,7 +349,7 @@ export default function Sessao() {
             >
               Hoana Bonito
             </button>
-            <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-muted-foreground/50">
+            <p className="font-sans text-[8px] uppercase tracking-[0.15em] text-muted-foreground/50">
               Artista Visual · Fotógrafa · Diretora de Vídeo
             </p>
           </div>
