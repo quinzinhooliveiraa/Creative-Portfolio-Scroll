@@ -339,12 +339,12 @@ export default function Sessao() {
 
       {/* ── Footer ── */}
       <footer className="bg-card border-t border-border/20 section-dark">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-10 md:py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-8 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8">
 
           <div>
             <button
               onClick={() => navigate("/")}
-              className="font-serif text-lg tracking-[0.15em] text-foreground uppercase hover:text-primary transition-colors mb-2 block"
+              className="font-serif text-lg tracking-[0.15em] text-foreground uppercase hover:text-primary transition-colors mb-1 block"
             >
               Hoana Bonito
             </button>
@@ -353,7 +353,7 @@ export default function Sessao() {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-6 md:gap-10">
+          <div className="flex gap-6 md:gap-10">
             {["Instagram", "Behance", "LinkedIn"].map((s) => (
               <span
                 key={s}
@@ -364,20 +364,20 @@ export default function Sessao() {
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
             <button
               onClick={() => navigate("/")}
               className="flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors group"
             >
               <ArrowLeft size={11} className="group-hover:-translate-x-1 transition-transform" />
-              Voltar ao site
+              Voltar
             </button>
             <motion.a
               href={PAYMENT_URL}
               target="_blank"
               rel="noopener noreferrer"
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 bg-primary text-background px-5 py-3 font-sans text-[9px] uppercase tracking-[0.25em] hover:bg-primary/90 transition-colors group"
+              className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-primary text-background px-5 py-3 font-sans text-[9px] uppercase tracking-[0.25em] hover:bg-primary/90 transition-colors group"
             >
               Garantir sessão
               <ArrowRight size={10} className="group-hover:translate-x-0.5 transition-transform" />
