@@ -339,7 +339,7 @@ export default function Sessao() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="bg-card border-t border-border/20 section-dark">
+      <footer className="bg-background border-t border-border/20 section-dark">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-8 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8">
 
           <div>
@@ -377,13 +377,21 @@ export default function Sessao() {
           </div>
         </div>
 
-        <div className="border-t border-border/10 max-w-[1400px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between gap-3">
-          <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/30">
+        <div className="border-t border-border/10 max-w-[1400px] mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-3">
+          <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40">
             &copy; {new Date().getFullYear()} Hoana Bonito · Todos os direitos reservados
           </p>
-          <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/20 hidden md:block">
+          <span className="hidden md:block font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/30">
             O mundo da arte é onde você faz
           </span>
+          <a
+            href="https://quinzinhooliveira.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-sans text-[9px] uppercase tracking-[0.2em] text-muted-foreground/25 hover:text-muted-foreground/50 transition-colors duration-300"
+          >
+            Desenvolvido por quinzinhooliveira.com
+          </a>
         </div>
       </footer>
     </div>
