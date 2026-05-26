@@ -141,7 +141,7 @@ export function Nav() {
         initial={false}
         animate={{ opacity: open ? 1 : 0, pointerEvents: open ? "auto" : "none" }}
         transition={{ duration: 0.4 }}
-        className="fixed inset-0 z-[99] bg-background flex flex-col items-center justify-center gap-7 md:hidden"
+        className="fixed inset-0 z-[99] bg-background flex flex-col items-center justify-center gap-4 md:hidden"
       >
         {links.map((l, i) => (
           <motion.button
@@ -150,7 +150,7 @@ export function Nav() {
             initial={false}
             animate={{ opacity: open ? 1 : 0, y: open ? 0 : 20 }}
             transition={{ delay: i * 0.07 }}
-            className="font-serif text-4xl text-foreground"
+            className="font-serif text-xl text-foreground"
           >
             {l.label}
           </motion.button>
