@@ -25,7 +25,7 @@ export function ContactSection() {
           >
             Projeto personalizado
           </motion.p>
-          <div className="overflow-hidden pb-10">
+          <div className="overflow-hidden pb-2">
             <motion.div
               initial={{ y: "100%" }}
               whileInView={{ y: 0 }}

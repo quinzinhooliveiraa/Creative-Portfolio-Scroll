@@ -43,7 +43,7 @@ export function FitText({ children, className = "", as: Tag = "span", maxSize, p
   }, [children, maxSize, padding]);
 
   return (
-    <div ref={containerRef} className="w-full overflow-hidden relative">
+    <div ref={containerRef} className="w-full relative pb-[0.18em]">
       <span
         ref={measureRef}
         aria-hidden="true"
@@ -53,7 +53,7 @@ export function FitText({ children, className = "", as: Tag = "span", maxSize, p
         {children}
       </span>
       <Tag
-        className={`block whitespace-nowrap leading-none ${className} ${ready ? "" : "invisible"}`}
+        className={`block whitespace-nowrap leading-[1.05] ${className} ${ready ? "" : "invisible"}`}
         style={{ fontSize: `${fontSize}px` }}
       >
         {children}
