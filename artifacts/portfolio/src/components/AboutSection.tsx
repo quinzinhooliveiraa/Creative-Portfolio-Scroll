@@ -100,7 +100,7 @@ export function AboutSection() {
               viewport={{ once: true }}
               className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5"
             >
-              Oi! Sou a Hoana ✨
+              Oi! Sou a Hoana
             </motion.p>
             <div className="overflow-hidden pb-2 mb-5">
               <motion.div
