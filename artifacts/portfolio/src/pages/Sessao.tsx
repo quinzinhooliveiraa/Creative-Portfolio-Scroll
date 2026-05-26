@@ -94,7 +94,7 @@ export default function Sessao() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary mb-5"
+              className="font-sans text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-primary mb-5 truncate"
             >
               Rito do Retrato · Sessão Fotográfica
             </motion.p>
@@ -104,7 +104,7 @@ export default function Sessao() {
                 animate={{ y: 0 }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className="font-serif text-foreground leading-none"
-                style={{ fontSize: "clamp(3rem, 9vw, 6.5rem)" }}
+                style={{ fontSize: "clamp(2.2rem, 8vw, 6.5rem)" }}
               >
                 Você merece<br />se sentir visto.
               </motion.h1>
@@ -123,21 +123,21 @@ export default function Sessao() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.55 }}
-              className="mt-10 flex flex-wrap gap-3"
+              className="mt-8 flex flex-col sm:flex-row gap-3"
             >
               <motion.a
                 href={PAYMENT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileTap={{ scale: 0.97 }}
-                className="flex items-center gap-3 bg-primary text-background px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] hover:bg-primary/90 transition-colors group"
+                className="flex items-center justify-center gap-3 bg-primary text-background px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] hover:bg-primary/90 transition-colors group"
               >
                 Garantir minha sessão
                 <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
               </motion.a>
               <button
                 onClick={() => document.getElementById("como-funciona")?.scrollIntoView({ behavior: "smooth" })}
-                className="flex items-center gap-3 border border-border/30 text-foreground px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] hover:border-primary hover:text-primary transition-colors"
+                className="flex items-center justify-center gap-3 border border-border/30 text-foreground px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] hover:border-primary hover:text-primary transition-colors"
               >
                 Como funciona
               </button>
@@ -204,7 +204,7 @@ export default function Sessao() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 {/* Left */}
-                <div className="p-8 md:p-14 border-b lg:border-b-0 lg:border-r border-border/15 flex flex-col justify-between gap-10">
+                <div className="p-5 md:p-14 border-b lg:border-b-0 lg:border-r border-border/15 flex flex-col justify-between gap-8 md:gap-10">
                   <div>
                     <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-primary/60 mb-6">Sessão única</p>
                     <h2
@@ -245,7 +245,7 @@ export default function Sessao() {
                 </div>
 
                 {/* Right */}
-                <div className="p-8 md:p-14 flex flex-col gap-10">
+                <div className="p-5 md:p-14 flex flex-col gap-8 md:gap-10">
                   <div>
                     <p className="font-sans text-[9px] uppercase tracking-[0.35em] text-primary/60 mb-6">O que inclui</p>
                     <ul className="space-y-4">
