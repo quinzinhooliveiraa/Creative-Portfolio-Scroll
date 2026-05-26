@@ -92,25 +92,23 @@ export function TalksSection() {
           </motion.div>
         </div>
 
-        {/* Theme tags */}
+        {/* Theme tags — infinite marquee */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex flex-wrap gap-2 mb-14 md:mb-20"
+          className="relative mb-14 md:mb-20 overflow-hidden"
         >
-          {themes.map((t, i) => (
-            <motion.span
-              key={t.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 border border-border/20 px-3 py-1.5 glass-card-sm"
-            >
-              {t.label}
-            </motion.span>
-          ))}
+          <div className="tags-marquee flex gap-2 w-max">
+            {[...themes, ...themes].map((t, i) => (
+              <span
+                key={i}
+                className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 border border-border/20 px-3 py-1.5 glass-card-sm whitespace-nowrap flex-shrink-0"
+              >
+                {t.label}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
         {/* Talk list */}

@@ -396,3 +396,17 @@ html:not(.dark) .nav-glass {
     inset: -1px;
   }
 }
+
+/* Tags marquee */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tags-marquee {
+  animation: marquee-scroll 18s linear infinite;
+}
+
+.tags-marquee:hover {
+  animation-play-state: paused;
+}
