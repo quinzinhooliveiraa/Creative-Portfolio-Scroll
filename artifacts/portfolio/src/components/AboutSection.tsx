@@ -69,9 +69,9 @@ export function AboutSection() {
             className="relative aspect-[3/4] overflow-hidden"
           >
             <img
-              src="/images/portrait.png"
+              src="/hoana-fotografa.jpg"
               alt="Hoana Bonito"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
