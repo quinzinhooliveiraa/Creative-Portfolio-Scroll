@@ -16,8 +16,8 @@ export default function Home() {
     <main className="bg-background text-foreground">
       <Nav />
       <HeroSection />
-      <AboutSection />
       <ManifestoSection />
+      <AboutSection />
       <PhotographySection />
       <BookingSection />
       <TalksSection />
