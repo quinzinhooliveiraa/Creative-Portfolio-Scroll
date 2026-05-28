@@ -5,12 +5,12 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 
 const photos = [
-  { id: 1, src: "/images/portfolio-1.png", alt: "Retrato Autoral", category: "Retrato" as const, size: "tall" as const },
-  { id: 2, src: "/images/portfolio-2.png", alt: "Família", category: "Família" as const, size: "wide" as const },
-  { id: 3, src: "/images/portfolio-3.png", alt: "Mulher", category: "Mulher" as const, size: "tall" as const },
-  { id: 4, src: "/images/portfolio-4.png", alt: "Casamento", category: "Casamento" as const, size: "square" as const },
-  { id: 5, src: "/images/portfolio-5.png", alt: "Newborn", category: "Newborn" as const, size: "tall" as const },
-  { id: 6, src: "/images/portfolio-6.png", alt: "Lifestyle", category: "Lifestyle" as const, size: "wide" as const },
+  { id: 1, src: "/portfolio-1.jpg", alt: "Retrato", size: "tall" as const },
+  { id: 2, src: "/portfolio-2.jpg", alt: "Retrato", size: "tall" as const },
+  { id: 3, src: "/portfolio-3.jpg", alt: "Retrato", size: "tall" as const },
+  { id: 4, src: "/portfolio-4.jpg", alt: "Retrato", size: "square" as const },
+  { id: 5, src: "/portfolio-5.jpg", alt: "Retrato", size: "tall" as const },
+  { id: 6, src: "/portfolio-6.jpg", alt: "Retrato", size: "square" as const },
 ];
 
 const sizeClass = { tall: "aspect-[3/4]", wide: "aspect-[4/3]", square: "aspect-square" };
@@ -96,16 +96,9 @@ export function PhotographySection() {
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex flex-col justify-end p-4">
-                  <span className="text-[9px] font-sans uppercase tracking-[0.3em] text-primary mb-1">{photo.category}</span>
-                  <span className="font-serif text-base text-white">{photo.alt}</span>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
               </div>
             </TiltCard>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground">0{i + 1}</span>
-              <span className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground">{photo.category}</span>
-            </div>
           </motion.div>
         ))}
         <div className="w-4 md:w-8 flex-shrink-0" />
