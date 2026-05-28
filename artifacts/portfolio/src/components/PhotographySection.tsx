@@ -17,12 +17,6 @@ const sizeClass = { tall: "aspect-[3/4]", wide: "aspect-[4/3]", square: "aspect-
 const mobileW = { tall: "w-[68vw]", wide: "w-[82vw]", square: "w-[68vw]" };
 const desktopW = { tall: "md:w-[28vw]", wide: "md:w-[46vw]", square: "md:w-[32vw]" };
 
-const categories = [
-  { label: "Famílias", desc: "Histórias que atravessam gerações" },
-  { label: "Mulheres", desc: "Poder, delicadeza e verdade" },
-  { label: "Casamentos", desc: "O amor que merece ser visto" },
-  { label: "Newborn", desc: "Os primeiros olhares do mundo" },
-];
 
 export function PhotographySection() {
   const [selected, setSelected] = useState<(typeof photos)[0] | null>(null);
@@ -58,55 +52,25 @@ export function PhotographySection() {
           </div>
         </motion.div>
 
-        {/* Description + highlights + categories grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 mt-10">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="font-sans font-light text-muted-foreground leading-relaxed mb-8"
-              style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}>
-              Visto pelos meus olhos treinados, você deixa de ser apenas um "meio"
-              (um objeto para a câmera) e passa a ser um "fim em si mesmo",
-              expressão única da vida. Afinal, tratarei da sua imagem com o mesmo
-              requinte e cuidado que a natureza dedica a cada folha ou flor que nasce.
-            </p>
-            <p className="font-serif italic text-foreground/60 mb-8" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.15rem)" }}>
-              O resultado: se sentir (verdadeiramente) visto.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-          >
-            <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5">
-              Cartografia do retrato
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              {categories.map((cat, i) => (
-                <motion.div
-                  key={cat.label}
-                  initial={{ opacity: 0, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.05 * i }}
-                  className="border border-border/20 p-4 hover:border-primary/40 hover:bg-card/50 transition-all group glass-card-sm"
-                >
-                  <p className="font-serif text-foreground group-hover:text-primary transition-colors mb-1"
-                    style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)" }}>
-                    {cat.label}
-                  </p>
-                  <p className="font-sans text-[10px] text-muted-foreground/50 leading-snug">{cat.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+        {/* Description */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-10 max-w-2xl"
+        >
+          <p className="font-sans font-light text-muted-foreground leading-relaxed mb-8"
+            style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}>
+            Visto pelos meus olhos treinados, você deixa de ser apenas um "meio"
+            (um objeto para a câmera) e passa a ser um "fim em si mesmo",
+            expressão única da vida. Afinal, tratarei da sua imagem com o mesmo
+            requinte e cuidado que a natureza dedica a cada folha ou flor que nasce.
+          </p>
+          <p className="font-serif italic text-foreground/60" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.15rem)" }}>
+            O resultado: se sentir (verdadeiramente) visto.
+          </p>
+        </motion.div>
       </div>
 
       {/* ── Gallery strip ── */}
