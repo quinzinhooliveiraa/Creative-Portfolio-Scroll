@@ -30,8 +30,9 @@ export function ManifestoSection() {
           className="w-full h-full object-cover object-center"
         />
         {/* gradient overlay — dark on left for text legibility, fades right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/75 to-background/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/60" />
+        <div className="absolute inset-0 bg-background/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-transparent to-background/70" />
       </div>
 
       {/* ── Content ── */}
