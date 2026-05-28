@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { TiltCard } from "./TiltCard";
 
 const talks = [
   {
@@ -48,6 +49,23 @@ const themes = [
   { label: "tradução sensorial" },
   { label: "pedagogia" },
 ];
+
+const photos = [
+  { id: 1, src: "/fala-1.jpg", size: "tall" as const },
+  { id: 2, src: "/fala-2.jpg", size: "wide" as const },
+  { id: 3, src: "/fala-3.jpg", size: "wide" as const },
+  { id: 4, src: "/fala-4.jpg", size: "tall" as const },
+  { id: 5, src: "/fala-5.jpg", size: "tall" as const },
+  { id: 6, src: "/fala-6.jpg", size: "tall" as const },
+  { id: 7, src: "/fala-7.jpg", size: "wide" as const },
+  { id: 8, src: "/fala-8.jpg", size: "tall" as const },
+  { id: 9, src: "/fala-9.jpg", size: "tall" as const },
+  { id: 10, src: "/fala-10.jpg", size: "tall" as const },
+];
+
+const sizeClass = { tall: "aspect-[3/4]", wide: "aspect-[4/3]" };
+const mobileW = { tall: "w-[58vw]", wide: "w-[76vw]" };
+const desktopW = { tall: "md:w-[22vw]", wide: "md:w-[36vw]" };
 
 export function TalksSection() {
   return (
@@ -110,6 +128,44 @@ export function TalksSection() {
             ))}
           </div>
         </motion.div>
+
+      </div>
+
+      {/* ── Photo gallery strip ── */}
+      <div
+        className="flex gap-3 md:gap-5 px-4 md:px-12 overflow-x-auto scrollbar-hide pb-2 mb-16 md:mb-24"
+        style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+      >
+        {photos.map((photo, i) => (
+          <motion.div
+            key={photo.id}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, delay: i * 0.06 }}
+            style={{ scrollSnapAlign: "start", flexShrink: 0 }}
+            className={`relative ${mobileW[photo.size]} ${desktopW[photo.size]}`}
+          >
+            <TiltCard>
+              <div className={`relative overflow-hidden group ${sizeClass[photo.size]}`}>
+                <img
+                  src={photo.src}
+                  alt=""
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </TiltCard>
+          </motion.div>
+        ))}
+        <div className="w-4 md:w-8 flex-shrink-0" />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12">
+        <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40 mb-10 md:mb-14">
+          Deslize para explorar →
+        </p>
 
         {/* Talk list */}
         <div className="border-t border-border/30">
