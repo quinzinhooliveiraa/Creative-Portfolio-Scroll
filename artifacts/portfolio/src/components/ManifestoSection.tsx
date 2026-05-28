@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { CyclingTags } from "./CyclingTags";
 
 const keywords = [
@@ -11,9 +12,30 @@ const keywords = [
 ];
 
 export function ManifestoSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.0]);
+
   return (
-    <section id="manifesto" className="relative w-full bg-background overflow-hidden py-16 md:py-24">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12">
+    <section id="manifesto" ref={ref} className="relative w-full overflow-hidden">
+
+      {/* ── Atmospheric image — full-bleed behind content ── */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.img
+          src="/manifesto-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          style={{ y: imgY, scale: imgScale }}
+          className="w-full h-full object-cover object-center"
+        />
+        {/* gradient overlay — dark on left for text legibility, fades right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/75 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/60" />
+      </div>
+
+      {/* ── Content ── */}
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-12 py-20 md:py-32">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
 
@@ -125,7 +147,7 @@ export function ManifestoSection() {
                     const el = document.getElementById(item.href.replace("#", ""));
                     if (el) el.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="group flex flex-col border-b border-border/20 py-4 hover:bg-card/30 transition-colors cursor-pointer px-3 -mx-3"
+                  className="group flex flex-col border-b border-border/20 py-4 hover:bg-background/30 backdrop-blur-sm transition-colors cursor-pointer px-3 -mx-3"
                 >
                   <span className="font-serif text-foreground group-hover:text-primary transition-colors" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
                     {item.label}
