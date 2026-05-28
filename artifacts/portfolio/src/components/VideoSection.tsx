@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const services = [
@@ -43,22 +43,23 @@ const videos = [
   },
 ];
 
+const slideVariants = {
+  enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+};
+
 export function VideoSection() {
   const ref = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+
+  useScroll({ target: ref, offset: ["start end", "end start"] });
 
   function go(dir: number) {
     setDirection(dir);
     setCurrent((prev) => (prev + dir + videos.length) % videos.length);
   }
-
-  const variants = {
-    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
-  };
 
   return (
     <section id="film" ref={ref} className="relative w-full bg-background overflow-hidden border-t border-primary/20 light-gradient-bg">
@@ -132,18 +133,24 @@ export function VideoSection() {
           </motion.div>
         </div>
 
-        {/* Right — video carousel */}
-        <div className="relative flex-1 min-h-[260px] md:min-h-0 overflow-hidden bg-black">
+        {/* Right — video carousel with entrance animation */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="relative flex-1 min-h-[260px] md:min-h-0 overflow-hidden bg-black"
+        >
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={current}
               custom={direction}
-              variants={variants}
+              variants={slideVariants}
               initial="enter"
               animate="center"
               exit="exit"
               transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-              className="absolute inset-0 flex flex-col"
+              className="absolute inset-0"
             >
               <iframe
                 className="w-full h-full"
@@ -165,7 +172,7 @@ export function VideoSection() {
               {videos[current].title}
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* ── Service list ── */}
