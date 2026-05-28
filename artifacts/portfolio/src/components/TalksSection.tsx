@@ -211,30 +211,6 @@ export function TalksSection() {
           ))}
         </div>
 
-        {/* YouTube embed — Olho que Fala */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mt-16 md:mt-24"
-        >
-          <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-6">
-            Entrevista · Canal Brasil
-          </p>
-          <div className="w-full aspect-video rounded-sm overflow-hidden border border-border/20">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/-dYIi7iYmdw"
-              title="Olho que Fala — Canal Brasil"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-        </motion.div>
-
         <div className="mt-10 flex justify-end">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
