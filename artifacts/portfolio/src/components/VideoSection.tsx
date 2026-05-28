@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Play } from "lucide-react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const services = [
   {
@@ -25,13 +25,40 @@ const services = [
   },
 ];
 
+const videos = [
+  {
+    id: "5GWP-GcDzBs",
+    label: "Concepção, Roteiro, Direção e Edição",
+    title: "Con-Fiar · Ana Leana",
+  },
+  {
+    id: "uSwd2NAgF-E",
+    label: "Concepção e Direção",
+    title: "Con-Fiar · Ana Leana",
+  },
+  {
+    id: "uSwd2NAgF-E",
+    label: "Concepção e Direção",
+    title: "Vestida de Estrelas · Ana Leana",
+  },
+];
+
 export function VideoSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const clipProgress = useTransform(scrollYProgress, [0, 0.18], [100, 0]);
-  const clipPath = useTransform(clipProgress, (v) => `inset(0 ${v}% 0 0)`);
+
+  function go(dir: number) {
+    setDirection(dir);
+    setCurrent((prev) => (prev + dir + videos.length) % videos.length);
+  }
+
+  const variants = {
+    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+  };
 
   return (
     <section id="film" ref={ref} className="relative w-full bg-background overflow-hidden border-t border-primary/20 light-gradient-bg">
@@ -77,52 +104,68 @@ export function VideoSection() {
             </motion.p>
           </div>
 
+          {/* Counter + arrows */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6 }}
-            className="mt-10 md:mt-0"
+            className="mt-10 md:mt-0 flex items-center gap-4"
           >
-            <motion.div
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => setHovered(false)}
-              animate={{ scale: hovered ? 1.06 : 1 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative inline-flex items-center gap-4 cursor-pointer group"
+            <button
+              onClick={() => go(-1)}
+              className="w-10 h-10 border border-border/40 flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+              aria-label="Anterior"
             >
-              <div className="relative flex-shrink-0">
-                <motion.div
-                  className="absolute inset-0 rounded-full border border-primary/30"
-                  animate={{ scale: hovered ? 1.5 : 1, opacity: hovered ? 0 : 1 }}
-                  transition={{ duration: 0.5 }}
-                />
-                <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/50 flex items-center justify-center">
-                  <Play className="w-4 h-4 text-primary ml-0.5" fill="currentColor" />
-                </div>
-              </div>
-              <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground group-hover:text-primary transition-colors">
-                Ver trabalho
-              </span>
-            </motion.div>
+              <ChevronLeft size={16} />
+            </button>
+            <span className="font-sans text-[11px] tabular-nums text-muted-foreground/60 tracking-widest">
+              {String(current + 1).padStart(2, "0")} / {String(videos.length).padStart(2, "0")}
+            </span>
+            <button
+              onClick={() => go(1)}
+              className="w-10 h-10 border border-border/40 flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+              aria-label="Próximo"
+            >
+              <ChevronRight size={16} />
+            </button>
           </motion.div>
         </div>
 
-        {/* Right — image with left-to-right reveal */}
-        <motion.div
-          style={{ clipPath }}
-          className="relative flex-1 min-h-[260px] md:min-h-0 overflow-hidden"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
-          <motion.img
-            src="/images/portfolio-5.png"
-            alt="Olho que Escuta"
-            style={{ y: imgY }}
-            className="absolute inset-0 w-full h-full object-cover scale-110"
-          />
-          <div className="absolute inset-0 bg-black/30" />
-        </motion.div>
+        {/* Right — video carousel */}
+        <div className="relative flex-1 min-h-[260px] md:min-h-0 overflow-hidden bg-black">
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={current}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+              className="absolute inset-0 flex flex-col"
+            >
+              <iframe
+                className="w-full h-full"
+                src={`https://www.youtube.com/embed/${videos[current].id}`}
+                title={videos[current].title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Caption overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent pointer-events-none z-10">
+            <p className="font-sans text-[9px] uppercase tracking-[0.3em] text-primary/80 mb-0.5">
+              {videos[current].label}
+            </p>
+            <p className="font-serif italic text-white/70 text-sm">
+              {videos[current].title}
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* ── Service list ── */}
@@ -188,84 +231,6 @@ export function VideoSection() {
             </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* YouTube embeds — Olho que Escuta */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12 pb-16 md:pb-24 space-y-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-2">
-            Concepção, Roteiro, Direção e Edição
-          </p>
-          <p className="font-serif italic text-foreground/50 text-sm mb-5">
-            Clipe <em>Con-Fiar</em> · Ana Leana
-          </p>
-          <div className="w-full aspect-video rounded-sm overflow-hidden border border-border/20">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/5GWP-GcDzBs"
-              title="Con-Fiar — Ana Leana"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-        >
-          <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-2">
-            Concepção e Direção
-          </p>
-          <p className="font-serif italic text-foreground/50 text-sm mb-5">
-            Clipe <em>Con-Fiar</em> · Ana Leana
-          </p>
-          <div className="w-full aspect-video rounded-sm overflow-hidden border border-border/20">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/uSwd2NAgF-E"
-              title="Con-Fiar (direção) — Ana Leana"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-2">
-            Concepção e Direção
-          </p>
-          <p className="font-serif italic text-foreground/50 text-sm mb-5">
-            Clipe <em>Vestida de Estrelas</em> · Ana Leana
-          </p>
-          <div className="w-full aspect-video rounded-sm overflow-hidden border border-border/20">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/uSwd2NAgF-E"
-              title="Vestida de Estrelas — Ana Leana"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-        </motion.div>
       </div>
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-12 pb-8 flex justify-end">
