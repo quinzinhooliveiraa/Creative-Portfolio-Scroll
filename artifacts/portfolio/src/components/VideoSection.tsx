@@ -190,6 +190,84 @@ export function VideoSection() {
         </div>
       </div>
 
+      {/* YouTube embeds — Olho que Escuta */}
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12 pb-16 md:pb-24 space-y-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-2">
+            Concepção, Roteiro, Direção e Edição
+          </p>
+          <p className="font-serif italic text-foreground/50 text-sm mb-5">
+            Clipe <em>Con-Fiar</em> · Ana Leana
+          </p>
+          <div className="w-full aspect-video rounded-sm overflow-hidden border border-border/20">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/5GWP-GcDzBs"
+              title="Con-Fiar — Ana Leana"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
+          <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-2">
+            Concepção e Direção
+          </p>
+          <p className="font-serif italic text-foreground/50 text-sm mb-5">
+            Clipe <em>Con-Fiar</em> · Ana Leana
+          </p>
+          <div className="w-full aspect-video rounded-sm overflow-hidden border border-border/20">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/uSwd2NAgF-E"
+              title="Con-Fiar (direção) — Ana Leana"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-2">
+            Concepção e Direção
+          </p>
+          <p className="font-serif italic text-foreground/50 text-sm mb-5">
+            Clipe <em>Vestida de Estrelas</em> · Ana Leana
+          </p>
+          <div className="w-full aspect-video rounded-sm overflow-hidden border border-border/20">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/uSwd2NAgF-E"
+              title="Vestida de Estrelas — Ana Leana"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </motion.div>
+      </div>
+
       <div className="max-w-[1400px] mx-auto px-4 md:px-12 pb-8 flex justify-end">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
