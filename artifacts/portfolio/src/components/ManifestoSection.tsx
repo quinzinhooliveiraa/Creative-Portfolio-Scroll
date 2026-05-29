@@ -124,10 +124,10 @@ export function ManifestoSection() {
 
             <div className="space-y-0 border-t border-border/20">
               {[
-                { icon: iconeVe, label: "Olho que Vê", sub: "Rito de Retrato · Retratos e presença", href: "#portfolio" },
-                { icon: iconeFala, label: "Olho que Fala", sub: "Palestras · Acessibilidade · Arte Educação", href: "#talks" },
-                { icon: iconeEscuta, label: "Olho que Escuta", sub: "Música · Videoclipes · Direção Visual", href: "#film" },
-                { icon: iconeArtista, label: "Olho Artista", sub: "Arte Contemporânea · Galerias · Performance", href: "#arte" },
+                { icon: iconeVe, label: "Olho que Vê", sub: "Rito de Retrato · Retratos e presença", href: "#portfolio", iconSize: "w-9 h-9" },
+                { icon: iconeFala, label: "Olho que Fala", sub: "Palestras · Acessibilidade · Arte Educação", href: "#talks", iconSize: "w-9 h-9" },
+                { icon: iconeEscuta, label: "Olho que Escuta", sub: "Música · Videoclipes · Direção Visual", href: "#film", iconSize: "w-14 h-14" },
+                { icon: iconeArtista, label: "Olho Artista", sub: "Arte Contemporânea · Galerias · Performance", href: "#arte", iconSize: "w-9 h-9" },
               ].map((item, i) => (
                 <motion.a
                   key={item.label}
@@ -143,7 +143,7 @@ export function ManifestoSection() {
                   }}
                   className="group flex items-center gap-3 border-b border-border/20 py-4 hover:bg-background/30 backdrop-blur-sm transition-colors cursor-pointer px-3 -mx-3"
                 >
-                  <img src={item.icon} alt="" aria-hidden="true" className="w-9 h-9 object-contain flex-shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <img src={item.icon} alt="" aria-hidden="true" className={`${item.iconSize} object-contain flex-shrink-0 opacity-80 group-hover:opacity-100 transition-opacity`} />
                   <div className="flex flex-col">
                     <span className="font-serif text-foreground group-hover:text-primary transition-colors" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
                       {item.label}
