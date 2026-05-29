@@ -1,6 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { CyclingTags } from "./CyclingTags";
+import iconeVe from "@assets/Icone_Rito_do_Retrato_transparente_1780071730883.png";
+import iconeFala from "@assets/ICONE_olhoquefala2_1780071730881.png";
+import iconeEscuta from "@assets/olhoqueescuta_1_1780071730884.png";
+import iconeArtista from "@assets/Icone_olho_artista2_1780071730884.png";
 
 const keywords = [
   "percepção",
@@ -120,10 +124,10 @@ export function ManifestoSection() {
 
             <div className="space-y-0 border-t border-border/20">
               {[
-                { label: "01 · Olho que Vê", sub: "Rito de Retrato · Retratos e presença", href: "#portfolio" },
-                { label: "02 · Olho que Fala", sub: "Palestras · Acessibilidade · Arte Educação", href: "#talks" },
-                { label: "03 · Olho que Escuta", sub: "Música · Videoclipes · Direção Visual", href: "#film" },
-                { label: "04 · Olho Artista", sub: "Arte Contemporânea · Galerias · Performance", href: "#arte" },
+                { icon: iconeVe, label: "Olho que Vê", sub: "Rito de Retrato · Retratos e presença", href: "#portfolio" },
+                { icon: iconeFala, label: "Olho que Fala", sub: "Palestras · Acessibilidade · Arte Educação", href: "#talks" },
+                { icon: iconeEscuta, label: "Olho que Escuta", sub: "Música · Videoclipes · Direção Visual", href: "#film" },
+                { icon: iconeArtista, label: "Olho Artista", sub: "Arte Contemporânea · Galerias · Performance", href: "#arte" },
               ].map((item, i) => (
                 <motion.a
                   key={item.label}
@@ -137,14 +141,17 @@ export function ManifestoSection() {
                     const el = document.getElementById(item.href.replace("#", ""));
                     if (el) el.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="group flex flex-col border-b border-border/20 py-4 hover:bg-background/30 backdrop-blur-sm transition-colors cursor-pointer px-3 -mx-3"
+                  className="group flex items-center gap-3 border-b border-border/20 py-4 hover:bg-background/30 backdrop-blur-sm transition-colors cursor-pointer px-3 -mx-3"
                 >
-                  <span className="font-serif text-foreground group-hover:text-primary transition-colors" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
-                    {item.label}
-                  </span>
-                  <span className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/50 mt-1">
-                    {item.sub}
-                  </span>
+                  <img src={item.icon} alt="" aria-hidden="true" className="w-9 h-9 object-contain flex-shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <div className="flex flex-col">
+                    <span className="font-serif text-foreground group-hover:text-primary transition-colors" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
+                      {item.label}
+                    </span>
+                    <span className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/50 mt-1">
+                      {item.sub}
+                    </span>
+                  </div>
                 </motion.a>
               ))}
             </div>
