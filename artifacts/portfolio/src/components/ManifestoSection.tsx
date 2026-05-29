@@ -4,7 +4,7 @@ import { CyclingTags } from "./CyclingTags";
 import iconeVe from "@assets/Icone_Rito_do_Retrato_transparente_1780071730883.png";
 import iconeFala from "@assets/ICONE_olhoquefala2_1780071730881.png";
 import iconeEscuta from "@assets/ChatGPT_Image_29_de_mai._de_2026,_13_31_05_1780072281480.png";
-import iconeArtista from "@assets/Icone_olho_artista2_1780071730884.png";
+import iconeArtista from "@assets/ChatGPT_Image_29_de_mai._de_2026__13_39_39-removebg-preview_1780073122061.png";
 
 const keywords = [
   "percepção",
