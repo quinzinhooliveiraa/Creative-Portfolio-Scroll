@@ -4,36 +4,32 @@ import { TiltCard } from "./TiltCard";
 
 const talks = [
   {
-    num: "01",
-    title: "Fotografia para Pessoas Cegas",
-    event: "Acessibilidade em Artes Visuais",
-    type: "Oficina",
-    year: "2024",
-    desc: "Imagens táteis e tradução sensorial. A fotografia como experiência de todos os sentidos.",
-  },
-  {
-    num: "02",
-    title: "Maneiras de Ver o Mundo",
-    event: "Arte Educação · Mediação Cultural",
-    type: "Palestra",
-    year: "2023",
-    desc: "Como expandir o olhar poeticamente rumo às belezas cotidianas.",
-  },
-  {
-    num: "03",
-    title: "Audiodescrição como Prática Artística",
+    num: "A",
+    title: "Poéticas do Invisível",
     event: "Pedagogia das Artes Visuais",
-    type: "Workshop",
-    year: "2023",
-    desc: "Mediação e tradução do visível em experiência acessível a todos.",
+    type: "Curso",
+    desc: "Método desenvolvido em cinco anos: ensino de fotografia e artes visuais a pessoas que não enxergam.",
   },
   {
-    num: "04",
-    title: "Percepção e Presença na Imagem",
-    event: "Arte Contemporânea · Mediação",
-    type: "Mesa Redonda",
-    year: "2022",
-    desc: "O reparar o que se percebe como fundamento de uma prática artística.",
+    num: "B",
+    title: "Imagens para Tocar",
+    event: "Artes Sensoriais · Acessibilidade",
+    type: "Oficina",
+    desc: "Imagens táteis e tradução sensorial. A fotografia como experiência de todos os sentidos — perfurações inspiradas no braille transformam o visível em tátil.",
+  },
+  {
+    num: "C",
+    title: "Fotografar o Invisível",
+    event: "Experiência Sensorial · Audiodescrição",
+    type: "Oficina",
+    desc: "Fotografia sem o uso da visão. Em duplas, um participante é vendado e guiado pelo outro via audiodescrição para fotografar.",
+  },
+  {
+    num: "D",
+    title: "O Invisível do Cotidiano: A Atenção como Arte",
+    event: "Mediação Cultural · Poética",
+    type: "Palestra-oficina",
+    desc: "Desacelerar o olhar e refletir sobre como a atenção ao cotidiano pode transformar a forma como nos relacionamos com a imagem, o tempo e a própria vida.",
   },
 ];
 
@@ -201,7 +197,6 @@ export function TalksSection() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3 flex-shrink-0 mt-1">
-                  <span className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground/50 hidden sm:block">{talk.year}</span>
                   <div className="w-8 h-8 border border-border/30 flex items-center justify-center text-muted-foreground group-hover:border-primary group-hover:text-primary transition-colors flex-shrink-0">
                     <ArrowUpRight size={11} />
                   </div>
