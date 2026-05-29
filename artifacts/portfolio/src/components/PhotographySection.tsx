@@ -66,7 +66,7 @@ export function PhotographySection() {
             <p className="font-serif text-foreground/80 leading-relaxed mb-6"
               style={{ fontSize: "clamp(1rem, 2.8vw, 1.25rem)" }}>
               Criado pela artista Hoana Bonito, o Rito do Retrato utiliza um olho artista
-              lapidado por 20 anos de experiência para revelar o sagrado do real — transformando
+              lapidado por 20 anos de experiência para revelar o sagrado do real, transformando
               o ato de se ver retratado em um dispositivo de autoconhecimento.
             </p>
             <p className="font-serif italic text-foreground/50" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)" }}>
@@ -96,7 +96,7 @@ export function PhotographySection() {
             </p>
             <p>
               Mais do que produzir imagens bonitas, o processo busca revelar o sagrado do
-              real e a verdade sensível de cada pessoa — através de um olhar artístico
+              real e a verdade sensível de cada pessoa, através de um olhar artístico
               desacelerado, gentil e profundamente atento. O resultado é uma imagem que,
               de fato, fala aos olhos de quem vê.
             </p>
@@ -158,7 +158,7 @@ export function PhotographySection() {
         <div>
           <p className="font-serif italic text-foreground/50 max-w-xl mb-2"
             style={{ fontSize: "clamp(1rem, 2.5vw, 1.2rem)" }}>
-            "Mais do que produzir imagens bonitas — revelar o sagrado do real e a verdade sensível de cada pessoa."
+            "Mais do que produzir imagens bonitas: revelar o sagrado do real e a verdade sensível de cada pessoa."
           </p>
           <p className="font-sans text-[9px] uppercase tracking-[0.35em] text-primary">Hoana Bonito</p>
         </div>

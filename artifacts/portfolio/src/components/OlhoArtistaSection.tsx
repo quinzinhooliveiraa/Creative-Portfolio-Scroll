@@ -11,17 +11,17 @@ const practices = [
 
 const gallery = [
   { src: "/images/arte/performance-principal.jpg", caption: "Performance #nemqueiroz" },
-  { src: "/images/arte/nao-basta.jpg", caption: "Não Basta Não Ser Cego Para Ver — instalação" },
-  { src: "/images/arte/liberdade-dentro.jpg", caption: "Liberdade é Dentro — série fotográfica" },
+  { src: "/images/arte/nao-basta.jpg", caption: "Não Basta Não Ser Cego Para Ver · instalação" },
+  { src: "/images/arte/liberdade-dentro.jpg", caption: "Liberdade é Dentro · série fotográfica" },
   { src: "/images/arte/olho-escuro.jpg", caption: "Instalação de luz e projeção" },
-  { src: "/images/arte/sombras.jpg", caption: "Corpo e luz — arte relacional" },
+  { src: "/images/arte/sombras.jpg", caption: "Corpo e luz · arte relacional" },
   { src: "/images/arte/performance-pintura.jpg", caption: "Performance com pintura ao vivo" },
-  { src: "/images/arte/visao-musical.jpg", caption: "Visão Musical — colagem conceitual" },
-  { src: "/images/arte/quadro-cavalete.jpg", caption: "Como Nutrir Olhos Famintos — pintura" },
-  { src: "/images/arte/olho-simbolo.jpg", caption: "Olho Artista — escultura instalativa" },
-  { src: "/images/arte/tocando.jpg", caption: "Ocupação Marim Bondo — performance coletiva" },
-  { src: "/images/arte/universidade.jpg", caption: "Universidade de Évora — residência artística" },
-  { src: "/images/arte/quadro-detalhe.jpg", caption: "Detalhe — Como Nutrir Olhos Famintos" },
+  { src: "/images/arte/visao-musical.jpg", caption: "Visão Musical · colagem conceitual" },
+  { src: "/images/arte/quadro-cavalete.jpg", caption: "Como Nutrir Olhos Famintos · pintura" },
+  { src: "/images/arte/olho-simbolo.jpg", caption: "Olho Artista · escultura instalativa" },
+  { src: "/images/arte/tocando.jpg", caption: "Ocupação Marim Bondo · performance coletiva" },
+  { src: "/images/arte/universidade.jpg", caption: "Universidade de Évora · residência artística" },
+  { src: "/images/arte/quadro-detalhe.jpg", caption: "Detalhe · Como Nutrir Olhos Famintos" },
 ];
 
 export function OlhoArtistaSection() {

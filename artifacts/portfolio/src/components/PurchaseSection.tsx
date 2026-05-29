@@ -15,7 +15,7 @@ const includes = [
 
 const faqs = [
   { q: "Onde acontecem as sessões?", a: "Em locações externas (parques, ruas, espaços abertos) ou em estúdio parceiro. Definimos juntos o que faz mais sentido para a sua história." },
-  { q: "E se eu for tímido(a) em frente à câmera?", a: "A maioria das pessoas é! Por isso a conversa prévia existe — para criar confiança antes de qualquer foto ser tirada. Você vai se surpreender." },
+  { q: "E se eu for tímido(a) em frente à câmera?", a: "A maioria das pessoas é! Por isso a conversa prévia existe, para criar confiança antes de qualquer foto ser tirada. Você vai se surpreender." },
   { q: "Posso levar família, filhos, pets?", a: "Sim! As sessões de família, casamento e newborn têm a mesma abordagem. Me conta quem faz parte da sua história." },
   { q: "Como funciona o pagamento?", a: "O pagamento é feito antecipadamente pelo link de pagamento, confirmando assim a sua data na agenda." },
   { q: "Em quanto tempo recebo as fotos?", a: "Entre 10 e 15 dias úteis após a sessão. Você recebe uma galeria online privada para selecionar e baixar." },
@@ -61,7 +61,7 @@ export function PurchaseSection() {
                   Rito do Retrato
                 </h3>
                 <p className="font-sans text-[13px] text-muted-foreground/70 leading-relaxed max-w-md">
-                  Um encontro fotográfico pensado para revelar quem você é — não quem você acha que deveria parecer.
+                  Um encontro fotográfico pensado para revelar quem você é, não quem você acha que deveria parecer.
                   Cada sessão é única, conduzida com presença e cuidado, como um rito de passagem registrado em luz.
                 </p>
               </div>

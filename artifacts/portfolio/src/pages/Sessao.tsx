@@ -25,7 +25,7 @@ const steps = [
 const faqs = [
   {
     q: "Minha agenda é rigorosamente cronometrada e não disponho de tempo ilimitado para um ensaio. Não poderíamos realizar uma sessão mais objetiva e rápida?",
-    a: `Não é possível. O tempo desacelerado da sessão, que pode levar até 5 horas, é parte do processo — é o que permite que o silêncio floresça e as fachadas caiam. A psiquiatra Nise da Silveira nos ensinou que \u201Chá dez mil maneiras de se ocupar cada hora do seu tempo\u201D. No cotidiano da maior parte das pessoas, a maioria das horas é dedicada à produtividade externa, à gestão e ao outro. O Rito do Retrato propõe que, entre essas milhares de possibilidades, você escolha ocupar essas horas com sua auto imagem. Um autocuidado que pode ser bem divertido. O Rito do Retrato não pode ter tempo apertado, porque pra mim ver com c(alma) muda tudo. Esses retratos precisam mostrar o sagrado do real que existe em você — e pra isso não existe tempo pré-definido.`,
+    a: `Não é possível. O tempo desacelerado da sessão, que pode levar até 5 horas, é parte do processo: é o que permite que o silêncio floresça e as fachadas caiam. A psiquiatra Nise da Silveira nos ensinou que \u201Chá dez mil maneiras de se ocupar cada hora do seu tempo\u201D. No cotidiano da maior parte das pessoas, a maioria das horas é dedicada à produtividade externa, à gestão e ao outro. O Rito do Retrato propõe que, entre essas milhares de possibilidades, você escolha ocupar essas horas com sua auto imagem. Um autocuidado que pode ser bem divertido. O Rito do Retrato não pode ter tempo apertado, porque pra mim ver com c(alma) muda tudo. Esses retratos precisam mostrar o sagrado do real que existe em você, e pra isso não existe tempo pré-definido.`,
   },
   {
     q: "Gostaria de realizar o meu ensaio o quanto antes. Por que a disponibilidade de datas é tão restrita e por que existe um limite tão rigoroso de atendimentos mensais?",
@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: "Os retratos resultantes do Rito do Retrato podem ser utilizados para redes sociais de trabalho?",
-    a: "Claro! Se permitir passar por uma experiência de rito artístico como esta é, em si, uma demonstração de que você valoriza a inovação e o autoconhecimento. O autoconceito sólido, facilitado pelo método, somado a uma estética sofisticada são elementos muito bem vistos no mercado de trabalho — e são especialmente essenciais para quem ocupa cargos de liderança ou decisão e precisa comunicar segurança e clareza narrativa. A verdadeira autoridade começa na forma como você se vê.",
+    a: "Claro! Se permitir passar por uma experiência de rito artístico como esta é, em si, uma demonstração de que você valoriza a inovação e o autoconhecimento. O autoconceito sólido, facilitado pelo método, somado a uma estética sofisticada são elementos muito bem vistos no mercado de trabalho, especialmente essenciais para quem ocupa cargos de liderança ou decisão e precisa comunicar segurança e clareza narrativa. A verdadeira autoridade começa na forma como você se vê.",
   },
 ];
 

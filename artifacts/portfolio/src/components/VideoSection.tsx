@@ -24,10 +24,10 @@ const videos = [
 ];
 
 const services = [
-  { num: "01", title: "Videoclipes", desc: "Concepção e direção. Transformar música em conceito visual — som que se torna imagem." },
+  { num: "01", title: "Videoclipes", desc: "Concepção e direção. Transformar música em conceito visual, som que se torna imagem." },
   { num: "02", title: "Capas de Álbum", desc: "Concepção e criação de identidade visual para artistas. A música tem rosto." },
   { num: "03", title: "Espetáculos", desc: "Registros conceituais de espetáculos. Capturo a atmosfera viva do palco com olhar autoral." },
-  { num: "04", title: "Fotografias Musicais", desc: "Crio visualidades a partir da escuta — traduzindo atmosferas sonoras em imagem fotográfica." },
+  { num: "04", title: "Fotografias Musicais", desc: "Crio visualidades a partir da escuta, traduzindo atmosferas sonoras em imagem fotográfica." },
 ];
 
 export function VideoSection() {

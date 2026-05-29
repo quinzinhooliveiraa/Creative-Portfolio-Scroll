@@ -5,7 +5,7 @@ import { useLocation } from "wouter";
 const paragrafos = [
   "Diferente da fotografia tradicional, fundamenta-se na não-diretividade e na coautoria, onde o tempo desacelerado e a escuta corporal em um espaço de acolhimento permitem que a autenticidade floresça sem a rigidez de poses.",
   "O método Retrato Presença inicia-se em um encontro-presença dedicado à escuta e ao reconhecimento, onde uma entrevista profunda estabelece as bases da coautoria do retratado. Nessa etapa serão escolhidas palavras, gestos, ações cheias de significado e até mesmo as músicas para se ouvir no momento ritualístico dos retratos.",
-  "O processo acolhe o desconforto de ser fotografado e o transforma em um autoconceito sólido e elegante — um encontro entre técnica, estética sofisticada, memória e autenticidade. Retratos que não falam sobre pose, mas sobre presença.",
+  "O processo acolhe o desconforto de ser fotografado e o transforma em um autoconceito sólido e elegante, um encontro entre técnica, estética sofisticada, memória e autenticidade. Retratos que não falam sobre pose, mas sobre presença.",
 ];
 
 export function BookingSection() {
@@ -53,7 +53,7 @@ export function BookingSection() {
               className="font-serif text-foreground/80 leading-relaxed mb-8"
               style={{ fontSize: "clamp(1.05rem, 2.8vw, 1.35rem)" }}
             >
-              Criado pela artista Hoana Bonito, o Rito do Retrato utiliza um olho artista lapidado por 20 anos de experiência para revelar o sagrado do real — transformando o ato de se ver retratado em um dispositivo de autoconhecimento.
+              Criado pela artista Hoana Bonito, o Rito do Retrato utiliza um olho artista lapidado por 20 anos de experiência para revelar o sagrado do real, transformando o ato de se ver retratado em um dispositivo de autoconhecimento.
             </p>
             <motion.button
               whileTap={{ scale: 0.97 }}
@@ -92,7 +92,7 @@ export function BookingSection() {
             className="font-serif italic text-foreground/50 max-w-2xl"
             style={{ fontSize: "clamp(1rem, 2.5vw, 1.25rem)" }}
           >
-            "Mais do que produzir imagens bonitas, o processo busca revelar o sagrado do real e a verdade sensível de cada pessoa — através de um olhar artístico desacelerado, gentil e profundamente atento."
+            "Mais do que produzir imagens bonitas, o processo busca revelar o sagrado do real e a verdade sensível de cada pessoa, através de um olhar artístico desacelerado, gentil e profundamente atento."
           </p>
           <p className="font-sans text-[9px] uppercase tracking-[0.35em] text-primary mt-4">
             Hoana Bonito

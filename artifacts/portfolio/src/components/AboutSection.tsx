@@ -154,13 +154,13 @@ export function AboutSection() {
             >
               <p>
                 Fotógrafa, artista visual e realizadora audiovisual, com mais de 20 anos
-                de experiência na criação de imagens. Mestre em Práticas Artísticas —
-                Multimídia — pela Universidade de Évora (Portugal) e pós-graduada em
+                de experiência na criação de imagens. Mestre em Práticas Artísticas
+                Multimídia pela Universidade de Évora (Portugal) e pós-graduada em
                 Artes Visuais: Cultura e Criação pelo SENAC.
               </p>
               <p>
                 Formada em Artes Visuais pela Universidade de Brasília, com intercâmbio
-                em fotografia na Université Lumière Lyon 2 (França) — o local onde o
+                em fotografia na Université Lumière Lyon 2 (França), o local onde o
                 cinema nasceu. Desenvolve ensaios fotográficos lifestyle ritualísticos
                 que revelam, com naturalidade e tempo, o modo de viver de cada retratado.
               </p>
@@ -172,7 +172,7 @@ export function AboutSection() {
               </p>
               <p>
                 Meus registros contam histórias autênticas e emocionantes, revelando
-                conexões humanas e momentos únicos. São várias frentes — todas orbitando
+                conexões humanas e momentos únicos. São várias frentes, todas orbitando
                 um tema: as mais diversas maneiras de ver o mundo.
               </p>
             </motion.div>

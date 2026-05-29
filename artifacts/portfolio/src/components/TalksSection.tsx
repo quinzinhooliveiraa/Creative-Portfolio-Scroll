@@ -15,7 +15,7 @@ const talks = [
     title: "Imagens para Tocar",
     event: "Artes Sensoriais · Acessibilidade",
     type: "Oficina",
-    desc: "Imagens táteis e tradução sensorial. A fotografia como experiência de todos os sentidos — perfurações inspiradas no braille transformam o visível em tátil.",
+    desc: "Imagens táteis e tradução sensorial. A fotografia como experiência de todos os sentidos. Perfurações inspiradas no braille transformam o visível em tátil.",
   },
   {
     num: "C",
