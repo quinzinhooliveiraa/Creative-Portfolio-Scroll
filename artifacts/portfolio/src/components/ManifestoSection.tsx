@@ -143,7 +143,7 @@ export function ManifestoSection() {
                   }}
                   className="group flex items-center gap-3 border-b border-border/20 py-4 hover:bg-background/30 backdrop-blur-sm transition-colors cursor-pointer px-3 -mx-3"
                 >
-                  <img src={item.icon} alt="" aria-hidden="true" className="w-14 h-14 object-contain flex-shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <img src={item.icon} alt="" aria-hidden="true" className="w-9 h-9 object-contain flex-shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
                   <div className="flex flex-col">
                     <span className="font-serif text-foreground group-hover:text-primary transition-colors" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
                       {item.label}
