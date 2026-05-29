@@ -197,24 +197,21 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="border border-border/20 p-6"
+            className="border-t border-border/20 pt-6 flex flex-col gap-3"
           >
-            <p className="font-serif italic text-foreground/60 mb-4" style={{ fontSize: "clamp(0.9rem, 2vw, 1.05rem)" }}>
-              Quer trabalhos ultra-personalizados em:
+            <p className="font-sans text-[9px] uppercase tracking-[0.35em] text-muted-foreground/50">
+              {temas.join(" · ")}
             </p>
-            <div className="flex flex-wrap gap-2 mb-5">
-              {temas.map((t) => (
-                <span key={t} className="font-sans text-[9px] uppercase tracking-[0.25em] border border-primary/30 text-primary px-3 py-1.5">
-                  {t}
-                </span>
-              ))}
-            </div>
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-              className="inline-flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.3em] text-background bg-primary px-5 py-2.5 hover:bg-primary/90 transition-colors"
+              className="font-serif italic text-foreground/70 hover:text-primary transition-colors group"
+              style={{ fontSize: "clamp(0.95rem, 2vw, 1.1rem)" }}
             >
-              Fala com a Hoana
+              Quer um trabalho ultra-personalizado?{" "}
+              <span className="not-italic font-sans text-[9px] uppercase tracking-[0.3em] text-primary group-hover:underline">
+                Fala com a Hoana →
+              </span>
             </a>
           </motion.div>
 
