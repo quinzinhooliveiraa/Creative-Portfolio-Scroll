@@ -15,6 +15,19 @@ const cartografia = [
   "Pesquisadora",
 ];
 
+const especialidades = [
+  { label: "Famílias", desc: "Ensaios lifestyle ritualísticos" },
+  { label: "Mulheres", desc: "Retratos autorais e empoderamento" },
+  { label: "Casamentos", desc: "Momentos únicos e conexões reais" },
+  { label: "Newborn", desc: "Primeiros dias com naturalidade" },
+];
+
+const falas = [
+  "Quer fazer retratos elegantes que realmente te façam se sentir visto?",
+  "Quer ver as artes visuais pelo ponto de vista da acessibilidade?",
+  "Ou criar, do zero, vídeo ou imagem que conte toda uma narrativa?",
+];
+
 const formacao = [
   { label: "Artes Visuais", sub: "UnB, Universidade de Brasília" },
   { label: "Intercâmbio em Fotografia", sub: "Université Lumière Lyon 2, França" },
@@ -124,22 +137,32 @@ export function AboutSection() {
               style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}
             >
               <p>
-                Fotógrafa, artista visual e realizadora audiovisual com mais de 20 anos
-                de experiência na criação de imagens. Combino sólida formação técnica
-                com sensibilidade artística.
+                Fotógrafa, artista visual e realizadora audiovisual, com mais de 20 anos
+                de experiência na criação de imagens. Mestre em Práticas Artísticas —
+                Multimídia — pela Universidade de Évora (Portugal) e pós-graduada em
+                Artes Visuais: Cultura e Criação pelo SENAC.
               </p>
               <p>
-                Conecto tudo o que vejo pela perspectiva do olhar, no sentido de reparar
-                o que se percebe. Meus registros contam histórias autênticas e emocionantes,
-                revelando conexões humanas e momentos únicos com extrema atenção aos detalhes.
+                Formada em Artes Visuais pela Universidade de Brasília, com intercâmbio
+                em fotografia na Université Lumière Lyon 2 (França) — o local onde o
+                cinema nasceu. Desenvolve ensaios fotográficos lifestyle ritualísticos
+                que revelam, com naturalidade e tempo, o modo de viver de cada retratado.
               </p>
-              <p className="font-serif italic text-foreground/60" style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)" }}>
-                Quer fazer retratos elegantes que realmente te façam se sentir visto? Fala com a Hoana.
+              <p>
+                Artista visual atuante na cena da arte contemporânea com instalações,
+                pintura e performances. Além das artes visuais, faço retratos autorais
+                (onde você é o co-diretor), direção de vídeos e palestras sobre
+                maneiras de ver e acessibilidade em arte.
+              </p>
+              <p>
+                Meus registros contam histórias autênticas e emocionantes, revelando
+                conexões humanas e momentos únicos. São várias frentes — todas orbitando
+                um tema: as mais diversas maneiras de ver o mundo.
               </p>
             </motion.div>
           </div>
 
-          {/* Cartografia do olhar */}
+          {/* Cartografia do olhar fotográfico */}
           <div>
             <motion.p
               initial={{ opacity: 0 }}
@@ -147,9 +170,49 @@ export function AboutSection() {
               viewport={{ once: true }}
               className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5"
             >
-              Cartografia do olhar de Hoana
+              Cartografia do olhar fotográfico
             </motion.p>
+            <div className="grid grid-cols-2 gap-3 mb-8">
+              {especialidades.map((e, i) => (
+                <motion.div
+                  key={e.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="border border-primary/20 p-4 hover:border-primary/60 transition-colors"
+                >
+                  <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
+                    {e.label}
+                  </p>
+                  <p className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/50">
+                    {e.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
             <CyclingTags tags={cartografia} />
+          </div>
+
+          {/* Fala com a Hoana */}
+          <div className="space-y-0 border-t border-border/20">
+            {falas.map((fala, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="flex items-center justify-between border-b border-border/20 py-4 group cursor-default"
+              >
+                <p className="font-serif italic text-foreground/70" style={{ fontSize: "clamp(0.9rem, 2vw, 1.05rem)" }}>
+                  {fala}
+                </p>
+                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-primary ml-6 whitespace-nowrap group-hover:translate-x-1 transition-transform">
+                  Fala com a Hoana
+                </span>
+              </motion.div>
+            ))}
           </div>
 
         </div>
