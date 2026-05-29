@@ -6,7 +6,7 @@ const services = [
   {
     num: "01",
     title: "Videoclipes",
-    desc: "Concepção e direção: transformar som em imagem e traduzir atmosferas musicais em visualidades únicas.",
+    desc: "Concepção e direção. Transformar música em conceito visual — som que se torna imagem.",
   },
   {
     num: "02",
@@ -16,12 +16,12 @@ const services = [
   {
     num: "03",
     title: "Espetáculos",
-    desc: "Registros conceituais de espetáculos. Fotografias musicais que capturam a atmosfera viva do palco.",
+    desc: "Registros conceituais de espetáculos. Capturo a atmosfera viva do palco com olhar autoral.",
   },
   {
     num: "04",
-    title: "Direção Visual",
-    desc: "Criar visualidades a partir da escuta. Crio do zero, vídeo ou imagem que conta toda uma narrativa.",
+    title: "Fotografias Musicais",
+    desc: "Crio visualidades a partir da escuta — traduzindo atmosferas sonoras em imagem fotográfica.",
   },
 ];
 
@@ -144,8 +144,8 @@ export function VideoSection() {
               className="font-sans font-light text-muted-foreground leading-relaxed"
               style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}
             >
-              Traduzo atmosferas musicais, sons, corpos e atmosferas em imagem.
-              Crio visualidades a partir da escuta, do zero, com você, até a obra completa.
+              Traduções visuais para sons, corpos e atmosferas. Escuto o que existe
+              antes da imagem e transformo em conceito, direção e obra completa.
             </motion.p>
           </div>
           <div>
