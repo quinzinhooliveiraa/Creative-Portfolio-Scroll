@@ -69,6 +69,18 @@ export function PhotographySection() {
               lapidado por 20 anos de experiência para revelar o sagrado do real — transformando
               o ato de se ver retratado em um dispositivo de autoconhecimento.
             </p>
+            <p className="font-sans font-light text-muted-foreground leading-relaxed mb-6"
+              style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}>
+              Utilizando um "olho artista" lapidado por 20 anos de experiência, o processo
+              acolhe o desconforto de ser fotografado e o transforma em um autoconceito sólido
+              e elegante. O método propõe um encontro entre técnica, estética sofisticada,
+              memória e autenticidade.
+            </p>
+            <p className="font-sans font-light text-muted-foreground leading-relaxed mb-6"
+              style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}>
+              Essa assinatura de presença torna-se palpável no resultado final,
+              manifestando-se de forma explícita no olhar de cada pessoa retratada.
+            </p>
             <p className="font-serif italic text-foreground/50" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)" }}>
               "Retratos que não falam sobre pose, mas sobre presença."
             </p>
