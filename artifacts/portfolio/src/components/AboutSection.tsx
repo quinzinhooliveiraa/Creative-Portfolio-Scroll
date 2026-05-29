@@ -22,11 +22,7 @@ const especialidades = [
   { label: "Newborn", desc: "Primeiros dias com naturalidade" },
 ];
 
-const falas = [
-  "Quer fazer retratos elegantes que realmente te façam se sentir visto?",
-  "Quer ver as artes visuais pelo ponto de vista da acessibilidade?",
-  "Ou criar, do zero, vídeo ou imagem que conte toda uma narrativa?",
-];
+const temas = ["Retratos autorais", "Acessibilidade em arte", "Vídeo & imagem do zero"];
 
 const formacao = [
   { label: "Artes Visuais", sub: "UnB, Universidade de Brasília" },
@@ -196,25 +192,31 @@ export function AboutSection() {
           </div>
 
           {/* Fala com a Hoana */}
-          <div className="space-y-0 border-t border-border/20">
-            {falas.map((fala, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-center justify-between border-b border-border/20 py-4 group cursor-default"
-              >
-                <p className="font-serif italic text-foreground/70" style={{ fontSize: "clamp(0.9rem, 2vw, 1.05rem)" }}>
-                  {fala}
-                </p>
-                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-primary ml-6 whitespace-nowrap group-hover:translate-x-1 transition-transform">
-                  Fala com a Hoana
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="border border-border/20 p-6"
+          >
+            <p className="font-serif italic text-foreground/60 mb-4" style={{ fontSize: "clamp(0.9rem, 2vw, 1.05rem)" }}>
+              Quer trabalhos ultra-personalizados em:
+            </p>
+            <div className="flex flex-wrap gap-2 mb-5">
+              {temas.map((t) => (
+                <span key={t} className="font-sans text-[9px] uppercase tracking-[0.25em] border border-primary/30 text-primary px-3 py-1.5">
+                  {t}
                 </span>
-              </motion.div>
-            ))}
-          </div>
+              ))}
+            </div>
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
+              className="inline-flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.3em] text-background bg-primary px-5 py-2.5 hover:bg-primary/90 transition-colors"
+            >
+              Fala com a Hoana
+            </a>
+          </motion.div>
 
         </div>
       </div>
