@@ -82,7 +82,7 @@ export default function Sessao() {
         <div className="relative w-full overflow-hidden section-dark">
           <div className="absolute inset-0 z-0">
             <img
-              src="/images/portrait.png"
+              src="/hoana-fotografa.jpg"
               alt=""
               className="w-full h-full object-cover object-top opacity-[0.12]"
             />
