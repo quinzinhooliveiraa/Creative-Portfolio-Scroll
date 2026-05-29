@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { TiltCard } from "./TiltCard";
 
 const talks = [
@@ -64,6 +65,12 @@ const mobileW = { tall: "w-[58vw]", wide: "w-[76vw]" };
 const desktopW = { tall: "md:w-[22vw]", wide: "md:w-[36vw]" };
 
 export function TalksSection() {
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  const scrollGallery = (dir: 1 | -1) => {
+    galleryRef.current?.scrollBy({ left: dir * 340, behavior: "smooth" });
+  };
+
   return (
     <section id="talks" className="relative w-full bg-card py-20 md:py-32 border-t border-primary/20 light-gradient-bg">
       <div className="max-w-[1400px] mx-auto px-4 md:px-12">
@@ -128,10 +135,12 @@ export function TalksSection() {
       </div>
 
       {/* ── Photo gallery strip ── */}
-      <div
-        className="flex gap-3 md:gap-5 px-4 md:px-12 overflow-x-auto scrollbar-hide pb-2 mb-16 md:mb-24"
-        style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
-      >
+      <div className="relative">
+        <div
+          ref={galleryRef}
+          className="flex gap-3 md:gap-5 px-4 md:px-12 overflow-x-auto scrollbar-hide pb-2 mb-16 md:mb-24"
+          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+        >
         {photos.map((photo, i) => (
           <motion.div
             key={photo.id}
@@ -156,6 +165,23 @@ export function TalksSection() {
           </motion.div>
         ))}
         <div className="w-4 md:w-8 flex-shrink-0" />
+        </div>
+
+        {/* Arrow buttons */}
+        <button
+          onClick={() => scrollGallery(-1)}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 border border-border/40 bg-background/80 backdrop-blur-sm flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+          aria-label="Anterior"
+        >
+          <ChevronLeft size={16} />
+        </button>
+        <button
+          onClick={() => scrollGallery(1)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 border border-border/40 bg-background/80 backdrop-blur-sm flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+          aria-label="Próximo"
+        >
+          <ChevronRight size={16} />
+        </button>
       </div>
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-12">

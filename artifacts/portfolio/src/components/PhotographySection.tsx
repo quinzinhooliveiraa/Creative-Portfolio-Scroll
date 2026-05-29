@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { TiltCard } from "./TiltCard";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X, ArrowRight } from "lucide-react";
+import { X, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLocation } from "wouter";
 
 const photos = [
@@ -23,8 +23,13 @@ export function PhotographySection() {
   const [selected, setSelected] = useState<(typeof photos)[0] | null>(null);
   const [, navigate] = useLocation();
   const headerRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: headerRef, offset: ["start end", "end start"] });
   const headerY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
+  const scrollGallery = (dir: 1 | -1) => {
+    galleryRef.current?.scrollBy({ left: dir * 340, behavior: "smooth" });
+  };
 
   return (
     <section id="portfolio" className="relative w-full bg-card overflow-hidden pt-14 md:pt-24 pb-14 md:pb-16 border-t border-primary/20 light-gradient-bg"><div id="booking" />
@@ -105,10 +110,12 @@ export function PhotographySection() {
       </div>
 
       {/* ── Gallery strip ── */}
-      <div
-        className="flex gap-3 md:gap-5 px-4 md:px-12 overflow-x-auto scrollbar-hide pb-2"
-        style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
-      >
+      <div className="relative">
+        <div
+          ref={galleryRef}
+          className="flex gap-3 md:gap-5 px-4 md:px-12 overflow-x-auto scrollbar-hide pb-2"
+          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+        >
         {photos.map((photo, i) => (
           <motion.div
             key={photo.id}
@@ -133,6 +140,23 @@ export function PhotographySection() {
           </motion.div>
         ))}
         <div className="w-4 md:w-8 flex-shrink-0" />
+        </div>
+
+        {/* Arrow buttons */}
+        <button
+          onClick={() => scrollGallery(-1)}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 border border-border/40 bg-background/80 backdrop-blur-sm flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+          aria-label="Anterior"
+        >
+          <ChevronLeft size={16} />
+        </button>
+        <button
+          onClick={() => scrollGallery(1)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 border border-border/40 bg-background/80 backdrop-blur-sm flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+          aria-label="Próximo"
+        >
+          <ChevronRight size={16} />
+        </button>
       </div>
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-12 mt-5 md:mt-10 flex items-center justify-between">
