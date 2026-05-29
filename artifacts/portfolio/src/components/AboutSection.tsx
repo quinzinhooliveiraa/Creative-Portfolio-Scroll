@@ -144,19 +144,6 @@ export function AboutSection() {
             >
               Oi! Sou a Hoana
             </motion.p>
-            <div className="overflow-hidden pb-2 mb-5">
-              <motion.div
-                initial={{ y: "100%" }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <h2 className="font-serif text-foreground leading-[1.1]"
-                  style={{ fontSize: "clamp(1.6rem, 5vw, 2.8rem)" }}>
-                  Os físicos são mero detalhe aqui.
-                </h2>
-              </motion.div>
-            </div>
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
