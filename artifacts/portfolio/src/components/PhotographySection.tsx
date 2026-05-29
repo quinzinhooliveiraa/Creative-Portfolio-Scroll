@@ -2,7 +2,8 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { TiltCard } from "./TiltCard";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X } from "lucide-react";
+import { X, ArrowRight } from "lucide-react";
+import { useLocation } from "wouter";
 
 const photos = [
   { id: 1, src: "/portfolio-1.jpg", alt: "Retrato", size: "tall" as const },
@@ -20,12 +21,13 @@ const desktopW = { tall: "md:w-[28vw]", wide: "md:w-[46vw]", square: "md:w-[32vw
 
 export function PhotographySection() {
   const [selected, setSelected] = useState<(typeof photos)[0] | null>(null);
+  const [, navigate] = useLocation();
   const headerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: headerRef, offset: ["start end", "end start"] });
   const headerY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <section id="portfolio" className="relative w-full bg-card overflow-hidden py-14 md:py-24 border-t border-primary/20 light-gradient-bg">
+    <section id="portfolio" className="relative w-full bg-card overflow-hidden py-14 md:py-24 border-t border-primary/20 light-gradient-bg"><div id="booking" />
 
       {/* ── Section intro ── */}
       <div ref={headerRef} className="max-w-[1400px] mx-auto px-4 md:px-12 mb-16 md:mb-28">
@@ -144,6 +146,31 @@ export function PhotographySection() {
           ↑ Topo
         </button>
       </div>
+
+      {/* ── Booking CTA ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="max-w-[1400px] mx-auto px-4 md:px-12 mt-16 md:mt-24 pt-10 border-t border-border/20 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+      >
+        <div>
+          <p className="font-serif italic text-foreground/50 max-w-xl mb-2"
+            style={{ fontSize: "clamp(1rem, 2.5vw, 1.2rem)" }}>
+            "Mais do que produzir imagens bonitas — revelar o sagrado do real e a verdade sensível de cada pessoa."
+          </p>
+          <p className="font-sans text-[9px] uppercase tracking-[0.35em] text-primary">Hoana Bonito</p>
+        </div>
+        <motion.button
+          whileTap={{ scale: 0.97 }}
+          onClick={() => navigate("/sessao")}
+          className="self-start md:self-end flex items-center gap-3 bg-primary text-background px-7 py-4 font-sans text-[10px] uppercase tracking-[0.25em] hover:bg-primary/90 transition-colors group whitespace-nowrap"
+        >
+          Agendar Sessão
+          <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+        </motion.button>
+      </motion.div>
 
       <Dialog open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
         <DialogContent className="max-w-[96vw] max-h-[96vh] p-0 bg-background/95 backdrop-blur-xl border border-border/20 flex items-center justify-center">
