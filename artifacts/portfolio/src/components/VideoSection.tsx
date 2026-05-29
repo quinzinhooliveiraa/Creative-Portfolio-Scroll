@@ -1,6 +1,27 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, X } from "lucide-react";
+
+const videos = [
+  {
+    id: "5GWP-GcDzBs",
+    title: "Con-Fiar",
+    artist: "Ana Leana",
+    role: "Concepção · Roteiro · Direção · Edição",
+  },
+  {
+    id: "uSwd2NAgF-E",
+    title: "Con-Fiar (Dir. Cut)",
+    artist: "Ana Leana",
+    role: "Concepção · Direção",
+  },
+  {
+    id: "uSwd2NAgF-E",
+    title: "Vestida de Estrelas",
+    artist: "Ana Leana",
+    role: "Concepção · Direção",
+  },
+];
 
 const services = [
   {
@@ -27,7 +48,7 @@ const services = [
 
 export function VideoSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
   const clipProgress = useTransform(scrollYProgress, [0, 0.18], [100, 0]);
@@ -77,43 +98,21 @@ export function VideoSection() {
             </motion.p>
           </div>
 
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6 }}
-            className="mt-10 md:mt-0"
+            className="font-sans text-[10px] uppercase tracking-[0.25em] text-muted-foreground/40 mt-10 md:mt-0"
           >
-            <motion.div
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => setHovered(false)}
-              animate={{ scale: hovered ? 1.06 : 1 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative inline-flex items-center gap-4 cursor-pointer group"
-            >
-              <div className="relative flex-shrink-0">
-                <motion.div
-                  className="absolute inset-0 rounded-full border border-primary/30"
-                  animate={{ scale: hovered ? 1.5 : 1, opacity: hovered ? 0 : 1 }}
-                  transition={{ duration: 0.5 }}
-                />
-                <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/50 flex items-center justify-center">
-                  <Play className="w-4 h-4 text-primary ml-0.5" fill="currentColor" />
-                </div>
-              </div>
-              <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground group-hover:text-primary transition-colors">
-                Ver trabalho
-              </span>
-            </motion.div>
-          </motion.div>
+            Role para ver os clipes ↓
+          </motion.p>
         </div>
 
         {/* Right — image with left-to-right reveal */}
         <motion.div
           style={{ clipPath }}
           className="relative flex-1 min-h-[260px] md:min-h-0 overflow-hidden"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
         >
           <motion.img
             src="/images/portfolio-5.png"
@@ -125,8 +124,53 @@ export function VideoSection() {
         </motion.div>
       </div>
 
+      {/* ── Video strip ── */}
+      <div
+        className="flex gap-4 md:gap-6 px-4 md:px-12 py-10 md:py-14 overflow-x-auto scrollbar-hide"
+        style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+      >
+        {videos.map((v, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+            style={{ scrollSnapAlign: "start", flexShrink: 0 }}
+            className="w-[80vw] md:w-[400px] lg:w-[440px] cursor-pointer group"
+            onClick={() => setActiveVideo(v.id)}
+          >
+            {/* Thumbnail */}
+            <div className="relative aspect-video overflow-hidden mb-4">
+              <img
+                src={`https://img.youtube.com/vi/${v.id}/maxresdefault.jpg`}
+                alt={v.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center"
+                >
+                  <Play className="w-5 h-5 text-background ml-0.5" fill="currentColor" />
+                </motion.div>
+              </div>
+            </div>
+            {/* Info */}
+            <p className="font-serif text-foreground group-hover:text-primary transition-colors mb-1"
+              style={{ fontSize: "clamp(1rem, 2.5vw, 1.2rem)" }}>
+              {v.title}
+            </p>
+            <p className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/60 mb-0.5">{v.artist}</p>
+            <p className="font-sans text-[9px] uppercase tracking-wider text-primary/50">{v.role}</p>
+          </motion.div>
+        ))}
+        <div className="w-4 flex-shrink-0" />
+      </div>
+
       {/* ── Service list ── */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12 py-16 md:py-28">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12 pb-16 md:pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mb-14">
           <div>
             <motion.p
@@ -188,16 +232,46 @@ export function VideoSection() {
             </motion.div>
           ))}
         </div>
+
+        <div className="mt-10 flex justify-end">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40 hover:text-primary transition-colors"
+          >
+            ↑ Topo
+          </button>
+        </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12 pb-8 flex justify-end">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-sans text-[9px] uppercase tracking-[0.25em] text-muted-foreground/40 hover:text-primary transition-colors"
+      {/* ── Video Modal ── */}
+      {activeVideo && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setActiveVideo(null)}
         >
-          ↑ Topo
-        </button>
-      </div>
+          <button
+            className="absolute top-4 right-4 w-10 h-10 border border-white/20 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+            onClick={() => setActiveVideo(null)}
+          >
+            <X size={16} />
+          </button>
+          <div
+            className="w-full max-w-4xl aspect-video"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
+              title="Videoclipe"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 }
