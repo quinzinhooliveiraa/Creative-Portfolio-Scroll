@@ -84,7 +84,7 @@ export default function Sessao() {
             <img
               src="/hoana-fotografa.jpg"
               alt=""
-              className="w-full h-full object-cover object-top opacity-[0.12]"
+              className="w-full h-full object-cover object-top opacity-[0.12] -translate-y-[8%]"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
           </div>
