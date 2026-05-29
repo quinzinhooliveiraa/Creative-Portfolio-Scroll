@@ -52,20 +52,6 @@ export function ManifestoSection() {
               Manifesto
             </motion.p>
 
-            <div className="overflow-hidden pb-2 mb-8">
-              <motion.h2
-                initial={{ y: "100%" }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="font-serif text-foreground leading-[1.1]"
-                style={{ fontSize: "clamp(2rem, 6vw, 3.8rem)" }}
-              >
-                sensibilidade artística,<br />
-                <em>potência visual.</em>
-              </motion.h2>
-            </div>
-
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
