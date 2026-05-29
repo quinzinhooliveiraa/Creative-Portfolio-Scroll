@@ -47,30 +47,59 @@ export function PhotographySection() {
               className="font-serif text-foreground leading-none"
               style={{ fontSize: "clamp(2.8rem, 10vw, 5.5rem)" }}
             >
-              Rito de Retrato
+              Rito do Retrato
             </motion.h2>
           </div>
         </motion.div>
 
         {/* Description */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mt-10 max-w-2xl"
-        >
-          <p className="font-sans font-light text-muted-foreground leading-relaxed mb-8"
-            style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}>
-            Visto pelos meus olhos treinados, você deixa de ser apenas um "meio"
-            (um objeto para a câmera) e passa a ser um "fim em si mesmo",
-            expressão única da vida. Afinal, tratarei da sua imagem com o mesmo
-            requinte e cuidado que a natureza dedica a cada folha ou flor que nasce.
-          </p>
-          <p className="font-serif italic text-foreground/60" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.15rem)" }}>
-            O resultado: se sentir (verdadeiramente) visto.
-          </p>
-        </motion.div>
+        <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
+          {/* Lead */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="font-serif text-foreground/80 leading-relaxed mb-6"
+              style={{ fontSize: "clamp(1rem, 2.8vw, 1.25rem)" }}>
+              Criado pela artista Hoana Bonito, o Rito do Retrato utiliza um olho artista
+              lapidado por 20 anos de experiência para revelar o sagrado do real — transformando
+              o ato de se ver retratado em um dispositivo de autoconhecimento.
+            </p>
+            <p className="font-serif italic text-foreground/50" style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)" }}>
+              "Retratos que não falam sobre pose, mas sobre presença."
+            </p>
+          </motion.div>
+
+          {/* Paragraphs */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="space-y-4 font-sans font-light text-muted-foreground leading-relaxed"
+            style={{ fontSize: "clamp(0.875rem, 2.5vw, 1rem)" }}
+          >
+            <p>
+              Diferente da fotografia tradicional, fundamenta-se na não-diretividade
+              e na coautoria, onde o tempo desacelerado e a escuta corporal em um espaço
+              de acolhimento permitem que a autenticidade floresça sem a rigidez de poses.
+            </p>
+            <p>
+              O método Retrato Presença inicia-se em um encontro-presença dedicado à
+              escuta e ao reconhecimento, onde uma entrevista profunda estabelece as bases
+              da coautoria do retratado. Nessa etapa serão escolhidas palavras, gestos,
+              ações cheias de significado e até mesmo as músicas para o momento ritualístico.
+            </p>
+            <p>
+              Mais do que produzir imagens bonitas, o processo busca revelar o sagrado do
+              real e a verdade sensível de cada pessoa — através de um olhar artístico
+              desacelerado, gentil e profundamente atento. O resultado é uma imagem que,
+              de fato, fala aos olhos de quem vê.
+            </p>
+          </motion.div>
+        </div>
       </div>
 
       {/* ── Gallery strip ── */}
