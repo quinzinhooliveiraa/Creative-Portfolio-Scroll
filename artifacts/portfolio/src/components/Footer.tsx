@@ -1,54 +1,13 @@
 import { useLocation } from "wouter";
 import { SocialIcons } from "@/components/SocialIcons";
 
-function IconOlhoVe({ size = 14 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-      <circle cx="12" cy="13" r="3"/>
-      <circle cx="12" cy="13" r="1" fill="currentColor" stroke="none"/>
-    </svg>
-  );
-}
-
-function IconOlhoFala({ size = 14 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      <ellipse cx="12" cy="11" rx="4" ry="2.5"/>
-      <circle cx="12" cy="11" r="1" fill="currentColor" stroke="none"/>
-    </svg>
-  );
-}
-
-function IconOlhoEscuta({ size = 14 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
-      <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/>
-      <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
-      <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-    </svg>
-  );
-}
-
-function IconOlhoArtista({ size = 14 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
-      <ellipse cx="12" cy="12" rx="2.5" ry="1.5"/>
-      <circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/>
-    </svg>
-  );
-}
-
 const anchorLinks = [
-  { label: "Sobre", href: "#about", icon: null },
-  { label: "Retratos", href: "#portfolio", icon: <IconOlhoVe /> },
-  { label: "Palestras", href: "#talks", icon: <IconOlhoFala /> },
-  { label: "Artes & Vídeo", href: "#film", icon: <IconOlhoEscuta /> },
-  { label: "Arte Contemporânea", href: "#arte", icon: <IconOlhoArtista /> },
-  { label: "Contato", href: "#contact", icon: null },
+  { label: "Sobre", href: "#about" },
+  { label: "Retratos", href: "#portfolio" },
+  { label: "Palestras", href: "#talks" },
+  { label: "Artes & Vídeo", href: "#film" },
+  { label: "Arte Contemporânea", href: "#arte" },
+  { label: "Contato", href: "#contact" },
 ];
 
 function scrollToSection(href: string) {
@@ -112,13 +71,8 @@ export function Footer() {
                     navigate("/");
                     setTimeout(() => scrollToSection(l.href), 100);
                   }}
-                  className="text-left font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-2 group"
+                  className="text-left font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-300"
                 >
-                  {l.icon && (
-                    <span className="text-primary/50 group-hover:text-primary transition-colors flex-shrink-0">
-                      {l.icon}
-                    </span>
-                  )}
                   {l.label}
                 </button>
               ))}
