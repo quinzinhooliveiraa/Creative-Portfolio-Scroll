@@ -72,34 +72,67 @@ export function AboutSection() {
       {/* ── Two-column bio block ── */}
       <div className="max-w-[1400px] mx-auto px-4 md:px-12 pt-16 md:pt-28 pb-16 md:pb-24 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-0 items-start">
 
-        {/* Left — photo */}
-        <motion.div style={{ y: imgY }} className="relative w-full max-w-[380px] md:max-w-[480px] mx-auto lg:mx-0 lg:sticky lg:top-24">
-          <motion.div
-            initial={{ clipPath: "inset(100% 0 0 0)" }}
-            whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative aspect-[3/4] overflow-hidden"
-          >
-            <img
-              src="/hoana-fotografa.jpg"
-              alt="Hoana Bonito"
-              className="w-full h-full object-cover object-top"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
-          </motion.div>
+        {/* Left — photo + especialidades */}
+        <motion.div style={{ y: imgY }} className="relative w-full max-w-[380px] md:max-w-[480px] mx-auto lg:mx-0 flex flex-col gap-6">
+          <div className="relative">
+            <motion.div
+              initial={{ clipPath: "inset(100% 0 0 0)" }}
+              whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative aspect-[3/4] overflow-hidden"
+            >
+              <img
+                src="/hoana-fotografa.jpg"
+                alt="Hoana Bonito"
+                className="w-full h-full object-cover object-top"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 14 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="absolute -bottom-4 -right-1 md:-bottom-6 md:-right-8 bg-background border border-border/30 p-4 section-dark"
-          >
-            <p className="font-serif text-xl text-foreground">20+</p>
-            <p className="font-sans text-[9px] uppercase tracking-widest text-muted-foreground mt-0.5">Anos criando imagens</p>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 14 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="absolute -bottom-4 -right-1 md:-bottom-6 md:-right-8 bg-background border border-border/30 p-4 section-dark"
+            >
+              <p className="font-serif text-xl text-foreground">20+</p>
+              <p className="font-sans text-[9px] uppercase tracking-widest text-muted-foreground mt-0.5">Anos criando imagens</p>
+            </motion.div>
+          </div>
+
+          {/* Especialidades abaixo da foto */}
+          <div className="pt-6">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-4"
+            >
+              Cartografia do olhar fotográfico
+            </motion.p>
+            <div className="grid grid-cols-2 gap-2">
+              {especialidades.map((e, i) => (
+                <motion.div
+                  key={e.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="border border-primary/20 p-4 hover:border-primary/60 transition-colors"
+                >
+                  <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
+                    {e.label}
+                  </p>
+                  <p className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/50">
+                    {e.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         {/* Right — bio + cartografia */}
@@ -160,38 +193,6 @@ export function AboutSection() {
                 um tema: as mais diversas maneiras de ver o mundo.
               </p>
             </motion.div>
-          </div>
-
-          {/* Cartografia do olhar fotográfico */}
-          <div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="font-sans text-[10px] uppercase tracking-[0.35em] text-primary mb-5"
-            >
-              Cartografia do olhar fotográfico
-            </motion.p>
-            <div className="grid grid-cols-2 gap-3 mb-8">
-              {especialidades.map((e, i) => (
-                <motion.div
-                  key={e.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="border border-primary/20 p-4 hover:border-primary/60 transition-colors"
-                >
-                  <p className="font-serif text-foreground mb-1" style={{ fontSize: "clamp(1rem, 2.5vw, 1.15rem)" }}>
-                    {e.label}
-                  </p>
-                  <p className="font-sans text-[10px] uppercase tracking-wider text-muted-foreground/50">
-                    {e.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-            <CyclingTags tags={cartografia} />
           </div>
 
           {/* Fala com a Hoana */}
