@@ -81,11 +81,13 @@ export function ManifestoSection() {
               <p>
                 Sinto que o que o mundo mais precisa hoje é de uma pequena mudança
                 de ponto de vista pela maior parte das pessoas. Por isso pesquiso
-                as diversas maneiras de ver o mundo.
+                as diversas maneiras de ver o mundo. Minha maior motivação é poder
+                fazer pensar olhares e assim, expandi-los poeticamente rumo às
+                belezas cotidianas.
               </p>
               <p>
-                Minha maior motivação é poder fazer pensar olhares e assim,
-                expandi-los poeticamente rumo às belezas cotidianas.
+                Conecto tudo o que vejo pela perspectiva do olhar, no sentido de
+                reparar o que se percebe. Os olhos físicos são mero detalhe aqui.
               </p>
             </motion.div>
 
@@ -97,7 +99,7 @@ export function ManifestoSection() {
               className="border-l-2 border-primary/40 pl-6"
             >
               <p className="font-serif italic text-foreground/70" style={{ fontSize: "clamp(1rem, 3vw, 1.4rem)" }}>
-                "Poetisa de uma ideia só com múltiplas habilidades:
+                "Poeta de uma idéia só com múltiplas habilidades:
                 imagens para ver além dos olhos."
               </p>
               <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-primary mt-3">
