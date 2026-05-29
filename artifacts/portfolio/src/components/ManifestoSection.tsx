@@ -99,8 +99,8 @@ export function ManifestoSection() {
               className="border-l-2 border-primary/40 pl-6"
             >
               <p className="font-serif italic text-foreground/70" style={{ fontSize: "clamp(1rem, 3vw, 1.4rem)" }}>
-                "Poeta de uma idéia só com múltiplas habilidades:
-                imagens para ver além dos olhos."
+                "Minha maior motivação é poder fazer pensar olhares e assim,
+                expandi-los poeticamente rumo às belezas cotidianas."
               </p>
               <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-primary mt-3">
                 Hoana Bonito
