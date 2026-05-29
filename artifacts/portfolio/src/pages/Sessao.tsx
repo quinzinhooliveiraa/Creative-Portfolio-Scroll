@@ -23,12 +23,18 @@ const steps = [
 ];
 
 const faqs = [
-  { q: "Onde acontecem as sessões?", a: "Em locações externas (parques, ruas, espaços abertos) ou em estúdio parceiro. Definimos juntos o que faz mais sentido para a sua história." },
-  { q: "E se eu for tímido(a) em frente à câmera?", a: "A maioria das pessoas é! Por isso a conversa prévia existe para criar confiança antes de qualquer foto ser tirada. Você vai se surpreender." },
-  { q: "Posso levar família, filhos, pets?", a: "Sim! As sessões de família, casamento e newborn têm a mesma abordagem. Me conta quem faz parte da sua história." },
-  { q: "Como funciona o pagamento?", a: "O pagamento é feito antecipadamente pelo link de pagamento, confirmando assim a sua data na agenda." },
-  { q: "Em quanto tempo recebo as fotos?", a: "Entre 10 e 15 dias úteis após a sessão. Você recebe uma galeria online privada para selecionar e baixar." },
-  { q: "Posso remarcar a sessão?", a: "Sim, com até 48h de antecedência. Entendemos que imprevistos acontecem e a gente se ajusta juntos." },
+  {
+    q: "Minha agenda é rigorosamente cronometrada e não disponho de tempo ilimitado para um ensaio. Não poderíamos realizar uma sessão mais objetiva e rápida?",
+    a: "Não é possível. O tempo desacelerado da sessão, que pode levar até 5 horas, é parte do processo — é o que permite que o silêncio floresça e as fachadas caiam. A psiquiatra Nise da Silveira nos ensinou que "há dez mil maneiras de se ocupar cada hora do seu tempo". No cotidiano da maior parte das pessoas, a maioria das horas é dedicada à produtividade externa, à gestão e ao outro. O Rito do Retrato propõe que, entre essas milhares de possibilidades, você escolha ocupar essas horas com sua auto imagem. Um autocuidado que pode ser bem divertido. O Rito do Retrato não pode ter tempo apertado, porque pra mim ver com c(alma) muda tudo. Esses retratos precisam mostrar o sagrado do real que existe em você — e pra isso não existe tempo pré-definido.",
+  },
+  {
+    q: "Gostaria de realizar o meu ensaio o quanto antes. Por que a disponibilidade de datas é tão restrita e por que existe um limite tão rigoroso de atendimentos mensais?",
+    a: "Como cada ensaio do Rito de Retrato exige um mergulho profundo, dedicação total e horas de pós-produção artesanal, as sessões são limitadas a três sessões por mês. Vai valer a pena esperar!",
+  },
+  {
+    q: "Os retratos resultantes do Rito do Retrato podem ser utilizados para redes sociais de trabalho?",
+    a: "Claro! Se permitir passar por uma experiência de rito artístico como esta é, em si, uma demonstração de que você valoriza a inovação e o autoconhecimento. O autoconceito sólido, facilitado pelo método, somado a uma estética sofisticada são elementos muito bem vistos no mercado de trabalho — e são especialmente essenciais para quem ocupa cargos de liderança ou decisão e precisa comunicar segurança e clareza narrativa. A verdadeira autoridade começa na forma como você se vê.",
+  },
 ];
 
 export default function Sessao() {
